@@ -196,6 +196,13 @@ const AuthenticationStyle = (theme) => ({
     wordBreak: "keep-all",
     color: "#131C4C",
     opacity: "1",
+    "@media (max-width: 600px)": {
+      marginTop:"50px",
+      marginLeft:"100px",
+      fontSize: "16px",
+      width:"147px"
+   
+   }
   },
   services_headingI: {
     fontWeight: "700",
@@ -206,6 +213,14 @@ const AuthenticationStyle = (theme) => ({
     wordBreak: "keep-all",
     color: "#131C4C",
     opacity: "1",
+    "@media (max-width: 600px)": {
+     marginTop:"50px",
+     marginLeft:"100px",
+     fontSize: "16px",
+     width:"147px"
+  
+  }
+
   },
   iconed: {
     paddingTop: "10px",
@@ -265,6 +280,24 @@ const AuthenticationStyle = (theme) => ({
   package: {
     height: "90px",
     marginBottom: "10px",
+    "@media (max-width: 600px)": {
+      marginTop: "40px",
+     
+  
+  }
+  },
+  img_box:{
+    "@media (max-width: 600px)": {
+      
+      width:"50px"
+  
+  }
+  },
+  upper_portion:{
+    "@media (max-width: 600px)": {
+    display:"flex",
+  justifyContent:"space-around"
+  }
   },
   flow_package: {
     height: "70px",
