@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="44.769" height="17.5" viewBox="0 0 44.769 17.5">
+  <g id="Group_3498" data-name="Group 3498" transform="translate(0.51 0.5)">
+    <path id="Subtraction_2" data-name="Subtraction 2" d="M3.813,0H.849C.84.005-.015.541,0,1.084c.014.45,0,2.753,0,3.722v.068C.013,4.9,1.3,7.287,2.209,7.418S8.2,8.841,8.255,8.854l0,0c.4.177,9.8,4.343,11.341,4.446.094.006.245.021.455.042h.006a42.283,42.283,0,0,0,4.326.242,25.791,25.791,0,0,0,5.627-.561,30.146,30.146,0,0,0,7-2.83l.012-.006a9.207,9.207,0,0,1,2.107-.939c.905-.091,2.544-.345,2.863-.4H42a2.664,2.664,0,0,0,1.721-2.165c.079-1.544,0-3.9,0-3.919-.014-.048-.351-1.184-1.169-1.463L39.091.945a3.433,3.433,0,0,1-6.829-.5c0-.035,0-.069,0-.1L10.785.085c.012.121.019.244.019.365a3.433,3.433,0,0,1-6.865,0A3.466,3.466,0,0,1,3.968,0Z" transform="translate(43.759 13.587) rotate(180)" fill="none" stroke="#fff" stroke-width="1"/>
+    <path id="Path_2107" data-name="Path 2107" d="M-11976.938,656.806h-20.251a17.63,17.63,0,0,1,5.833-2.844,25.03,25.03,0,0,1,6.837-.517c1.187.113,7.938,2.972,7.938,2.972" transform="translate(12006.693 -651.502)" fill="none" stroke="#fff" stroke-width="1"/>
+    <line id="Line_130" data-name="Line 130" y2="3.433" transform="translate(19.222 1.982)" fill="none" stroke="#fff" stroke-width="1"/>
+    <g id="Ellipse_2121" data-name="Ellipse 2121" transform="translate(32.524 9.276)" fill="none" stroke="#fff" stroke-width="1">
+      <ellipse cx="3.862" cy="3.862" rx="3.862" ry="3.862" stroke="none"/>
+      <ellipse cx="3.862" cy="3.862" rx="3.362" ry="3.362" fill="none"/>
+    </g>
+    <g id="Ellipse_2122" data-name="Ellipse 2122" transform="translate(4.204 9.276)" fill="none" stroke="#fff" stroke-width="1">
+      <ellipse cx="3.862" cy="3.862" rx="3.862" ry="3.862" stroke="none"/>
+      <ellipse cx="3.862" cy="3.862" rx="3.362" ry="3.362" fill="none"/>
+    </g>
+  </g>
+</svg>
