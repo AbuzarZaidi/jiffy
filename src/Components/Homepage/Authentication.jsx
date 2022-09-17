@@ -395,10 +395,10 @@ const Authentication = (props) => {
           </div>
 
            <Services></Services>
-          {/* <div id='co'>
+          <div id='co'>
             <Flow></Flow>
-          </div> */}
-          {/*## <Purpose></Purpose> */}
+          </div>
+           <Purpose></Purpose>
           {/*<Payments></Payments>*/}
           {/* ##<AskedQuestions></AskedQuestions> */}
           {/*<Feedback></Feedback>*/}

@@ -63,6 +63,10 @@ const AuthenticationStyle = (theme) => ({
     color: "#131C4C",
     opacity: "1",
     fontWeight: "700",
+    "@media (max-width: 600px)": {
+      marginLeft: "69px"
+  
+  }
   },
   coperate_section: {
     padding: "50px 50px 50px 50px",
@@ -164,6 +168,11 @@ const AuthenticationStyle = (theme) => ({
     fontWeight: "700",
     fontFamily: "Montserrat",
     marginTop: "30px",
+    "@media (max-width: 600px)": {
+      fontSize: "26px",
+      fontWeight: "600",
+  
+  }
   },
   services_desc: {
     display: "flex",
@@ -229,7 +238,14 @@ const AuthenticationStyle = (theme) => ({
     fontWeight: "700",
     fontSize: "18px",
     fontFamily: "Montserrat",
+    "@media (max-width: 600px)": {
+ marginLeft:"90px",
+ marginTop:"20px",
+ fontSize: "16px",
+ 
+   }
   },
+
   purpose: {
     margin: "30px",
   },
@@ -297,6 +313,13 @@ const AuthenticationStyle = (theme) => ({
     "@media (max-width: 600px)": {
     display:"flex",
   justifyContent:"space-around"
+  }
+  },
+  upper_flow_portion:{
+    "@media (max-width: 600px)": {
+    display:"flex",
+  justifyContent:"flex_start",
+  marginTop:"50px"
   }
   },
   flow_package: {
