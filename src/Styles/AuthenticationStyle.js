@@ -86,6 +86,17 @@ const AuthenticationStyle = (theme) => ({
     
     }
   },
+  services_coperate_btn:{
+    height: "40px",
+    width: "150px",
+    fontSize: "13px",
+    color: "#62AF4B",
+    fontFamily: "Montserrat",
+    "@media (max-width: 600px)": {
+      marginLeft:"10%",
+    
+    }
+  },
   msg_icon: {
     height: "15px !important",
     paddingLeft: "10px",
@@ -140,6 +151,26 @@ const AuthenticationStyle = (theme) => ({
       width: "250px",
     
     }
+  },
+  services_welcome:{
+    "@media (max-width: 600px)": {
+      marginLeft:"20px"
+      
+      }
+  },
+  heading_welcome:{
+    "@media (max-width: 600px)": {
+    fontSize:"50px",
+    fontWeight:"600px"
+      
+      }
+  },
+
+  allm:{
+    "@media (max-width: 600px)": {
+     marginTop:"20px"
+     
+     }
   },
   share: {
     width: "140px",
@@ -380,6 +411,10 @@ const AuthenticationStyle = (theme) => ({
   Allservice: {
     display: "grid",
     gap: "20px",
+    "@media (max-width: 600px)": {
+marginLeft:"5%",
+width:"90%"
+    }
   },
   service_bg: {
     paddingLeft: "50px",
@@ -413,6 +448,10 @@ const AuthenticationStyle = (theme) => ({
     textAlign: "left",
     padding: "15px",
     cursor: "pointer",
+    "@media (max-width: 600px)": {
+      width:"90%",
+      marginLeft:"5%"
+  }
   },
   service_image: {
     textAlign: "right",
