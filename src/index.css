@@ -14,9 +14,13 @@
     /* max-width: 555px; */
     margin-top: 50px;
     margin-left: 50px;
-   /* height: 487px;
-    width: 657px;
-    /*margin-left: 72px;*/
+
+}
+.background-2{
+    /* max-width: 555px; */
+    margin-top: 10px;
+    margin-left: 50px;
+
 }
 .notification{
     display: inherit;
@@ -574,7 +578,7 @@ width: 105px;
     .Heading{
         margin-top: 5px;
     }
-    /* .center{
-        width: 360px;
-    } */
+    .background-1{
+        width: 100%;
+    }
 }

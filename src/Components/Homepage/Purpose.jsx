@@ -12,8 +12,15 @@ const Purpose = (props) =>{
         <Grid item md={12} lg={12} className={classes.services}>
             <div className={classes.purpwhy}>Why Choose Jiffy?</div>
         </Grid>
-        <Grid item md={12} lg={12} className={classes.services_desc_pur}>
-            <Grid item xs={12} md={6} lg={6} className={classes.purpose}>
+        {/* <Grid item md={12} lg={12} > */}
+        <Grid container  className={classes.purpose}>
+        <Grid item xs={12} md={12} lg={6}>
+            <div>
+                    <img src='./Images/choose.svg' className={classes.choose_img}></img>
+                </div>
+            
+            </Grid>
+            <Grid item xs={12} md={12} lg={6}>
               
                <div className={classes.purpose_heading}> 
                <div className={classes.purpdata}>Jiffy is an on-demand logistics solution for your organization which guarantees to carry out the required service/delivery within 24 Hours. </div><br/>
@@ -23,12 +30,7 @@ const Purpose = (props) =>{
                <div>
                </div>
             </Grid>
-            <Grid item xs={12} md={6} lg={6}>
-            <div>
-                    <img src='./Images/choose.svg' className={classes.choose_img}></img>
-                </div>
-            
-            </Grid>
+
            
         </Grid>
         </Grid>

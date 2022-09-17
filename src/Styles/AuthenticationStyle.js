@@ -118,6 +118,10 @@ const AuthenticationStyle = (theme) => ({
     "@media (max-width: 600px)": {
       width: "360px",
     
+    },
+    "@media (max-width: 320px)": {
+      width: "250px",
+    
     }
   },
 
@@ -131,12 +135,20 @@ const AuthenticationStyle = (theme) => ({
     "@media (max-width: 600px)": {
       width: "360px",
     
+    },
+    "@media (max-width: 320px)": {
+      width: "250px",
+    
     }
   },
   share: {
     width: "140px",
     "@media (max-width: 600px)": {
       width: "110px",
+    
+    },
+    "@media (max-width: 320px)": {
+      width: "70px",
     
     }
   },
@@ -190,12 +202,16 @@ const AuthenticationStyle = (theme) => ({
     margin: "auto",
     boxShadow: "0px 2px 2px -6px #0000001a",
   },
-  services_desc_pur: {
-    display: "flex",
-    padding: "50px",
-    fontFamily: "Montserrat;",
-    justifyContent: "space-between",
-  },
+  // services_desc_pur: {
+  //   display: "flex",
+  //   padding: "50px",
+  //   fontFamily: "Montserrat;",
+  //   justifyContent: "space-between",
+  //   "@media (max-width: 600px)": {
+  //     flexDirection:"column"
+  
+  // }
+  // },
   services_heading: {
     fontWeight: "700",
     fontSize: "18px",
@@ -233,6 +249,10 @@ const AuthenticationStyle = (theme) => ({
   },
   iconed: {
     paddingTop: "10px",
+    "@media (max-width: 600px)": {
+      paddingTop: "5px",
+  
+  }
   },
   flow_heading: {
     fontWeight: "700",
@@ -245,9 +265,22 @@ const AuthenticationStyle = (theme) => ({
  
    }
   },
-
+  askQuestion:{
+    "@media (max-width: 600px)": {
+    display:"flex",
+  justifyContent:"center"
+  }
+  },
+  imgAsk:{
+    "@media (max-width: 600px)": {
+    width:"50%"
+    
+    }
+  },
   purpose: {
-    margin: "30px",
+   marginTop:"80px",
+   marginLeft:"80px",
+   marginRight:"50px"
   },
   purpose_heading: {
     fontWeight: "600",
@@ -258,6 +291,13 @@ const AuthenticationStyle = (theme) => ({
     fontSize: "40px",
     fontWeight: "700",
     fontFamily: "Montserrat;",
+    "@media (max-width: 600px)": {
+      fontSize: "25px",
+      fontWeight: "700",
+      color:"#131C4C",
+      marginTop:"30px",
+      marginBottom:"20px"
+  }
   },
   freq_heading: {
     fontWeight: "700",
@@ -273,6 +313,7 @@ const AuthenticationStyle = (theme) => ({
     backgroundColor: "#F2F8FD",
     "&:hover": {
       backgroundColor: "#F2F8FD",
+      marginRight:"35px"
     },
   },
 
@@ -389,11 +430,16 @@ const AuthenticationStyle = (theme) => ({
     color: "white",
   },
   footer_head: {
-    marginLeft: "50px",
+    // marginLeft: "50px",
     marginTop: "20px",
     fontWeight: "700",
     fontFamily: "Montserrat",
     fontSize: "36px",
+    "@media (max-width: 600px)": {
+      display:"flex",
+      justifyContent:"space-around"
+  
+  }
   },
   footer_desc: {
     display: "block !important",
@@ -420,9 +466,50 @@ const AuthenticationStyle = (theme) => ({
   },
   footer_img: {
     height: "40px",
+    "@media (max-width: 600px)": {
+      marginRight: "-14px"
+  
+  }
+  
   },
   footer_img_small: {
     height: "30px",
+  },
+  country:{
+  
+    
+    "@media (max-width: 600px)": {
+      display:"flex",
+      flexDirection:"row",
+      flexWrap: 'wrap'
+  }
+  },
+  single_country:{
+    "@media (max-width: 600px)": {
+     marginRight:"40px",
+      flexWrap: 'wrap'
+  
+  }
+  },
+  single_service:{
+    "@media (max-width: 600px)": {
+      marginRight:"20px",
+       flexWrap: 'wrap',
+   
+   }
+  },
+  our_service:{
+    "@media (max-width: 600px)": {
+      display:"flex",
+      flexDirection:"row",
+      flexWrap: 'wrap',
+  }
+  },
+  field_margin:{
+    "@media (max-width: 600px)": {
+marginTop:"20px",
+
+  }
   },
   small: {
     display: "flex",

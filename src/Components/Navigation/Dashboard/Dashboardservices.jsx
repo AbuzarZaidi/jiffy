@@ -357,13 +357,13 @@ const Trackorder = (props) => {
           </Grid>
         </Grid>
       </Grid>
-      {/* <Grid container>
+      <Grid container>
         <Grid item md={12} lg={12}>
           <div className='footed'>
             <Footer></Footer>
           </div>
         </Grid>
-      </Grid> */}
+      </Grid>
     </>
   );
 };

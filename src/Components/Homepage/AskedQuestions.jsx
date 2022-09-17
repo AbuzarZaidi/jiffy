@@ -59,10 +59,11 @@ const AskedQuestions = (props) =>{
            
         </Grid>
         <Grid item md={12} lg={12} className={classes.services_desc}>
-            <Grid item md={3} lg={3} className={classes.services_content}>
-                
-               <div className={classes.asked_heading}> Frequently<br/> Asked <br/>Questions </div>
-              <img src='./Images/freq.svg'></img>
+            <Grid item  md={12} lg={3} className={classes.services_content}>
+                <div  className={classes.askQuestion}>
+               <div className={classes.asked_heading}> Frequently<br/>Asked <br/>Questions </div>
+              <img src='./Images/freq.svg' className={classes.imgAsk}></img>
+              </div>
             </Grid>
             <Grid item md={8} lg={8}>
             

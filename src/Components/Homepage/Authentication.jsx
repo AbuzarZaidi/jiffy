@@ -400,10 +400,10 @@ const Authentication = (props) => {
           </div>
            <Purpose></Purpose>
           {/*<Payments></Payments>*/}
-          {/* ##<AskedQuestions></AskedQuestions> */}
+          <AskedQuestions></AskedQuestions>
           {/*<Feedback></Feedback>*/}
 
-          {/*## <Footer></Footer> */}
+           <Footer></Footer>
 
 
         </div>
