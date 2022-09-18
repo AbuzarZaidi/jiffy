@@ -386,7 +386,7 @@ const Trackorder = (props) => {
   //getAPI()
   return (
     <>
-      <Allservices></Allservices>
+      {/* <Allservices></Allservices> */}
       <Grid container className={classes.section_start}>
         <Grid container className={classes.newbg}>
           <Container maxWidth='xl'>

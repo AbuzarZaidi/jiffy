@@ -667,7 +667,7 @@ const SendPackage = (props) => {
 
   return (
     <>
-      <Allservices></Allservices>
+      {/* <Allservices></Allservices> */}
       <Grid container className={classes.section_start}>
         <Grid container className={classes.newbg}>
           <Grid container className={classes.secn}>
@@ -684,7 +684,7 @@ const SendPackage = (props) => {
                     <ColoredLine color="#131C4C" />
                   </div>
                 </Grid>
-                <Grid item xs={5} md={12} lg={12} className={classes.vat}>
+                <Grid item xs={12} md={12} lg={12} className={classes.vat}>
                 Send packages to your clients/companies in a secure manner with double authentication features within the same day.
                 </Grid>
               </Grid>
@@ -719,7 +719,7 @@ const SendPackage = (props) => {
                 We will assign the nearest counter to pick up and deliver as soon as possible
               </div>
               
-              <div className={classes.req}>
+              {/* <div className={classes.req}>
                 <p className={classes.revert}><b className={classes.reqi}>Select based on your requirement :</b>
                 <p className={alignmentTrans === 'bike' ? classes.two_wheel : classes.two_wheel_inactive}><b>2 Wheeler</b></p>
                 <div className={classes.del_icon}>
@@ -742,7 +742,7 @@ const SendPackage = (props) => {
           </div>
           <p className={alignmentTrans === 'bike' ? classes.four_wheel : classes.four_wheel_active}>4 Wheeler</p>
                 </p> &nbsp;
-                
+                </div> */}
                 {/*<p className={mode === 'bike' ? classes.two_wheel : classes.two_wheel_inactive}><b>2 Wheeler</b></p>
                 <div className={classes.del_icon}>
           
@@ -751,7 +751,7 @@ const SendPackage = (props) => {
                 <SwitchUnstyled component={Root} onChange={(e, value) => setMode(e.target.checked ? 'bike' : 'car')} />
                 <img src='./Images/sedan.png' height={60} className={mode === 'bike' && classes.sedan}></img>&nbsp;
                 <p className={mode === 'bike' ? classes.four_wheel : classes.four_wheel_active}>4 Wheeler</p>
-             */} </div>
+             */} 
               {/*Weights not in cooperate login */}
               {/*<div className={classes.content}>
                 <div>Weights</div>
@@ -771,10 +771,8 @@ const SendPackage = (props) => {
                   <ToggleButton className={classes.weightButton} value="ios23">Upto 20kg</ToggleButton>
                   <ToggleButton className={classes.weightButton} value="ios4">20+</ToggleButton>
                   <ToggleButton className={classes.weightButton} value="ios5">Unsure</ToggleButton>
-
                 </ToggleButtonGroup>
                 </div>
-
   </div>*/}
 
               <form onSubmit={handleSubmit}>
@@ -784,7 +782,7 @@ const SendPackage = (props) => {
                   </div>
                   <div className={classes.content}>
                     <Grid container spacing={2}>
-                      <Grid item md={12} lg={12} >
+                      <Grid item  xs={11} md={10} lg={12} >
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           {/*} <OutlinedInput
                   id="outlined-adornment-weight"
@@ -849,7 +847,7 @@ const SendPackage = (props) => {
                           <div className={classes.errors}>Select pickup location</div>
                         </> : null}
                       </Grid>
-                      <Grid item md={4} lg={4}>
+                      <Grid item xs={11} md={10} lg={4}>
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           <OutlinedInput
                             id="outlined-adornment-weight"
@@ -869,7 +867,7 @@ const SendPackage = (props) => {
                           <div className={classes.errors}>Select mobile number</div>
                         </> : null}
                       </Grid>
-                      <Grid item md={4} lg={4}>
+                      <Grid item xs={11} md={10} lg={4}>
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           <OutlinedInput
                             id="outlined-adornment-weight"
@@ -888,7 +886,7 @@ const SendPackage = (props) => {
                           <div className={classes.errors}>Select E-mail</div>
                         </> : null}
                       </Grid>
-                      <Grid item md={4} lg={4}>
+                      <Grid item xs={11} md={10} lg={4}>
                         <DatePicker
                           selected={pickup}
                           onChange={(date) => setPickup(date)}
@@ -900,16 +898,14 @@ const SendPackage = (props) => {
                           dateFormat="h:mm aa"
                         />
                         {/*} <MuiPickersUtilsProvider utils={DateFnsUtils}>
-
                                   <TimePicker value={selectedDate} onChange={handleDateChange} />
-
                                 </MuiPickersUtilsProvider>*/}
                         {error4 ? <>
                           <div className={classes.errors}>Select time</div>
                         </> : null}
 
                       </Grid>
-                      <Grid item md={12} lg={12} >
+                      <Grid item xs={11} md={10} lg={12} >
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           <OutlinedInput
                             id="outlined-adornment-weight"
@@ -943,7 +939,7 @@ const SendPackage = (props) => {
                   </div>
                   <div className={classes.content}>
                     <Grid container spacing={2}>
-                      <Grid item md={12} lg={12} >
+                      <Grid item xs={11} md={10} lg={12} >
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           {/*<OutlinedInput
                   id="outlined-adornment-weight"
@@ -1008,7 +1004,7 @@ const SendPackage = (props) => {
                         </> : null}
                       </Grid>
 
-                      <Grid item md={4} lg={4}>
+                      <Grid item xs={11} md={10} lg={4}>
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           <OutlinedInput
                             id="outlined-adornment-weight"
@@ -1027,7 +1023,7 @@ const SendPackage = (props) => {
                           <div className={classes.errors}>Select delivery mobile number</div>
                         </> : null}
                       </Grid>
-                      <Grid item md={4} lg={4}>
+                      <Grid item xs={11} md={10} lg={4}>
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           <OutlinedInput
                             id="outlined-adornment-weight"
@@ -1046,7 +1042,7 @@ const SendPackage = (props) => {
                           <div className={classes.errors}>Select delivery delivery E-mail</div>
                         </> : null}
                       </Grid>
-                      <Grid item md={4} lg={4}>
+                      <Grid item xs={11} md={10} lg={4}>
                         <DatePicker
                           selected={drop}
                           onChange={(date) => setDrop(date)}
@@ -1062,7 +1058,7 @@ const SendPackage = (props) => {
                         </> : null}
 
                       </Grid>
-                      <Grid item md={12} lg={12} >
+                      <Grid item xs={11} md={10} lg={12} >
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           <OutlinedInput
                             id="outlined-adornment-weight"
@@ -1088,7 +1084,6 @@ const SendPackage = (props) => {
                             Add stop
                           </div>
                           <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
-
                             <PlacesAutocomplete
                               value={addressStop}
                               onChange={setAddressStop}
@@ -1110,7 +1105,6 @@ const SendPackage = (props) => {
                                     labelWidth={0}
                                     className={classes.searchInput}
                                   />
-
                                   <div className={classes.locationdropdown}>
                                     {loading && <div>Loading...</div>}
                                     {suggestions.map(suggestion => {
@@ -1449,7 +1443,7 @@ const SendPackage = (props) => {
                     }
 
                   </Grid>
-                  <Grid container className={classes.documents}>
+                   <Grid container className={classes.documents}>
                     {
                       inputFieldsMcerti.map((inputFieldsMcerti, index) => (
                         <div key={index}>
@@ -1507,7 +1501,7 @@ const SendPackage = (props) => {
                     }
 
                   </Grid>
-                  <Grid container className={classes.documents}>
+               <Grid container className={classes.documents}>
                     {
                       inputFieldsDcerti.map((inputFieldsDcerti, index) => (
                         <div key={index}>
@@ -1536,7 +1530,7 @@ const SendPackage = (props) => {
                     }
 
                   </Grid>
-                  <Grid container className={classes.documented}>
+                   <Grid container className={classes.documented}>
                     {
                       inputFieldsOther.map((inputFieldsOther, index) => (
                         <div key={index}>
@@ -1567,8 +1561,11 @@ const SendPackage = (props) => {
                   </Grid>
 
                 </div>
-                <Grid item md={8} lg={8} >
-                     <span className={classes.prefer}>Prefer Courier with </span>{/*<span className={classes.apply}>Charges apply</span>*/}<br></br><br/>
+                 <Grid item md={8} lg={8} >
+                     <span className={classes.prefer}>Prefer Courier with </span>
+                     {/* --><span className={classes.apply}>Charges apply</span>--> */}
+
+                     <br></br><br/>
                      <ToggleButton
                         value="check1"
                         selected={selected1}
@@ -1611,7 +1608,6 @@ const SendPackage = (props) => {
                           id="outlined-adornment-weight"
                           placeholder='Enter parcel value'
                           onChange={(e) => priceChange(e)}
-
                           endAdornment={<InputAdornment position="end"> <p><b>AED</b></p></InputAdornment>}
                           aria-describedby="outlined-weight-helper-text"
                           inputProps={{
@@ -1632,7 +1628,6 @@ const SendPackage = (props) => {
                             id="outlined-adornment-weight"
                             placeholder='Parcel value'
                             onChange={(e) => priceChange(e)}
-
                             endAdornment={<InputAdornment position="end"> <p><b>AED</b></p></InputAdornment>}
                             aria-describedby="outlined-weight-helper-text"
                             inputProps={{
@@ -1694,24 +1689,19 @@ const SendPackage = (props) => {
                   <ToggleButton className={classes.weightButton} value="android">Credit/Debit Card</ToggleButton>
                   <ToggleButton className={classes.weightButton} value="ios1">e-Dirham Card<br/>(0 Balance)Top up Now</ToggleButton>
                   
-
-
                 </ToggleButtonGroup>
-
                </Grid>
                </Grid>
                 </div>*/}
 
 
-                <div className={classes.content1}>
+                 <div className={classes.content1}>
                   <div className={classes.send_label}>
                     Other
                   </div>
                   <Grid container spacing={3}>
                     {/*} <Grid item md={4} lg={4} >
-
                         <ToggleButton
-
                           value="check"
                           selected={selected}
                           onChange={() => {
@@ -1721,7 +1711,7 @@ const SendPackage = (props) => {
                           <CheckIcon />
                         </ToggleButton>&nbsp;&nbsp;Notify recipient by Whatsapp Messages
                       </Grid>*/}
-                    <Grid item md={4} lg={4} >
+                     <Grid item md={4} lg={4} >
                       <ToggleButton
                         value="check"
                         selected={selected4}
@@ -1746,7 +1736,6 @@ const SendPackage = (props) => {
                             <b className={classes.price_cont}>Total Estimated Price</b><img className={classes.price_img} src='./Images/info.svg'></img><b className={classes.price_tag}>&nbsp;&nbsp;{price}</b>&nbsp;AED
                           </div>
                         </Grid>) : (<></>)}
-
                       <Grid item md={3} lg={3} >
                       </Grid>
                     </Grid>
@@ -1760,7 +1749,7 @@ const SendPackage = (props) => {
                   <Grid container spacing={3}>
                     <Grid item md={4} lg={4} >
                     </Grid>
-                    <Grid item md={4} lg={4} >
+                    <Grid item xs={10} md={4} lg={4} >
                       <button className={classes.service_btn} type="submit" >Submit Order</button>
                     </Grid>
                     <Grid item md={4} lg={4} >

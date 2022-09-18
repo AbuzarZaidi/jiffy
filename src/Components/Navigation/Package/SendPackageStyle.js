@@ -8,16 +8,30 @@ const SendPackageStyle = (theme) => ({
     heading: {
         fontWeight: "700",
         fontSize: "20px",
-        display: "flex"
+        display: "flex",
+        "@media (max-width: 600px)": {
+            fontWeight: "500",
+        
+        }
     },
     icon: {
         marginRight: "15px",
-        height: "49px !important",
-        width: "49px !important",
+        height: "49px",
+        width: "49px ",
+        "@media (max-width: 600px)": {
+            marginRight: "5px",
+            height: "15px",
+            width: "15px ",
+        // marginLeft:"20px"
+        }
     },
     send_img: {
         height: "87px",
-        cursor: "pointer"
+        cursor: "pointer",
+        "@media (max-width: 600px)": {
+            width:"30%"
+        
+        }
     },
     send_bg: {
         paddingBottom: "20px",
@@ -27,10 +41,18 @@ const SendPackageStyle = (theme) => ({
     send_heading: {
         fontSize: "44px",
         fontWeight: "bold",
-        marginTop: "20px"
+        marginTop: "20px",
+        "@media (max-width: 600px)": {
+            fontSize: "24px",
+        color:"#131C4C"
+        }
     },
     send_header: {
-        marginTop: "45px"
+        marginTop: "45px",
+        "@media (max-width: 600px)": {
+            marginRight:"10%"
+        
+        }
     },
     secn: {
         paddingTop: "40px",
@@ -63,6 +85,10 @@ const SendPackageStyle = (theme) => ({
         fontSize: "20px",
         fontWeight: 300,
         fontFamily: "Montserrat !important",
+        "@media (max-width: 600px)": {
+            fontSize: "10px",
+        
+        }
     },
     req: {
         marginTop: "10px",
@@ -210,8 +236,11 @@ const SendPackageStyle = (theme) => ({
         paddingBottom: "50px",
         paddingTop: "17px",
         paddingLeft: '100px',
-        lineHeight: '24px'
-
+        lineHeight: '24px',
+        "@media (max-width: 600px)": {
+            paddingLeft: '0px',
+        
+        }
     },
     newbg: {
         background: "url(./Images/banner.png)",
@@ -231,7 +260,9 @@ const SendPackageStyle = (theme) => ({
         maxWidth: "1280px",
         margin: "auto",
         paddingLeft: "50px",
-
+        "@media (max-width: 600px)": {
+            paddingLeft: "20px",
+        }
     },
     documentsInput: {
         marginRight: "10px"
@@ -250,17 +281,27 @@ const SendPackageStyle = (theme) => ({
     mainTab: {
         display: "flex",
 
-        fontWeight: "600 !important",
-        fontSize: "27px !important"
+        fontWeight: "600 ",
+        fontSize: "27px ",
+        "@media (max-width: 600px)": {
+            fontWeight: "200 ",
+            fontSize: "12px ",
+            marginTop:"5%"
+       
+        }
     },
     mainTab2: {
         display: "flex",
         paddingTop: "5px",
-        fontWeight: "300 !important",
-        fontSize: "20px !important",
+        fontWeight: "300 ",
+        fontSize: "20px ",
         color: '#AFB2C2',
         '& b': {
             color: '#fff'
+        },
+        "@media (max-width: 600px)": {
+            fontSize: "10px ",
+        
         }
     },
     tab2: {
@@ -277,26 +318,46 @@ const SendPackageStyle = (theme) => ({
         paddingTop: "50px",
         fontWeight: "100",
         color: "#6E759A",
-        paddingBottom: "50px"
+        paddingBottom: "50px",
+        "@media (max-width: 600px)": {
+            width:"80%",
+            marginLeft:"10%"
+        }
 
     },
     contnew: {
         justifyContent: "center",
         fontSize: '12px',
-        fontWeight: 300
+        fontWeight: 300,
+
     },
     tabList: {
-        height: '120px'
+        height: '120px',
+        "@media (max-width: 600px)": {
+            height: '70px',
+        // marginLeft:"5%",
+      
+        }
     },
     tabContent: {
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        "@media (max-width: 600px)": {
+        //  marginLeft:"20px",
+        //  marginRight:"20px",
+        //  justifyContent: 'flex-start',
+        }
     },
     tabItem: {
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        "@media (max-width: 600px)": {
+            height:"70px !important",
+            justifyContent: 'flex-start',
+            
+        }
     },
     mainInactive: {
         color: '#4A4F6D !important',

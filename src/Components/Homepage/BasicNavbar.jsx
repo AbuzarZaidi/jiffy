@@ -74,7 +74,7 @@ const BasicNavbar = () => {
                 bgcolor:"#151F4F"
               }}
             >
-              <Typography textAlign="center">Our Services</Typography>
+         
                 <MenuItem  onClick={handleCloseNavMenu} sx={{bgcolor:"#151F4F",color:"#ffffff"}}>
                   <Typography textAlign="center">Our Services</Typography>
                 </MenuItem>
