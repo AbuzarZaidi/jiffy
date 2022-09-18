@@ -558,8 +558,11 @@ const SendPackageStyle = (theme) => ({
     prefer:{
         color:"#131C4C",
         fontWeight:"600",
-        fontSize:"15px"
-
+        fontSize:"15px",
+        // "@media (max-width: 600px)": {
+        // marginRigth:"70%"
+        
+        // }
     },
     apply:{
         color:"#6E759A",
@@ -567,6 +570,13 @@ const SendPackageStyle = (theme) => ({
     },
     courier:{
     
+    },
+    preferCourierMethod: {
+        display:"inline",
+        "@media (max-width: 600px)": {
+           display:"block"
+        
+        }
     }
 })
 export default SendPackageStyle

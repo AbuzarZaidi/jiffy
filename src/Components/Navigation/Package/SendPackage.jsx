@@ -1561,21 +1561,25 @@ const SendPackage = (props) => {
                   </Grid>
 
                 </div>
-                 <Grid item md={8} lg={8} >
+                 <Grid item xs={12} md={12} lg={8} >
                      <span className={classes.prefer}>Prefer Courier with </span>
                      {/* --><span className={classes.apply}>Charges apply</span>--> */}
 
                      <br></br><br/>
+                     <div className={classes.preferCourierMethod}>
                      <ToggleButton
                         value="check1"
                         selected={selected1}
                         onChange={() => {
                           setSelected1(!selected1);
                         }}
+                       
                       >
                         <CheckIcon />
                       </ToggleButton> <span className={classes.prefer}>Post envelope (3 AED)</span>
+                      </div>
                       &nbsp;&nbsp;
+                      <div className={classes.preferCourierMethod}>
                       <ToggleButton
                         value="check2"
                         selected={selected2}
@@ -1585,7 +1589,9 @@ const SendPackage = (props) => {
                       >
                         <CheckIcon />
                       </ToggleButton> <span className={classes.prefer}>A3 envelope (2 AED)</span>
+                      </div>
                       &nbsp;&nbsp;
+                      <div className={classes.preferCourierMethod}>
                       <ToggleButton
                         value="check3"
                         selected={selected3}
@@ -1595,6 +1601,7 @@ const SendPackage = (props) => {
                       >
                         <CheckIcon />
                       </ToggleButton> <span className={classes.prefer}>A4 envelope (1AED)</span>
+                      </div>
                     </Grid>
 
                 {/*<div className={classes.content}>
