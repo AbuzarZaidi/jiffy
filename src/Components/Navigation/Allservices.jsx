@@ -168,7 +168,7 @@ const Allservices = (props) => {
                         justifyContent="center"
                         alignItems="center"
                       >
-                          <Grid item >
+                          <Grid item sx={{bgcolor:"blue"}}>
 
 
                 <Button  className={classes.newbtn} onClick={()=>goHome()}>
@@ -211,7 +211,7 @@ const Allservices = (props) => {
                             <hr
                             style={{
                               color: "goldenrod",
-                              backgroundColor: "goldenrod",
+                              backgroundColor: "blue",
                               height: 5,
                               width: "30px",
                               borderRadius: "10px"

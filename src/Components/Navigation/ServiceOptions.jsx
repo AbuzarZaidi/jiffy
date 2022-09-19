@@ -2,6 +2,7 @@ import { Grid } from '@material-ui/core'
 import React from 'react'
 import BasicNavbar from '../Homepage/BasicNavbar'
 import { withStyles } from "@material-ui/core/styles";
+import { useSelector, useDispatch } from 'react-redux';
 import AuthenticationStyle from "../../Styles/AuthenticationStyle";
 import { styled } from "@mui/material/styles";
 import { Button, FormControl, InputGroup } from 'react-bootstrap';
@@ -14,7 +15,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import { Link, useNavigate } from 'react-router-dom';
 import SendIcon from '@mui/icons-material/Send';
-import Allservices from './Allservices';
+import Allservices from './ModifyPage.jsx/AllservicesModify';
 import Services from '../Homepage/Services';
 import Flow from '../Homepage/Flow';
 import Purpose from '../Homepage/Purpose';
@@ -42,6 +43,8 @@ const Image = styled('img')(({ theme }) => ({
 }));
 
 const ServiceOptions =(props) => {
+  
+
   const { classes } = props;
   const navigate = useNavigate();
   function gotoDashboard(){
@@ -63,7 +66,8 @@ const ServiceOptions =(props) => {
     navigate('/trackorder')
   }
   return (<>
-    {/* <Allservices></Allservices> */}
+    
+  
     <BasicNavbar/>
     <Grid container className={classes.coperate_start2}>
     <Grid container className={classes.ht}  >

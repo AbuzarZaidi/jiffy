@@ -6,7 +6,7 @@ const AuthenticationStyle = (theme) => ({
   },
   navbar: {
     display: "flex",
-    backgroundColor: "white",
+    backgroundColor: "blue",
     boxShadow: "0px 5px #c2c5c4",
     height: "60px",
     overflow: "hidden",
@@ -226,6 +226,7 @@ const AuthenticationStyle = (theme) => ({
   },
   ht: {
     maxWidth: "1280px",
+    
     margin: "auto",
   },
   ht1: {
@@ -612,7 +613,8 @@ marginTop:"20px",
       marginLeft:"30px",
   
   }
-  }
+  },
+
 });
 
 export default AuthenticationStyle;

@@ -1,5 +1,6 @@
 import { Grid } from '@material-ui/core'
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux';
 import { withStyles } from "@material-ui/core/styles";
 import { styled } from "@mui/material/styles";
 import AuthenticationStyle from "../../Styles/AuthenticationStyle";
@@ -15,7 +16,7 @@ import { loginAPI } from '../../api/apiManagement';
 import axios from "axios";
 import { set } from 'date-fns/esm';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-
+import {setLogin} from '../../actions/checkLogin'
 
 const ImgGrid = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.down("xl")]: {
@@ -47,7 +48,7 @@ const HeadingGrid = styled(Grid)(({ theme }) => ({
 }));
 
 const AuthContent = (props) => {
-
+  const dispatch = useDispatch();
 
 
 
@@ -104,7 +105,7 @@ const AuthContent = (props) => {
         console.log(res)
         try {
           if (res.data.status === 'success' && data.user_name === "admin" && data.password === "jiffy") {
-
+            dispatch(setLogin())
             navigate('/services')
           }
           else {

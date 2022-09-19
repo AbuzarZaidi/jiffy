@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Routes,Route } from "react-router-dom";
+import { Routes,Route, useNavigate,  } from "react-router-dom";
 
 //import Applayout from "../layouts/Applayout.jsx";
 import { setAuthorizationHeader } from "../api/index";
@@ -17,8 +17,10 @@ import ServiceOptions from "./Navigation/ServiceOptions";
 import Trackorder from "./Navigation/TrackOrders/Trackorder";
 
 const Root = () => {
+  const navigate = useNavigate();
   React.useEffect(() => {
     setAuthorizationHeader();
+    navigate('/')
   }, []);
 
   return (
