@@ -1,4 +1,5 @@
 import React, { useEffect, useLayoutEffect, forwardRef, useState } from 'react'
+import BasicNavbar from '../../Homepage/BasicNavbar'
 import SendPackageStyle from "./SendPackageStyle";
 import { withStyles } from "@material-ui/core/styles";
 import { Box, Grid } from '@mui/material';
@@ -667,6 +668,7 @@ const SendPackage = (props) => {
 
   return (
     <>
+    <BasicNavbar/>
       {/* <Allservices></Allservices> */}
       <Grid container className={classes.section_start}>
         <Grid container className={classes.newbg}>
@@ -679,7 +681,7 @@ const SendPackage = (props) => {
                     <div className={classes.send_heading}>  Send Package</div>
                   </div>
                 </Grid>
-                <Grid item xs={7} md={7} lg={7}>
+                <Grid item xs={7} md={7} lg={7} >
                   <div className={classes.send_header}>
                     <ColoredLine color="#131C4C" />
                   </div>
@@ -694,22 +696,25 @@ const SendPackage = (props) => {
             <TabsList className={classes.tabList} >
               <Tab className={classes.tabItem} onClick={() => setActiveTab(1)}>
                 <Box className={classes.tabContent}>
+               
                   <img className={classes.icon} src={activeTab != 1 ? './Images/clock_dark.png' : './Images/clock_lite.png'} width={49} height={49}></img>
                   {/*<AccessTimeIcon className={classes.icon}></AccessTimeIcon>*/}
                   <div className={classes.tab2}>
                     <span className={classes.mainTab}>Deliver Now</span>
                     <span className={clsx(classes.mainTab2, activeTab != 1 && classes.mainInactive)}>Within 2 Hours &nbsp;<b></b>&nbsp;</span>
                   </div>
+                  
                 </Box>
               </Tab>
               <Tab className={classes.tabItem} onClick={() => setActiveTab(2)}>
                 <Box className={classes.tabContent}>
-                  <img className={classes.icon} src={activeTab != 2 ? './Images/date_dark.png' : './Images/date_lite.png'} width={46} height={51}></img>
+                      <img className={classes.icon} src={activeTab != 2 ? './Images/date_dark.png' : './Images/date_lite.png'} width={46} height={51}></img>
                   {/*<CalendarTodayIcon className={classes.icon}></CalendarTodayIcon>*/}
                   <div className={classes.tab2}>
                     <span className={classes.mainTab}>Schedule for Later</span>
                     <span className={clsx(classes.mainTab2, activeTab != 2 && classes.mainInactive)}>Next Day Delivery &nbsp;<b></b>&nbsp;</span>
                   </div>
+                  
                 </Box>
               </Tab>
             </TabsList>
@@ -719,8 +724,12 @@ const SendPackage = (props) => {
                 We will assign the nearest counter to pick up and deliver as soon as possible
               </div>
               
-              {/* <div className={classes.req}>
-                <p className={classes.revert}><b className={classes.reqi}>Select based on your requirement :</b>
+              <div className={classes.req}>
+                <div className={classes.revert}>
+                 
+                  <b className={classes.reqi}>Select based on your requirement :</b>
+                 
+                  
                 <p className={alignmentTrans === 'bike' ? classes.two_wheel : classes.two_wheel_inactive}><b>2 Wheeler</b></p>
                 <div className={classes.del_icon}>
                 <ToggleButtonGroup fullWidth
@@ -741,8 +750,9 @@ const SendPackage = (props) => {
           </ToggleButtonGroup>
           </div>
           <p className={alignmentTrans === 'bike' ? classes.four_wheel : classes.four_wheel_active}>4 Wheeler</p>
-                </p> &nbsp;
-                </div> */}
+                </div> &nbsp;
+                
+                </div>
                 {/*<p className={mode === 'bike' ? classes.two_wheel : classes.two_wheel_inactive}><b>2 Wheeler</b></p>
                 <div className={classes.del_icon}>
           

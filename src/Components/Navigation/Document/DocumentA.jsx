@@ -1,4 +1,5 @@
 import React, { useEffect, useLayoutEffect, forwardRef } from 'react'
+import BasicNavbar from '../../Homepage/BasicNavbar'
 import SendPackageStyle from '../Package/SendPackageStyle';
 import { withStyles } from "@material-ui/core/styles";
 import { Box, Grid } from '@mui/material';
@@ -652,7 +653,9 @@ const DocumentA = (props) => {
 
   return (
     <>
-      <Allservices></Allservices>
+
+      {/* <Allservices></Allservices> */}
+      <BasicNavbar/>
       <Grid container className={classes.section_start}>
         <Grid container className={classes.newbg}>
           <Grid container className={classes.secn}>
@@ -726,6 +729,7 @@ const DocumentA = (props) => {
           </div>
           <p className={alignmentTrans === 'bike' ? classes.four_wheel : classes.four_wheel_active}>4 Wheeler</p>
                 </p> &nbsp;
+                </div>
                 {/*<p className={classes.revert}><b>Select based on your requirement :</b></p> &nbsp;
                 <p className={classes.two_wheel}><b>2 Wheeler</b></p>
                 <div className={classes.del_icon}>
@@ -735,7 +739,7 @@ const DocumentA = (props) => {
                 <SwitchUnstyled component={Root} />
                 <img src='./Images/sedan.png' className={classes.sedan}></img>&nbsp;
                 <p className={classes.four_wheel}>4 Wheeler</p>*/}
-              </div>
+             
               {/*Weights not in cooperate login */}
               {/*<div className={classes.content}>
                 <div>Weights</div>
@@ -768,7 +772,7 @@ const DocumentA = (props) => {
                   </div>
                   <div className={classes.content}>
                     <Grid container spacing={2}>
-                      <Grid item md={12} lg={12} >
+                      <Grid item xs={11} md={10} lg={12}  >
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           {/*} <OutlinedInput
                   id="outlined-adornment-weight"
@@ -833,7 +837,7 @@ const DocumentA = (props) => {
                           <div className={classes.errors}>Select pickup location</div>
                         </> : null}
                       </Grid>
-                      <Grid item md={4} lg={4}>
+                      <Grid item xs={11} md={10} lg={12} >
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           <OutlinedInput
                             id="outlined-adornment-weight"
@@ -853,7 +857,7 @@ const DocumentA = (props) => {
                           <div className={classes.errors}>Select mobile number</div>
                         </> : null}
                       </Grid>
-                      <Grid item md={4} lg={4}>
+                      <Grid item xs={11} md={10} lg={12} >
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           <OutlinedInput
                             id="outlined-adornment-weight"
@@ -872,7 +876,7 @@ const DocumentA = (props) => {
                           <div className={classes.errors}>Select E-mail</div>
                         </> : null}
                       </Grid>
-                      <Grid item md={4} lg={4}>
+                      <Grid item xs={11} md={10} lg={12} >
                         <DatePicker
                           selected={pickup}
                           onChange={(date) => setPickup(date)}
@@ -893,7 +897,7 @@ const DocumentA = (props) => {
                         </> : null}
 
                       </Grid>
-                      <Grid item md={12} lg={12} >
+                      <Grid item xs={11} md={10} lg={12}  >
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           <OutlinedInput
                             id="outlined-adornment-weight"
@@ -927,7 +931,7 @@ const DocumentA = (props) => {
                   </div>
                   <div className={classes.content}>
                     <Grid container spacing={2}>
-                      <Grid item md={12} lg={12} >
+                      <Grid item xs={11} md={10} lg={12}  >
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           {/*<OutlinedInput
                   id="outlined-adornment-weight"
@@ -992,7 +996,7 @@ const DocumentA = (props) => {
                         </> : null}
                       </Grid>
 
-                      <Grid item md={4} lg={4}>
+                      <Grid item xs={11} md={10} lg={12} >
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           <OutlinedInput
                             id="outlined-adornment-weight"
@@ -1011,7 +1015,7 @@ const DocumentA = (props) => {
                           <div className={classes.errors}>Select delivery mobile number</div>
                         </> : null}
                       </Grid>
-                      <Grid item md={4} lg={4}>
+                      <Grid item xs={11} md={10} lg={12} >
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           <OutlinedInput
                             id="outlined-adornment-weight"
@@ -1030,7 +1034,7 @@ const DocumentA = (props) => {
                           <div className={classes.errors}>Select delivery delivery E-mail</div>
                         </> : null}
                       </Grid>
-                      <Grid item md={4} lg={4}>
+                      <Grid item xs={11} md={10} lg={12} >
                         <DatePicker
                           selected={drop}
                           onChange={(date) => setDrop(date)}
@@ -1046,7 +1050,7 @@ const DocumentA = (props) => {
                         </> : null}
 
                       </Grid>
-                      <Grid item md={12} lg={12} >
+                      <Grid item xs={11} md={10} lg={12}  >
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           <OutlinedInput
                             id="outlined-adornment-weight"
@@ -1615,7 +1619,7 @@ const DocumentA = (props) => {
                   <Grid container spacing={3}>
                     <Grid item md={4} lg={4} >
                     </Grid>
-                    <Grid item md={4} lg={4} >
+                    <Grid item xs={10} md={4} lg={4}  >
                       <button className={classes.service_btn} type="submit" >Submit Order</button>
                     </Grid>
                     <Grid item md={4} lg={4} >

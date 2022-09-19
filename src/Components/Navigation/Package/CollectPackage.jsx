@@ -1,4 +1,5 @@
 import React, { useEffect, useLayoutEffect, forwardRef } from 'react'
+import BasicNavbar from '../../Homepage/BasicNavbar'
 import SendPackageStyle from "./SendPackageStyle";
 import { withStyles } from "@material-ui/core/styles";
 import { Box, Grid } from '@mui/material';
@@ -671,7 +672,8 @@ const CollectPackage = (props) => {
 
   return (
     <>
-      <Allservices></Allservices>
+      {/* <Allservices></Allservices> */}
+      <BasicNavbar/>
       <Grid container className={classes.section_start}>
         <Grid container className={classes.newbg}>
           <Grid container className={classes.secn}>
@@ -688,7 +690,7 @@ const CollectPackage = (props) => {
                     <ColoredLine color="#131C4C" />
                   </div>
                 </Grid>
-                <Grid item xs={5} md={12} lg={12} className={classes.vat}>
+                <Grid item xs={12} md={12} lg={12} className={classes.vat}>
                 Receive packages to your clients/companies in a secure manner with double authentication features within the same day.
                 </Grid>
               </Grid>
@@ -718,11 +720,11 @@ const CollectPackage = (props) => {
               </Tab>
             </TabsList>
             <TabPanel value={0} >
-              <div></div>
+            <div></div>
               <div className={classes.will}>
                 We will assign the nearest counter to pick up and deliver as soon as possible
               </div>
-              <div className={classes.req}>
+               <div className={classes.req}>
               <p className={classes.revert}><b className={classes.reqi}>Select based on your requirement :</b>
                 <p className={alignmentTrans === 'bike' ? classes.two_wheel : classes.two_wheel_inactive}><b>2 Wheeler</b></p>
                 <div className={classes.del_icon}>
@@ -745,7 +747,8 @@ const CollectPackage = (props) => {
           </div>
           <p className={alignmentTrans === 'bike' ? classes.four_wheel : classes.four_wheel_active}>4 Wheeler</p>
                 </p> &nbsp;
-                {/*<p className={classes.revert}><b>Select based on your requirement :</b></p> &nbsp;
+                </div>
+                                {/*<p className={classes.revert}><b>Select based on your requirement :</b></p> &nbsp;
                 <p className={mode === 'bike' ? classes.two_wheel : classes.two_wheel_inactive}><b>2 Wheeler</b></p>
                 <div className={classes.del_icon}>
                  
@@ -755,8 +758,7 @@ const CollectPackage = (props) => {
                 <img src='./Images/sedan.png' height={60} className={mode === 'bike' && classes.sedan}></img>&nbsp;
                 <p className={mode === 'bike' ? classes.four_wheel : classes.four_wheel_active}>4 Wheeler</p>
   */}
-                </div>
-              {/*Weights not in cooperate login */}
+                 {/*Weights not in cooperate login */}
               {/*<div className={classes.content}>
                 <div>Weights</div>
                 <div className={classes.content}>
@@ -780,15 +782,14 @@ const CollectPackage = (props) => {
                 </div>
 
   </div>*/}
-
-              <form onSubmit={handleSubmit}>
-                <div className={classes.content1}>
+  <form onSubmit={handleSubmit}>
+  <div className={classes.content1}>
                   <div className={classes.send_label}>
                     Pick Up Address
                   </div>
                   <div className={classes.content}>
-                    <Grid container spacing={2}>
-                      <Grid item md={12} lg={12} >
+                  <Grid container spacing={2}>
+                      <Grid item xs={11} md={10} lg={12} >
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           {/*} <OutlinedInput
                   id="outlined-adornment-weight"
@@ -853,7 +854,8 @@ const CollectPackage = (props) => {
                           <div className={classes.errors}>Select pickup location</div>
                         </> : null}
                       </Grid>
-                      <Grid item md={4} lg={4}>
+                      
+                      <Grid item xs={11} md={10} lg={4}>
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           <OutlinedInput
                             id="outlined-adornment-weight"
@@ -873,7 +875,7 @@ const CollectPackage = (props) => {
                           <div className={classes.errors}>Select mobile number</div>
                         </> : null}
                       </Grid>
-                      <Grid item md={4} lg={4}>
+                      <Grid item xs={11} md={10} lg={4}>
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           <OutlinedInput
                             id="outlined-adornment-weight"
@@ -892,7 +894,7 @@ const CollectPackage = (props) => {
                           <div className={classes.errors}>Select E-mail</div>
                         </> : null}
                       </Grid>
-                      <Grid item md={4} lg={4}>
+                      <Grid item xs={11} md={10} lg={4}>
                         <DatePicker
                           selected={pickup}
                           onChange={(date) => setPickup(date)}
@@ -913,7 +915,7 @@ const CollectPackage = (props) => {
                         </> : null}
 
                       </Grid>
-                      <Grid item md={12} lg={12} >
+                      <Grid item  xs={11} md={10} lg={4} >
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           <OutlinedInput
                             id="outlined-adornment-weight"
@@ -933,21 +935,17 @@ const CollectPackage = (props) => {
                         </> : null}
 
                       </Grid>
-                    </Grid>
-
-
-
+                      </Grid>
+                  </div>
                   </div>
 
-                </div>
-
-                <div className={classes.content1}>
+                  <div className={classes.content1}>
                   <div className={classes.send_label}>
                     Delivery Address
                   </div>
                   <div className={classes.content}>
                     <Grid container spacing={2}>
-                      <Grid item md={12} lg={12} >
+                      <Grid item xs={11} md={10} lg={4} >
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           {/*<OutlinedInput
                   id="outlined-adornment-weight"
@@ -1012,7 +1010,7 @@ const CollectPackage = (props) => {
                         </> : null}
                       </Grid>
 
-                      <Grid item md={4} lg={4}>
+                      <Grid item xs={11} md={10} lg={4}>
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           <OutlinedInput
                             id="outlined-adornment-weight"
@@ -1031,7 +1029,7 @@ const CollectPackage = (props) => {
                           <div className={classes.errors}>Select delivery mobile number</div>
                         </> : null}
                       </Grid>
-                      <Grid item md={4} lg={4}>
+                      <Grid item xs={11} md={10} lg={4}>
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           <OutlinedInput
                             id="outlined-adornment-weight"
@@ -1050,7 +1048,7 @@ const CollectPackage = (props) => {
                           <div className={classes.errors}>Select delivery delivery E-mail</div>
                         </> : null}
                       </Grid>
-                      <Grid item md={4} lg={4}>
+                      <Grid item xs={11} md={10} lg={4}>
                         <DatePicker
                           selected={drop}
                           onChange={(date) => setDrop(date)}
@@ -1066,7 +1064,7 @@ const CollectPackage = (props) => {
                         </> : null}
 
                       </Grid>
-                      <Grid item md={12} lg={12} >
+                      <Grid item xs={11} md={10} lg={4} >
                         <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
                           <OutlinedInput
                             id="outlined-adornment-weight"
@@ -1150,6 +1148,7 @@ const CollectPackage = (props) => {
                   </div>
 
                 </div>
+                
                 <div className={classes.content1}>
                   <div className={classes.itemLabel}>
                     Item Information
@@ -1569,8 +1568,9 @@ const CollectPackage = (props) => {
                     }
 
                   </Grid>
-                  <Grid item md={8} lg={8} >
+                  <Grid item xs={12} md={12} lg={8} >
                      <span className={classes.prefer}>Prefer Courier with </span>{/*<span className={classes.apply}>Charges apply</span>*/}<br></br><br/>
+                     <div className={classes.preferCourierMethod}>
                      <ToggleButton
                         value="check1"
                         selected={selected1}
@@ -1580,7 +1580,9 @@ const CollectPackage = (props) => {
                       >
                         <CheckIcon />
                       </ToggleButton> <span className={classes.prefer}>Post envelope (3 AED)</span>
+                      </div>
                       &nbsp;&nbsp;
+                      <div className={classes.preferCourierMethod}>
                       <ToggleButton
                         value="check2"
                         selected={selected2}
@@ -1590,7 +1592,9 @@ const CollectPackage = (props) => {
                       >
                         <CheckIcon />
                       </ToggleButton> <span className={classes.prefer}>A3 envelope (2 AED)</span>
+                      </div>
                       &nbsp;&nbsp;
+                      <div className={classes.preferCourierMethod}>
                       <ToggleButton
                         value="check3"
                         selected={selected3}
@@ -1600,11 +1604,11 @@ const CollectPackage = (props) => {
                       >
                         <CheckIcon />
                       </ToggleButton> <span className={classes.prefer}>A4 envelope (1 AED)</span>
+                      </div>
                     </Grid>
 
                 </div>
-
-              {/*}  <div className={classes.content}>
+                              {/*}  <div className={classes.content}>
                   <Grid container spacing={3}>
                     <Grid item md={4} lg={4} >
                       <div className={classes.send_label}>
@@ -1707,7 +1711,7 @@ const CollectPackage = (props) => {
                 </div>*/}
 
 
-                <div className={classes.content1}>
+<div className={classes.content1}>
                   <div className={classes.send_label}>
                     Other
                   </div>
@@ -1765,28 +1769,17 @@ const CollectPackage = (props) => {
                   <Grid container spacing={3}>
                     <Grid item md={4} lg={4} >
                     </Grid>
-                    <Grid item md={4} lg={4} >
+                    <Grid item xs={10} md={4} lg={4} >
                       <button className={classes.service_btn} type="submit" >Submit Order</button>
                     </Grid>
                     <Grid item md={4} lg={4} >
                     </Grid>
                   </Grid>
                 </div>
-              </form>
-              <div className={classes.content5}>
-                <Grid container spacing={3} className={classes.contnew}>
-                  <span >By Clicking ‘Submit order’ you are forwarding your request to couriers and agree to Our Terms and Conditions along with the <u><b>clauses of the agreements</b></u></span>
-                </Grid>
-              </div>
+  </form>
+
 
             </TabPanel>
-            <TabPanel value={1}>
-              <CollectSchedule></CollectSchedule>
-            </TabPanel>
-
-
-            {/*schedule later part begins */}
-
 
           </TabsUnstyled>
           <Grid item md={12} lg={12} >

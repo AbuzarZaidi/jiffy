@@ -6,6 +6,10 @@ const TrackorderStyle = (theme) => ({
         fontWeight: "700",
         fontSize: "20px",
         fontFamily: "Montserrat !important",
+        "@media (max-width: 600px)": {
+            fontSize: "18px",
+        
+        }
     },
     icon: {
         marginRight: "10px",
@@ -80,9 +84,22 @@ const TrackorderStyle = (theme) => ({
         maxWidth: "1280px",
         margin: "auto",
         paddingLeft: "50px",
-        paddingTop: '27px'
+        paddingTop: '27px',
+        "@media (max-width: 600px)": {
+            paddingLeft: "10px",
+        
+        }
     },
-
+    httabs: {
+        maxWidth: "1280px",
+        margin: "auto",
+        paddingLeft: "50px",
+        paddingTop: '27px',
+        "@media (max-width: 600px)": {
+            paddingLeft: "10px",
+        
+        }
+    },
     headerFinal: {
 
         marginBottom: "20px",
@@ -121,7 +138,20 @@ const TrackorderStyle = (theme) => ({
         backgroundColor: "#F9F9F9",
         height: "75px",
         padding: "26px 34px",
-        borderRadius: "10px"
+        borderRadius: "10px",
+    
+    },
+    detailsalign:{
+        "@media (max-width: 600px)": {
+         marginTop:"10px"
+        
+        }
+    },
+    httab:{
+        padding:"10px",
+        "@media (max-width: 600px)": {
+            marginRight:"10px"
+        }
     },
     btnInvoice: {
         border: '1px solid #131C4C',
@@ -142,7 +172,8 @@ const TrackorderStyle = (theme) => ({
     },
     stepped: {
         maxWidth: "35px !important",
-        paddingTop: '12px'
+        paddingTop: '12px',
+   
     },
     newbg: {
         background: "url(./Images/banner.png)",
@@ -167,7 +198,11 @@ const TrackorderStyle = (theme) => ({
         marginTop: "10px"
     },
     stepper: {
-        display: "flex"
+        display: "flex",
+        "@media (max-width: 600px)": {
+            marginTop:"100px"
+            
+            }
     },
     stepper3: {
         display: "flex",
@@ -188,7 +223,11 @@ const TrackorderStyle = (theme) => ({
         fontWeight: 300,
         fontFamily: 'Montserrat',
         color: '#131C4C',
-        display: "flex"
+        display: "flex",
+        "@media (max-width: 600px)": {
+          marginBottom:"40px"
+        
+        }
     },
     modify: {
         height: "62px !important",
@@ -220,7 +259,12 @@ const TrackorderStyle = (theme) => ({
         display: "flex"
     },
     ddpick: {
-        height: "185px !important"
+        height: "185px ",
+        marginBottom:"100px",
+        "@media (max-width: 600px)": {
+            marginBottom:"100px"
+        
+        }
     },
     stepper1: {
         display: "flex",
@@ -264,8 +308,12 @@ const TrackorderStyle = (theme) => ({
     },
     courierDetails: {
         display: "flex",
-        paddingBottom: "30px !important",
-        borderBottom: "solid 1px #9A9EB2"
+        paddingBottom: "30px ",
+        borderBottom: "solid 1px #9A9EB2",
+        "@media (max-width: 600px)": {
+     
+        
+        }
     },
     detailsContainer: {
         padding: '30px 0',

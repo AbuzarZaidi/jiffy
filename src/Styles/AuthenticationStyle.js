@@ -253,8 +253,8 @@ const AuthenticationStyle = (theme) => ({
     color: "#131C4C",
     opacity: "1",
     "@media (max-width: 600px)": {
-      marginTop:"50px",
-      marginLeft:"100px",
+      marginTop:"60px",
+      marginLeft:"50px",
       fontSize: "16px",
       width:"147px"
    
@@ -271,7 +271,7 @@ const AuthenticationStyle = (theme) => ({
     opacity: "1",
     "@media (max-width: 600px)": {
      marginTop:"50px",
-     marginLeft:"100px",
+     marginLeft:"50px",
      fontSize: "16px",
      width:"147px"
   
@@ -290,10 +290,11 @@ const AuthenticationStyle = (theme) => ({
     fontSize: "18px",
     fontFamily: "Montserrat",
     "@media (max-width: 600px)": {
- marginLeft:"90px",
+ marginLeft:"50px",
+ 
  marginTop:"20px",
  fontSize: "16px",
- 
+ width:"147px",
    }
   },
   askQuestion:{
@@ -370,7 +371,7 @@ const AuthenticationStyle = (theme) => ({
     marginBottom: "10px",
     "@media (max-width: 600px)": {
       marginTop: "40px",
-     
+     height:"80px"
   
   }
   },
@@ -384,7 +385,7 @@ const AuthenticationStyle = (theme) => ({
   upper_portion:{
     "@media (max-width: 600px)": {
     display:"flex",
-  justifyContent:"space-around"
+    justifyContent:"flex_start",
   }
   },
   upper_flow_portion:{
@@ -395,7 +396,7 @@ const AuthenticationStyle = (theme) => ({
   }
   },
   flow_package: {
-    height: "70px",
+    height: "80px",
     marginBottom: "10px",
   },
   choose_img: {

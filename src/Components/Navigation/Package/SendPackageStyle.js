@@ -33,6 +33,14 @@ const SendPackageStyle = (theme) => ({
         
         }
     },
+    accomo_send_img: {
+        height: "87px",
+        cursor: "pointer",
+        "@media (max-width: 600px)": {
+            width:"25%"
+        
+        }
+    },
     send_bg: {
         paddingBottom: "20px",
         maxWidth: "1280px",
@@ -52,6 +60,13 @@ const SendPackageStyle = (theme) => ({
         "@media (max-width: 600px)": {
             marginRight:"10%"
         
+        }
+    },
+    accomo_send_header: {
+        marginTop: "45px",
+        "@media (max-width: 600px)": {
+            marginRight:"10%",
+            marginTop: "35px",
         }
     },
     secn: {
@@ -97,7 +112,8 @@ const SendPackageStyle = (theme) => ({
         margin: "revert !important",
         paddingTop: "20px",
         fontSize: "18px !important",
-        color: '#131C4C'
+        color: '#131C4C',
+        flexWrap: 'wrap'
 
     },
     bike: {
@@ -110,7 +126,11 @@ const SendPackageStyle = (theme) => ({
         color: "#131C4C",
     },
     reqi:{
-        paddingTop:"17px"
+        paddingTop:"17px",
+        "@media (max-width: 600px)": {
+         
+            paddingBottom:"17px",
+        }
     },
     sedan: {
         height: "60px",
@@ -143,7 +163,8 @@ const SendPackageStyle = (theme) => ({
 
     revert: {
         display:"flex",
-        marginTop:"30px"
+        marginTop:"30px",
+        flexWrap: "wrap"
     },
     weightGroup: {
         display: "flex",
@@ -333,10 +354,11 @@ const SendPackageStyle = (theme) => ({
     },
     tabList: {
         height: '120px',
+        width:"100%",
         "@media (max-width: 600px)": {
             height: '70px',
         // marginLeft:"5%",
-      
+        width:"90%",
         }
     },
     tabContent: {
@@ -346,7 +368,7 @@ const SendPackageStyle = (theme) => ({
         "@media (max-width: 600px)": {
         //  marginLeft:"20px",
         //  marginRight:"20px",
-        //  justifyContent: 'flex-start',
+        justifyContent: 'flex-start',
         }
     },
     tabItem: {
@@ -355,6 +377,16 @@ const SendPackageStyle = (theme) => ({
         alignItems: 'center',
         "@media (max-width: 600px)": {
             height:"70px !important",
+            justifyContent: 'flex-start',
+            
+        }
+    },
+    alignButton:{
+        display: 'flex',
+        justifyContent: 'center',
+  
+        "@media (max-width: 600px)": {
+            
             justifyContent: 'flex-start',
             
         }

@@ -8,7 +8,8 @@ const Services = (props) =>{
     const { classes } = props;
   return (
     
-    <Grid container className={classes.ht}>
+    <Grid item xs={12} container >
+    <Grid container className={classes.ht}  >
  
         <Grid item xs={12} md={12} lg={12} className={classes.services}>
             <div>Our Services</div>
@@ -64,6 +65,7 @@ const Services = (props) =>{
             We will be your concierge for your daily services tailor-made to suit your schedule.
                </div>
             </Grid>
+        </Grid>
         </Grid>
         
     </Grid>
