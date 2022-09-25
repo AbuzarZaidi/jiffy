@@ -464,6 +464,14 @@ width:"90%"
     textAlign: "right",
     color: "#141C4B",
     marginLeft: "70px",
+    "@media (max-width: 600px)": {
+      marginLeft: "50px",
+      textAlign: "left",
+  },
+  "@media (max-width: 350px)": {
+    marginLeft: "10px",
+    textAlign: "left",
+}
   },
   section_start: {
     padding: "50px;",
