@@ -137,9 +137,9 @@ const Authentication = (props) => {
 
 
           </Grid>
-           <div id='comps'>
+           {/* <div id='comps'> */}
             <AuthContent></AuthContent>
-          </div>
+          {/* </div> */}
 
            <Services></Services>
           <div id='co'>

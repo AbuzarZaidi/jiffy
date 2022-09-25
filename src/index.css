@@ -135,7 +135,7 @@ cursor: pointer;
 .auth-content-align2{
     margin-top: 20px ;
     margin-bottom: 10px;
-    font-family:"Montserrat"
+    font-family:"Montserrat";
 
 }
 
@@ -214,6 +214,7 @@ cursor: pointer;
     width: 480px !important;
 
 }
+
 .welcome {
     font-size: 44px;
     width: 218px;
@@ -606,4 +607,5 @@ width: 105px;
         font-size: 14px;
        margin-bottom: 23px;
     }
+   
 }

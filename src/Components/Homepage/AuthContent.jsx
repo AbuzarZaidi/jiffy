@@ -23,7 +23,8 @@ const ImgGrid = styled(Grid)(({ theme }) => ({
     marginLeft: "50px", marginTop: "5px"
   },
   [theme.breakpoints.down("md")]: {
-    marginLeft: "80px", marginTop: "5px",
+   
+     marginTop: "5px",
     display: 'flex',
     justifyContent: 'center',
   },
@@ -33,7 +34,7 @@ const Image = styled('img')(({ theme }) => ({
     maxWidth: "555px"
   },
   [theme.breakpoints.down("md")]: {
-    maxWidth: "300px",
+    maxWidth: "100%",
 
   },
 }));

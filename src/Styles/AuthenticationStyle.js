@@ -127,11 +127,11 @@ const AuthenticationStyle = (theme) => ({
       border: "1px solid #4F61C1",
     },
     "@media (max-width: 600px)": {
-      width: "360px",
+      width: "110%",
     
     },
     "@media (max-width: 320px)": {
-      width: "250px",
+      width: "110%",
     
     }
   },
@@ -144,12 +144,13 @@ const AuthenticationStyle = (theme) => ({
     borderRadius: "9px",
     cursor: "pointer",
     "@media (max-width: 600px)": {
-      width: "360px",
-    
+      
+   width:"110%",
+   
     },
-    "@media (max-width: 320px)": {
-      width: "250px",
-    
+    "@media (max-width: 400px)": {
+      width:"110%",
+     
     }
   },
   services_welcome:{
@@ -172,29 +173,30 @@ const AuthenticationStyle = (theme) => ({
      
      }
   },
+  extra_login: {
+    display: "flex",
+    gap: "70px",
+    maxWidth: "480px ",
+    "@media (max-width: 600px)": {
+      gap: "10%",
+      // maxWidth: "90% ",
+  }
+  },
   share: {
     width: "140px",
     "@media (max-width: 600px)": {
-      width: "110px",
-    
+      // width: "6.5rem",
+      width:"130%"
     },
     "@media (max-width: 320px)": {
-      width: "70px",
-    
+      // width: "4rem",
+      width:"130%"
     }
   },
   share_style: {
     gap: "35px",
   },
-  extra_login: {
-    display: "flex",
-    gap: "70px",
-    maxWidth: "480px !important",
-    "@media (max-width: 600px)": {
-      gap: "15px",
-  
-  }
-  },
+
   extra_login_btn: {
     width: "100%",
     backgroundColor: "black",
