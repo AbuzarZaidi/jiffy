@@ -111,9 +111,13 @@ const SendPackageStyle = (theme) => ({
         flxDirection: "row",
         margin: "revert !important",
         paddingTop: "20px",
-        fontSize: "18px !important",
+        fontSize: "18px",
         color: '#131C4C',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        "@media (max-width: 600px)": {
+            fontSize: "16px",
+            flexWrap: 'no wrap',
+        }
 
     },
     bike: {
@@ -402,7 +406,8 @@ const SendPackageStyle = (theme) => ({
         fontSize: '18px',
         fontWeight: 300,
         paddingLeft: '10px',
-        opacity: '0.54'
+        opacity: '0.54',
+    
     },
     four_wheel_active: {
         margin: 'revert',
