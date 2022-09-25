@@ -5,7 +5,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { makeStyles } from "@mui/styles";
 import { styled } from "@mui/material/styles";
 import { useSelector, useDispatch } from 'react-redux';
-
+import "../../Styles/AuthenticationStyle";
 import Toolbar from "@mui/material/Toolbar";
 import Divider from "@mui/material/Divider";
 import PropTypes from "prop-types";
@@ -134,6 +134,8 @@ const handleLogout=()=>{
                   Our Services
                 </Typography>
               </Link>
+             {isLogin &&
+             <>
               <Link to="/">
                 <Typography
                   variant="h5"
@@ -170,6 +172,7 @@ const handleLogout=()=>{
                  Document Attestation
                 </Typography>
               </Link>
+</>}
               <Box
                 sx={{
                   color: "white",
@@ -180,7 +183,8 @@ const handleLogout=()=>{
                   mb: 3,
                 }}
               ></Box>
-              <Link to="/allorders">
+                {isLogin &&
+                <Link to="/allorders">
                 <Typography
                   variant="h5"
                   gutterBottom
@@ -189,6 +193,18 @@ const handleLogout=()=>{
                  Track Order
                 </Typography>
               </Link>
+}
+{!isLogin &&
+                <Link to="/">
+                <Typography
+                  variant="h5"
+                  gutterBottom
+                  sx={{ color: "white", cursor: "pointer" ,fontWeight:600 }}
+                >
+                 Support
+                </Typography>
+              </Link>
+}
               <Box
                 sx={{
                   color: "white",
@@ -199,7 +215,7 @@ const handleLogout=()=>{
                   mb: 3,
                 }}
               ></Box>
-  <Link to="/allorders">
+  {isLogin && <><Link to="/allorders">
                 <Typography
                   variant="h5"
                   gutterBottom
@@ -217,7 +233,8 @@ const handleLogout=()=>{
                   mt: 3,
                   mb: 3,
                 }}
-              ></Box>
+              ></Box> </>}
+             {isLogin&&
               <Link to="/">
                 <Typography
                   variant="h5"
@@ -227,7 +244,18 @@ const handleLogout=()=>{
                 >
                 Logout 
                 </Typography>
-              </Link>
+              </Link>}
+              {!isLogin&&
+              <Link to="/">
+                <Typography
+                  variant="h5"
+                  gutterBottom
+                  sx={{ color: "white", cursor: "pointer" ,fontWeight:600 }}
+                  onClick={handleLogout}
+                >
+                Login
+                </Typography>
+              </Link>}
               <Box
                 sx={{
                   color: "white",
@@ -344,6 +372,7 @@ const handleLogout=()=>{
                 color: "#000000",
                 display: "block",
                 fontWeight: 300,
+                
               }}
             >
              Our Service
@@ -359,6 +388,7 @@ const handleLogout=()=>{
             >
               Track Order
             </Button>
+          
             <Button
               onClick={handleCloseNavMenu}
               sx={{
@@ -368,10 +398,81 @@ const handleLogout=()=>{
                 fontWeight: 300,
               }}
             >
-            <NotificationsNoneIcon  />
-               <Typography >Notification</Typography>
+              
+              <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton
+                onClick={handleOpenUserMenu}
+                sx={{ p: 0, display: { xs: "none", md: "flex", lg: "flex",color:"#000000"} }}
+              >
+                <NotificationsNoneIcon  />  <Typography >Notification</Typography>
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+               <div className='noti-des'>
+                       
+                       <span className='not-desc'>3 New Notification</span>
+                       <div className='huge'>
+                       <div className='whole'>
+                       <img className='el-icon' src='./Images/ellipse.svg'/>
+                       <div className='half'>
+                       Courier person Hikmat Ansari
+                        should arrive between <br/>12:00 PM to 1:00 PM
+                        </div>
+                        
+                       </div>
+                       <div className='order'>
+                           <span>OrderID:</span>&nbsp;<b className='orderval'>4432</b><b>.</b>&nbsp;<span>1hour ago</span>&nbsp;<span>Active order</span>
+                         </div>
+                       </div>
+                       <div className='huge'>
+                       <div className='whole'>
+                       <img className='el-icon' src='./Images/ellipse.svg'/>
+                       <div className='half'>
+                       Courier person Naseer Ahmed arrived
+                       
+                        </div>
+                        
+                       </div>
+                       <div className='order'>
+                           <span>OrderID:</span>&nbsp;<b className='orderval'>4432</b><b>.</b>&nbsp;<span>1hour ago</span>&nbsp;<span>Active order</span>
+                         </div>
+                       </div>
+                       <div className='huge'>
+                       <div className='whole'>
+                       <img className='el-icon' src='./Images/eligrey.svg'/>
+                       <div className='half'>
+                       Courier person Sharad Vasu delivered the parcel
+                        </div>
+                        
+                       </div>
+                       <div className='order'>
+                           <span>OrderID:</span>&nbsp;<b className='orderval'>4432</b><b>.</b>&nbsp;<span>1hour ago</span>&nbsp;<span>Active order</span>
+                         </div>
+                       </div>
+                      
+                         </div> 
+            </Menu>
+          </Box>
+               
               
             </Button>
+            
             <Button
               onClick={handleLogout}
               sx={{
@@ -393,7 +494,7 @@ const handleLogout=()=>{
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton
-                onClick={handleOpenUserMenu}
+                // onClick={handleOpenUserMenu}
                 sx={{ p: 0, display: { xs: "flex", md: "none", lg: "none" } }}
               >
                 <PermIdentityIcon />
@@ -412,8 +513,8 @@ const handleLogout=()=>{
                 vertical: "top",
                 horizontal: "right",
               }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+              // open={Boolean(anchorElUser)}
+              // onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
@@ -422,17 +523,77 @@ const handleLogout=()=>{
               ))}
             </Menu>
           </Box>
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            sx={{ p: 0, display: { xs: "flex", md: "none", lg: "none" } }}
-            // color="inherit"
-            // sx={{color:"#000000"}}
-          >
-            <NotificationsNoneIcon sx={{ mr: 3 }} />
-          </IconButton>
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton
+                onClick={handleOpenUserMenu}
+                sx={{ p: 0, display: { xs: "flex", md: "none", lg: "none" } }}
+              >
+                <NotificationsNoneIcon sx={{ mr: 3 }} />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+               <div className='noti-des'>
+                       
+                       <span className='not-desc'>3 New Notification</span>
+                       <div className='huge'>
+                       <div className='whole'>
+                       <img className='el-icon' src='./Images/ellipse.svg'/>
+                       <div className='half'>
+                       Courier person Hikmat Ansari
+                        should arrive between <br/>12:00 PM to 1:00 PM
+                        </div>
+                        
+                       </div>
+                       <div className='order'>
+                           <span>OrderID:</span>&nbsp;<b className='orderval'>4432</b><b>.</b>&nbsp;<span>1hour ago</span>&nbsp;<span>Active order</span>
+                         </div>
+                       </div>
+                       <div className='huge'>
+                       <div className='whole'>
+                       <img className='el-icon' src='./Images/ellipse.svg'/>
+                       <div className='half'>
+                       Courier person Naseer Ahmed arrived
+                       
+                        </div>
+                        
+                       </div>
+                       <div className='order'>
+                           <span>OrderID:</span>&nbsp;<b className='orderval'>4432</b><b>.</b>&nbsp;<span>1hour ago</span>&nbsp;<span>Active order</span>
+                         </div>
+                       </div>
+                       <div className='huge'>
+                       <div className='whole'>
+                       <img className='el-icon' src='./Images/eligrey.svg'/>
+                       <div className='half'>
+                       Courier person Sharad Vasu delivered the parcel
+                        </div>
+                        
+                       </div>
+                       <div className='order'>
+                           <span>OrderID:</span>&nbsp;<b className='orderval'>4432</b><b>.</b>&nbsp;<span>1hour ago</span>&nbsp;<span>Active order</span>
+                         </div>
+                       </div>
+                      
+                         </div> 
+            </Menu>
+          </Box>
+     
         </Toolbar>
       </Container>
     </AppBar>
