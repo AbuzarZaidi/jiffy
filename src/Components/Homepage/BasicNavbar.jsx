@@ -3,12 +3,18 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { makeStyles } from "@mui/styles";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { styled } from "@mui/material/styles";
 import { useSelector, useDispatch } from 'react-redux';
 import "../../Styles/AuthenticationStyle";
 import Toolbar from "@mui/material/Toolbar";
 import Divider from "@mui/material/Divider";
 import PropTypes from "prop-types";
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
@@ -17,7 +23,7 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 import AdbIcon from "@mui/icons-material/Adb";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
@@ -45,6 +51,20 @@ const BasicNavbar = () => {
   const isLogin = useSelector(state => state.checkLogin.isLogin)
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef(null);
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpen(false);
+  };
 const [isActive,setIsActive]=React.useState(pathname)
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -57,6 +77,22 @@ const [isActive,setIsActive]=React.useState(pathname)
     setAnchorElNav(null);
   };
 
+  function handleListKeyDown(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      setOpen(false);
+    } else if (event.key === 'Escape') {
+      setOpen(false);
+    }
+  }
+  const prevOpen = React.useRef(open);
+  React.useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
@@ -337,13 +373,15 @@ const handleLogout=()=>{
               sx={{
                 my: 1,
                 color: "#000000",
-                display: "block",
+                display: "flex",
                 fontWeight: "small",
                 textTransform:"none",
-                marginRight:"75px"
+                marginRight:"75px",
+                
+                
               }}
-            >
-              Our Services
+            ><Typography >Our Services</Typography>
+              <KeyboardArrowDownIcon />
             </Button>
             <Button
               onClick={handleCloseNavMenu}
@@ -356,7 +394,8 @@ const handleLogout=()=>{
                 marginRight:"200px"
               }}
             >
-              Support
+              <Typography >Support</Typography>
+              
             </Button>
             <Button
               onClick={handleCloseNavMenu}
@@ -388,8 +427,8 @@ const handleLogout=()=>{
               }}
               
             >
-            Home
-            {isActive=="/"?<hr
+            Home 
+            {isActive=="/"||isActive=="/services"?<hr
                             style={{
                               color: "goldenrod",
                               backgroundColor: "goldenrod",
@@ -401,22 +440,30 @@ const handleLogout=()=>{
                               }}
                               />:""}
             </Button>
+            
             <Button
-              onClick={()=>{setIsActive("/services");navigate('/services');}}
+              onClick={()=>{handleToggle();navigate('/services');}}
               sx={{
                 my: 2,
                 color: "#000000",
-                display: "block",
+                // display: "block",
                 fontWeight: "small",
                 textTransform:"none",
-                marginRight:"85px",
+                marginRight:"75px",
                 display:"flex",
                 flexDirection:"column",
                 justifyContent:"center"
               }}
+              ref={anchorRef}
+              id="composition-button"
+              aria-controls={open ? 'composition-menu' : undefined}
+              aria-expanded={open ? 'true' : undefined}
+              aria-haspopup="true"
+             
             >
-             Our Service
-             {isActive=="/services"?<hr
+              <Box sx={{display:"flex"}}>Our Services  <KeyboardArrowDownIcon /></Box>
+             
+             {isActive=="/sendpackage"||isActive=="/documentAttestation"||isActive=="/accompainment"?<hr
                             style={{
                               color: "goldenrod",
                               backgroundColor: "goldenrod",
@@ -427,7 +474,43 @@ const handleLogout=()=>{
                               justifyContent:"center"
                               }}
                               />:""}
+            
             </Button>
+          
+                             
+            <Popper
+          open={open}
+          anchorEl={anchorRef.current}
+          role={undefined}
+          placement="bottom-start"
+          transition
+          disablePortal
+        >
+          {({ TransitionProps, placement }) => (
+            <Grow
+              {...TransitionProps}
+              style={{
+                transformOrigin:
+                  placement === 'bottom-start' ? 'left top' : 'left bottom',
+              }}
+            >
+              <Paper>
+                <ClickAwayListener onClickAway={handleClose}>
+                  <MenuList
+                    autoFocusItem={open}
+                    id="composition-menu"
+                    aria-labelledby="composition-button"
+                    onKeyDown={handleListKeyDown}
+                  >
+                    <MenuItem onClick={()=>navigate('/sendpackage')}>Send/Receive Package</MenuItem>
+                    <MenuItem onClick={()=>navigate('/documentAttestation')}>Document Attestation</MenuItem>
+                    <MenuItem onClick={()=>navigate('/accompainment')}>Accompaniment</MenuItem>
+                  </MenuList>
+                </ClickAwayListener>
+              </Paper>
+            </Grow>
+          )}
+        </Popper>
             <Button
               onClick={()=>{setIsActive("/allorders");navigate('/allorders') }}
               sx={{
@@ -436,10 +519,11 @@ const handleLogout=()=>{
                 display: "block",
                 fontWeight: "small",
                 textTransform:"none",
-                marginRight:"125px",
+                marginRight:"90px",
                 display:"flex",
                 flexDirection:"column",
-                justifyContent:"center"
+                justifyContent:"center",
+                
               }}
             >
               Track Order
@@ -472,9 +556,9 @@ const handleLogout=()=>{
             <Tooltip title="Open settings">
               <IconButton
                 onClick={handleOpenUserMenu}
-                sx={{ p: 0, display: { xs: "none", md: "flex", lg: "flex",color:"#000000"} }}
+                sx={{ p: 0, display: { xs: "none", md: "flex", lg: "flex",color:"#000000",},}}
               >
-                <NotificationsNoneIcon  />  <Typography >Notification</Typography>
+                <NotificationsNoneIcon  sx={{fontSize: "18px",}}/>  <Typography sx={{fontSize: "16px",}} >Notification</Typography>
               </IconButton>
             </Tooltip>
             <Menu
@@ -552,8 +636,8 @@ const handleLogout=()=>{
                 
               }}
             >
-               <PermIdentityIcon />
-               <Typography >Admin/Logout</Typography>
+               <PermIdentityIcon sx={{fontSize: "18px",}}/>
+               <Typography sx={{fontWeight: "small",fontSize: "16px",}}>Admin/Logout</Typography>
               
             </Button>
            
