@@ -2,7 +2,7 @@ import { LOG_IN, LOG_OUT } from "../actions";
 
 export default (
   state = {
-isLogin:true,
+isLogin:false,
 
   },
   action
