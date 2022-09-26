@@ -25,13 +25,27 @@ import {setLogout} from '../../actions/checkLogin'
 // const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
+const LogoSection = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down("xl")]: {
+    marginRight: "280px",
+      marginLeft: "70px",
+  },
+  [theme.breakpoints.down("md")]: {
+   
+     marginLeft: "0px",
+     marginRight: "100px"
+     // xs:{  marginRight: "100px",marginLeft:"0px"}
+  },
+}));
 const BasicNavbar = () => {
+  const { pathname }  = useLocation()
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLogin = useSelector(state => state.checkLogin.isLogin)
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+const [isActive,setIsActive]=React.useState(pathname)
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -277,15 +291,15 @@ const handleLogout=()=>{
                 </MenuItem> */}
             </Menu>
           </Box>
-          <Box
+          <LogoSection
             style={{
               display: "flex",
               justifyContent: "flexStart",
-              marginRight: "100px",
+             
             }}
           >
             <img src="./Images/icon.png" className="logo"></img>
-          </Box>
+          </LogoSection>
 
           {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
           {/* <Typography
@@ -312,7 +326,7 @@ const handleLogout=()=>{
               display: {
                 xs: "none",
                 md: "flex",
-                justifyContent: "space-around",
+                // justifyContent: "center",
                 ml: 2,
               },
             }}
@@ -324,7 +338,9 @@ const handleLogout=()=>{
                 my: 1,
                 color: "#000000",
                 display: "block",
-                fontWeight: 300,
+                fontWeight: "small",
+                textTransform:"none",
+                marginRight:"75px"
               }}
             >
               Our Services
@@ -335,7 +351,9 @@ const handleLogout=()=>{
                 my: 1,
                 color: "#000000",
                 display: "block",
-                fontWeight: 300,
+                fontWeight: "small",
+                textTransform:"none",
+                marginRight:"200px"
               }}
             >
               Support
@@ -346,7 +364,8 @@ const handleLogout=()=>{
                 my: 1,
                 color: "#000000",
                 display: "flex",
-                fontWeight: 300,
+                fontWeight: "small",
+                textTransform:"none"
               }}
             >
                <PermIdentityIcon />
@@ -355,39 +374,88 @@ const handleLogout=()=>{
             </Button></>}
            {isLogin&& <>
             <Button
-               onClick={()=>navigate('/services')}
+               onClick={()=>{setIsActive("/");navigate('/services') ;}}
               sx={{
                 my: 2,
                 color: "#000000",
                 display: "block",
-                fontWeight: 300,
+                fontWeight: "small",
+                textTransform:"none",
+                marginRight:"80px",
+                display:"flex",
+                flexDirection:"column",
+                justifyContent:"center"
               }}
+              
             >
             Home
+            {isActive=="/"?<hr
+                            style={{
+                              color: "goldenrod",
+                              backgroundColor: "goldenrod",
+                              height: "5px",
+                              width: "30px",
+                              borderRadius: "10px",
+                              display:"flex",
+                              justifyContent:"center"
+                              }}
+                              />:""}
             </Button>
             <Button
-              onClick={()=>navigate('/services')}
+              onClick={()=>{setIsActive("/services");navigate('/services');}}
               sx={{
                 my: 2,
                 color: "#000000",
                 display: "block",
-                fontWeight: 300,
-                
+                fontWeight: "small",
+                textTransform:"none",
+                marginRight:"85px",
+                display:"flex",
+                flexDirection:"column",
+                justifyContent:"center"
               }}
             >
              Our Service
+             {isActive=="/services"?<hr
+                            style={{
+                              color: "goldenrod",
+                              backgroundColor: "goldenrod",
+                              height: "5px",
+                              width: "30px",
+                              borderRadius: "10px",
+                              display:"flex",
+                              justifyContent:"center"
+                              }}
+                              />:""}
             </Button>
             <Button
-              onClick={()=>navigate('/allorders')}
+              onClick={()=>{setIsActive("/allorders");navigate('/allorders') }}
               sx={{
                 my: 2,
                 color: "#000000",
                 display: "block",
-                fontWeight: 300,
+                fontWeight: "small",
+                textTransform:"none",
+                marginRight:"125px",
+                display:"flex",
+                flexDirection:"column",
+                justifyContent:"center"
               }}
             >
               Track Order
+              {isActive=="/allorders"? <hr
+                            style={{
+                              color: "goldenrod",
+                              backgroundColor: "goldenrod",
+                              height: "5px",
+                              width: "30px",
+                              borderRadius: "10px",
+                              display:"flex",
+                              justifyContent:"center"
+                              }}
+                              />:""}
             </Button>
+       
           
             <Button
               onClick={handleCloseNavMenu}
@@ -395,10 +463,11 @@ const handleLogout=()=>{
                 my: 1,
                 color: "#000000",
                 display: "flex",
-                fontWeight: 300,
+                fontWeight: "small",
+                textTransform:"none"
               }}
             >
-              
+                        
               <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton
@@ -479,7 +548,7 @@ const handleLogout=()=>{
                 my: 1,
                 color: "#000000",
                 display: "flex",
-                fontWeight: 300,
+                fontWeight: "small",
                 
               }}
             >
