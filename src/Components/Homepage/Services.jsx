@@ -8,6 +8,7 @@ const Services = (props) =>{
     const { classes } = props;
   return (
     
+    
     <Grid item xs={12} container >
     <Grid container className={classes.ht}  >
  
@@ -53,7 +54,7 @@ const Services = (props) =>{
                </div>
                
             </Grid>
-            <Grid item xs={12} md={6} lg={3} sm={12}>
+            <Grid item xs={12} md={6} lg={3} sm={12} >
             <div class={classes.upper_portion}>
                 <div class={classes.img_box}>
                     <img src='./Images/il.svg' className={classes.package}></img>

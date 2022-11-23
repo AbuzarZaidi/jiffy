@@ -5,6 +5,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { Grid } from '@mui/material';
+import { getBaseURL } from '../../../api/apiManagement';
 import Box from '@mui/material/Box';
 import TrackorderStyle from '../TrackOrders/TrackorderStyle';
 import { withStyles } from "@material-ui/core/styles";
@@ -15,7 +16,7 @@ import Pdf from "react-to-pdf";
 const Cancelledorders = (props) => {
     let dispalyData;
     const { id } = useParams();
-    const url = "https://apis.jiffy.ae/vendor/api/v1/parcel"
+    const url = getBaseURL() + "/vendor/api/v1/parcel"
     const { classes } = props;
     const [data, setData] = React.useState();
     const [flag, setFlag] = React.useState(false);
@@ -39,8 +40,11 @@ const Cancelledorders = (props) => {
 
     }, [url]);
     React.useEffect(() => {
-
-        axios.get(url + '?order_status=invoice', {
+        let params={};
+      
+        params["order_status"] = "Cancelled"
+        params["userId"] = localStorage.getItem("userId")
+        axios.get(url,params, {
 
         }).then((response) => {
             //setDataParcel(response.data.parcel)
@@ -111,12 +115,13 @@ const Cancelledorders = (props) => {
                                 <Grid xs={4}>
                                     <p className={classes.stepperItem}>Order ID : <span className={classes.stepperBold}>{item._id}</span></p>
                                 </Grid>
-                                <Grid xs>
+                               {/*} <Grid xs>
                                     <p className={classes.stepperItem}>Payment : <span className={classes.stepperBold}>Failed</span></p>
-                                </Grid>
+                                </Grid>*/}
+                                {item.product_info && item.product_info.lenght ?(
                                 <Grid xs>
                                     <p className={classes.stepperItem}>Total Item(s) : <span className={classes.stepperBold}>{item.product_info.length} </span></p>
-                                </Grid>
+                                </Grid>):(<></>)}
                                 {/*<Grid xs>
                                     <p className={classes.stepperItem}><span className={classes.stepperBold}>Total Price : 50 AED</span></p>
                 </Grid>*/}
@@ -131,22 +136,22 @@ const Cancelledorders = (props) => {
                                     </Grid>
                                     <Grid item xs={12} md={10} lg={10} className={classes.ddpick}>
                             <span className={classes.lpick}><b>Pickup Address</b> </span><br />
-                            <span className={classes.lpickData}>P.O. Box {item.pickup_location} &nbsp;{/*<u className={classes.modifyButton}>Modify</u><span className={classes.modifyButton}> / </span><u className={classes.modifyButton}>Reschedule</u>*/}</span><br/>
+                            <span className={classes.lpickData}>{item.pickup_location} &nbsp;{/*<u className={classes.modifyButton}>Modify</u><span className={classes.modifyButton}> / </span><u className={classes.modifyButton}>Reschedule</u>*/}</span><br/>
 
                             <span className={classes.dpick}> <b>Delivery Address</b></span> <br />
 
 
-                            <span className={classes.dpickData}>P.O. Box {item.delivery_location} &nbsp;{/*<u className={classes.modifyButton}>Modify</u>*/}</span>
+                            <span className={classes.dpickData}>{item.delivery_location} &nbsp;{/*<u className={classes.modifyButton}>Modify</u>*/}</span>
 
 
                           </Grid>
                                 </Grid>
-                                <Grid item xs={12} md={4} lg={4} className={classes.stepperDownload}>
+                                {/*<Grid item xs={12} md={4} lg={4} className={classes.stepperDownload}>
                                     <img src='./Images/demo-user.png' className={classes.userIcon} width={70} height={70} alt='user' />
                                     <Pdf targetRef={ref} filename="code-example.pdf">
                                         {({ toPdf }) => <div title='DOWNLOAD'><button onClick={toPdf} className={classes.btnInvoice}>Download</button></div>}
                                     </Pdf>
-                                </Grid>
+                                </Grid>*/}
                             </Grid>
                             {/*} <Grid item xs={12} md={12} lg={12} className={classes.deliverySpace}>
                                 <Grid item xs={4} md={4} >
@@ -179,8 +184,9 @@ const Cancelledorders = (props) => {
                 ) : (<>
                 
 
-                </>))) : (<></>)}
-                {flag === false ?<>
+                </>))) : (<>
+                
+                    {flag === false ?<>
               <div className={classes.pending}>
                     <img className={classes.pend} src='../Images/jf2.png'></img>
                   </div>
@@ -188,7 +194,8 @@ const Cancelledorders = (props) => {
                   <br/>
                   <br/>
                   <br/>
-                  </> : <></> }
+                  </> : <></> }</>)}
+               
               
     </>
 

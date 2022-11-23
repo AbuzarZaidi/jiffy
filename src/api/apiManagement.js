@@ -5,13 +5,13 @@ const getBaseURL = () => {
     let baseURL = '';
 
     console.log(process.env);
-    baseURL = 'https://apis.jiffy.ae/vendor/api/v1';
+ 
     if (process.env.NODE_ENV === 'development') {
-      baseURL = 'https://apis.jiffy.ae/vendor/api/v1';
+      baseURL = 'https://apis.staging.jiffy.ae';
     }
 
     if (process.env.NODE_ENV === 'production') {
-      baseURL = 'https://apis.jiffy.ae/vendor/api/v1';
+      baseURL = 'https://apis.staging.jiffy.ae';
     }
     return baseURL;
   } catch (error) {
@@ -23,7 +23,7 @@ const getDashboardDetails = async userId => {
   let baseURL = getBaseURL();
   return baseAxios({
     method: 'get',
-    url: `${baseURL}/dashboard/?user_id=${userId}`,
+    url: `${baseURL}/dashboard/?userId=${userId}`,
   });
 };
 
@@ -83,4 +83,4 @@ function getCountry(payload) {
   });
 }
 
-export { loginAPI, sendPackage, deleteAPI, regenerateAPI, editAPI, revokeAPI, getCountry, getDashboardDetails };
+export {getBaseURL, loginAPI, sendPackage, deleteAPI, regenerateAPI, editAPI, revokeAPI, getCountry, getDashboardDetails };

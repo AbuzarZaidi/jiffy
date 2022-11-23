@@ -16,6 +16,9 @@ import { buttonUnstyledClasses } from "@mui/base/ButtonUnstyled";
 import TabUnstyled, { tabUnstyledClasses } from "@mui/base/TabUnstyled";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import moment from "moment";
+import setHours from "date-fns/setHours";
+import setMinutes from "date-fns/setMinutes";
 import SwitchUnstyled, {
   switchUnstyledClasses,
 } from "@mui/base/SwitchUnstyled";
@@ -197,12 +200,15 @@ const Root = styled("span")(
 /*Drop DOWN Info */
 
 const Modify = (props) => {
+ 
   const { idData } = useParams();
   const url = "https://apis.jiffy.ae/vendor/api/v1/parcel";
   const priceUrl = "https://apis.jiffy.ae/vendor/api/v1/price";
   const { classes } = props;
   const navigate = useNavigate();
   const [alignmentPickup, setAlignmentPickup] = React.useState("AM");
+  const [alignmentPickup1, setAlignmentPickup1] = React.useState("AM");
+  const [alignmentPickup2, setAlignmentPickup2] = React.useState("AM");
   const [alignmentTrans, setAlignmentTransport] = React.useState('car');
   const [alignment, setAlignment] = React.useState("AM");
   const [alignmentDel, setAlignmentDel] = React.useState("AM");
@@ -218,7 +224,13 @@ const Modify = (props) => {
   const [error8, setError8] = React.useState(false);
   const [error9, setError9] = React.useState(false);
   const [error10, setError10] = React.useState(false);
+  const [address1, setAddress1] = React.useState(null);
+  const [address2, setAddress2] = React.useState(null);
+  const [coordinate1, setCoordinates1] = React.useState({ lat: "", long: "" });
+  const [coordinate2, setCoordinates2] = React.useState({ lat: "", long: "" });
   const [id, setId] = React.useState(0);
+  const [addressNew1, setAddressNew1] = React.useState(null);
+  const [addressNew2, setAddressNew2] = React.useState(null);
   const handleChangePickup = (event, newAlignment) => {
     //alert(JSON.stringify(newAlignment))
     setAlignment(newAlignment);
@@ -257,8 +269,251 @@ const Modify = (props) => {
   const [delInst, setDatadel4] = React.useState();
   const [load,setLoad] = React.useState(true);
 
- 
 
+  const [plus, getPlus] = React.useState(false);
+  const [phone, setPhone] = React.useState(null);
+  const [email, setemail] = React.useState(null);
+  const [time, setTime] = React.useState(null);
+  const [descript, setdesc] = React.useState(null);
+  const pickupPhone = (val) =>{
+    setPhone(val.target.value)
+  }
+  const pickupEmail = (val) =>{
+    setemail(val.target.value)
+  }
+  const pickupDesc = (val) =>{
+    setdesc(val.target.value)
+  }
+  const addPlus = () =>{
+    getPlus(!plus);
+    }
+  const [phone1, setPhone1] = React.useState(null);
+  const [email1, setemail1] = React.useState(null);
+  const [time1, setTime1] = React.useState(null);
+  const [pickup1, setPickup1] = React.useState("");
+  const [descript1, setdesc1] = React.useState(null);
+  const pickupPhone1 = (val) =>{
+    setPhone1(val.target.value)
+  }
+  const pickupEmail1 = (val) =>{
+    setemail1(val.target.value)
+  }
+  const pickupDesc1 = (val) =>{
+    setdesc1(val.target.value)
+  }
+
+  const [phone2, setPhone2] = React.useState(null);
+  const [email2, setemail2] = React.useState(null);
+  const [time2, setTime2] = React.useState(null);
+  const [pickup2, setPickup2] = React.useState("");
+  const [descript2, setdesc2] = React.useState(null);
+  
+  const pickupPhone2 = (val) =>{
+    setPhone2(val.target.value)
+  }
+  const pickupEmail2 = (val) =>{
+    setemail2(val.target.value)
+  }
+  const pickupDesc2 = (val) =>{
+    setdesc2(val.target.value)
+  }
+
+  const [phoneD, setPhoneD] = React.useState(null);
+  const [emailD, setemailD] = React.useState(null);
+  const [timeD, setTimeD] = React.useState(null);
+
+  const [descriptD, setdescD] = React.useState(null);
+  const phoneDel = (val) =>{
+    setPhoneD(val.target.value)
+  }
+  const emailDel = (val) =>{
+    setemailD(val.target.value)
+  }
+  const descDel = (val) =>{
+    setdescD(val.target.value)
+  }
+
+  const [arrow, getArrow] = React.useState(false);
+
+
+  const handleSelect1 = async value => {
+    debugger;
+    const result = await geocodeByAddress(value)
+    console.log(JSON.stringify(result))
+    const ll = await getLatLng(result[0])
+    setAddress1(value)
+    setCoordinates1(ll)
+    console.log(JSON.stringify(ll))
+    
+
+    let priceParams = {};
+    priceParams["_id"] = idData;
+
+    let p = [];
+    let pDetails= {};
+    pDetails["id"] = "1";
+    pDetails["pickup_location"] = address;
+    pDetails["pickup_location_phone"] = pick;
+    pDetails["pickupEmail"] = email;
+    pDetails["pickupTime"] =  moment(pickup).format("hh:mm");
+    pDetails["pickupTimeDesc"] = alignmentPickup;
+    pDetails["pickup_instruction"] = descript;
+    pDetails["pickup_latitude"] = String(coordinate.lat)
+    pDetails["pickup_longitude"] = String(coordinate.lng)
+    pDetails["pickup_status"] = 'pending';
+
+    let pDetails1= {};
+    pDetails1["id"] = "2";
+    pDetails1["pickup_location"] = address1;
+    pDetails1["pickup_location_phone"] = phone1;
+    pDetails1["pickupEmail"] = email1;
+    pDetails1["pickupTime"] =  moment(pickup1).format("hh:mm");
+    pDetails1["pickupTimeDesc"] = alignmentPickup1;
+    pDetails1["pickup_instruction"] = descript1;
+    pDetails1["pickup_latitude"] = String(coordinate1.lat)
+    pDetails1["pickup_longitude"] = String(coordinate1.lng)
+    pDetails1["pickup_status"] = 'pending'
+
+    let pDetails2= {};
+    pDetails2["id"] = "3";
+    pDetails2["pickup_location"] = address2;
+    pDetails2["pickup_location_phone"] = phone2;
+    pDetails2["pickupEmail"] = email2;
+    pDetails2["pickupTime"] =  moment(pickup2).format("hh:mm");
+    pDetails2["pickupTimeDesc"] = alignmentPickup2;
+    pDetails2["pickup_instruction"] = descript2;
+    pDetails2["pickup_latitude"] = String(coordinate2.lat)
+    pDetails2["pickup_longitude"] = String(coordinate2.lng)
+    pDetails2["pickup_status"] = 'pending'
+    
+    p.push(pDetails);
+    if(address1 !== null){
+    p.push(pDetails1);
+    }
+    if((address2 !== null || address2 !== "") && (email2 !== null)){
+      p.push(pDetails2);
+    }
+  
+    let d = [];
+    let dDetails= {};
+    dDetails["id"] = "1";
+    dDetails["delivery_location"] = addressDelivery;
+    dDetails["delivery_location_phone"] = phoneD;
+    dDetails["deliveryEmail"] = emailD;
+    dDetails["deliveryTime"] = moment(drop).format("hh:mm");
+    dDetails["deliveryTimeDesc"] = alignment;
+    dDetails["delivery_instruction"] = descriptD;
+    dDetails["delivery_latitude"] = String(coordinateDelivery.lat)
+    dDetails["delivery_longitude"] = String(coordinateDelivery.lng)
+    dDetails["delivery_status"] = 'pending'
+    d.push(dDetails)
+    priceParams["delivery_latitude"] = String(ll.lat)
+    priceParams["delivery_longitude"] = String(ll.lng)
+    priceParams["delivery_type"] = "delivernow"
+    priceParams["no_of_pickup"] = p.length;
+    priceParams["pickup"] = p;
+    priceParams["userId"] = localStorage.getItem("userId")
+    console.log(priceParams)
+  
+      axios.post(priceUrl, priceParams).then((res) => {
+        console.log(res.data.estimatedPrice);
+        setPrice(res.data.estimatedPrice);
+        try {
+        } catch (error) {
+          console.error();
+        }
+      });
+  };
+  const handleSelect2 = async value => {
+    const result = await geocodeByAddress(value)
+    console.log(JSON.stringify(result))
+    const ll = await getLatLng(result[0])
+    setAddress2(value)
+    setCoordinates2(ll)
+    console.log(JSON.stringify(ll))
+    // geocodeByAddress(address)
+    //    .then(results => getLatLng(results[0]))
+    //    .then(latLng => console.log('Success', latLng))
+    //   .catch(error => console.error('Error', error));
+    let priceParams = {};
+    priceParams["_id"] = idData;
+
+    let p = [];
+    let pDetails= {};
+    pDetails["id"] = "1";
+    pDetails["pickup_location"] = address;
+    pDetails["pickup_location_phone"] = pick;
+    pDetails["pickupEmail"] = email;
+    pDetails["pickupTime"] =  moment(pickup).format("hh:mm");
+    pDetails["pickupTimeDesc"] = alignmentPickup;
+    pDetails["pickup_instruction"] = descript;
+    pDetails["pickup_latitude"] = String(coordinate.lat)
+    pDetails["pickup_longitude"] = String(coordinate.lng)
+    pDetails["pickup_status"] = 'pending';
+
+    let pDetails1= {};
+    pDetails1["id"] = "2";
+    pDetails1["pickup_location"] = address1;
+    pDetails1["pickup_location_phone"] = phone1;
+    pDetails1["pickupEmail"] = email1;
+    pDetails1["pickupTime"] =  moment(pickup1).format("hh:mm");
+    pDetails1["pickupTimeDesc"] = alignmentPickup1;
+    pDetails1["pickup_instruction"] = descript1;
+    pDetails1["pickup_latitude"] = String(coordinate1.lat)
+    pDetails1["pickup_longitude"] = String(coordinate1.lng)
+    pDetails1["pickup_status"] = 'pending'
+
+    let pDetails2= {};
+    pDetails2["id"] = "3";
+    pDetails2["pickup_location"] = address2;
+    pDetails2["pickup_location_phone"] = phone2;
+    pDetails2["pickupEmail"] = email2;
+    pDetails2["pickupTime"] =  moment(pickup2).format("hh:mm");
+    pDetails2["pickupTimeDesc"] = alignmentPickup2;
+    pDetails2["pickup_instruction"] = descript2;
+    pDetails2["pickup_latitude"] = String(coordinate2.lat)
+    pDetails2["pickup_longitude"] = String(coordinate2.lng)
+    pDetails2["pickup_status"] = 'pending'
+    
+    p.push(pDetails);
+    if(address1 !== null){
+    p.push(pDetails1);
+    }
+    if((address2 !== null || address2 !== "") && (email2 !== null)){
+      p.push(pDetails2);
+    }
+  
+    let d = [];
+    let dDetails= {};
+    dDetails["id"] = "1";
+    dDetails["delivery_location"] = addressDelivery;
+    dDetails["delivery_location_phone"] = phoneD;
+    dDetails["deliveryEmail"] = emailD;
+    dDetails["deliveryTime"] = moment(drop).format("hh:mm");
+    dDetails["deliveryTime"] = drop;
+    dDetails["deliveryTimeDesc"] = alignment;
+    dDetails["delivery_instruction"] = descriptD;
+    dDetails["delivery_latitude"] = String(coordinateDelivery.lat)
+    dDetails["delivery_longitude"] = String(coordinateDelivery.lng)
+    dDetails["delivery_status"] = 'pending'
+    d.push(dDetails)
+    priceParams["delivery_latitude"] = String(ll.lat)
+    priceParams["delivery_longitude"] = String(ll.lng)
+    priceParams["delivery_type"] = "delivernow"
+    priceParams["no_of_pickup"] = p.length;
+    priceParams["pickup"] = p;
+    priceParams["userId"] = localStorage.getItem("userId")
+    console.log(priceParams)
+  
+      axios.post(priceUrl, priceParams).then((res) => {
+        console.log(res.data.estimatedPrice);
+        setPrice(res.data.estimatedPrice);
+        try {
+        } catch (error) {
+          console.error();
+        }
+      });
+  };
   useEffect(() => {
     let isMounted = true;
     //let res;
@@ -275,19 +530,45 @@ const Modify = (props) => {
           setFlaged(true)
           console.log(response);
           setRes(response)
-          setAddress(response.data.parcel[0].pickup_location);
-          setData1(response.data.parcel[0].pickup_location_phone);
-          setData2(response.data.parcel[0].pickupEmail);
-          setData3(response.data.parcel[0].pickupTime);
-          setAlignmentPickup(response.data.parcel[0].pickupTimeDesc);
-          setData4(response.data.parcel[0].pickup_instruction);
+          setImigo(response.data.parcel[0].immigoNumber)
+          setAddress(response.data.parcel[0].pickup[0].pickup_location);
+          setData1(response.data.parcel[0].pickup[0].pickup_location_phone);
+          setData2(response.data.parcel[0].pickup[0].pickupEmail);
+          setData3(response.data.parcel[0].pickup[0].pickupTime);
+          setAlignmentPickup(response.data.parcel[0].pickup[0].pickupTimeDesc);
+          setData4(response.data.parcel[0].pickup[0].pickup_instruction);
+          setPrice(response.data.parcel[0].estimatedPrice)
+         // if(response.data.parcel[0].pickup[1] && response.data.parcel[0].pickup[1].pickup_location){
+            setAddress1(response.data.parcel[0].pickup[1].pickup_location);
+            setPhone1(response.data.parcel[0].pickup[1].pickup_location_phone);
+            setemail1(response.data.parcel[0].pickup[1].pickupEmail);
+            setPickup1(response.data.parcel[0].pickup[1].pickupTime);
+            //setAlignmentPickup(response.data.parcel[0].pickup[1].pickupTimeDesc);
+            setdesc1(response.data.parcel[0].pickup[1].pickup_instruction);
+         // }
+          if(response.data.parcel[0].pickup[2] && response.data.parcel[0].pickup[2].pickup_location){
+            setAddressNew2(response.data.parcel[0].pickup[2].pickup_location);
+            setPhone2(response.data.parcel[0].pickup[2].pickup_location_phone);
+            setemail2(response.data.parcel[0].pickup[2].pickupEmail);
+            setPickup2(response.data.parcel[0].pickup[2].pickupTime);
+            //setAlignmentPickup(response.data.parcel[0].pickup[2].pickupTimeDesc);
+            setdesc2(response.data.parcel[0].pickup[2].pickup_instruction);
+          }
+         
+          
+          setInputFields(response.data.parcel[0].passport)
+          setInputFieldsCompany(response.data.parcel[0].emiratesId)
+          setInputFieldsBcerti(response.data.parcel[0].bCerti)
+          setInputFieldsDcerti(response.data.parcel[0].dCerti)
+          setInputFieldsMcerti(response.data.parcel[0].mCerti)
+          setInputFieldsOther(response.data.parcel[0].other)
 
-          setAddressDelivery(response.data.parcel[0].delivery_location);
-          setDatadel1(response.data.parcel[0].delivery_location_phone);
-          setDatadel2(response.data.parcel[0].deliveryEmail);
-          setDatadel3(response.data.parcel[0].deliveryTime);
-          setAlignment(response.data.parcel[0].deliveryTimeDesc);
-          setDatadel4(response.data.parcel[0].delivery_instruction);
+          setAddressDelivery(response.data.parcel[0].delivery[0].delivery_location);
+          setDatadel1(response.data.parcel[0].delivery[0].delivery_location_phone);
+          setDatadel2(response.data.parcel[0].delivery[0].deliveryEmail);
+          setDatadel3(response.data.parcel[0].delivery[0].deliveryTime);
+          setAlignment(response.data.parcel[0].delivery[0].deliveryTimeDesc);
+          setDatadel4(response.data.parcel[0].delivery[0].delivery_instruction);
 
         }
       });
@@ -295,7 +576,9 @@ const Modify = (props) => {
       isMounted = false;
     };
   }, [url]);
-
+  const getArrowDown = () =>{
+    getArrow(!arrow);
+    }
   const handleSubmit = (event) => {
     var today = new Date();
     let postId;
@@ -311,6 +594,67 @@ const Modify = (props) => {
     console.log(event);
     let params = {};
     params["_id"] = idData;
+
+    let p = [];
+    let pDetails= {};
+    pDetails["id"] = "1";
+    pDetails["pickup_location"] = address;
+    pDetails["pickup_location_phone"] = pick;
+    pDetails["pickupEmail"] = pickEmail;
+    pDetails["pickupTime"] =  moment(pickup).format("hh:mm");
+    pDetails["pickupTimeDesc"] = alignmentPickup;
+    pDetails["pickup_instruction"] = descript;
+    pDetails["pickup_latitude"] = String(coordinate.lat)
+    pDetails["pickup_longitude"] = String(coordinate.lng)
+    pDetails["pickup_status"] = 'pending';
+
+    let pDetails1= {};
+    pDetails1["id"] = "2";
+    pDetails1["pickup_location"] = address1;
+    pDetails1["pickup_location_phone"] = phone1;
+    pDetails1["pickupEmail"] = email1;
+    pDetails1["pickupTime"] =  moment(pickup1).format("hh:mm");
+    pDetails1["pickupTimeDesc"] = alignmentPickup1;
+    pDetails1["pickup_instruction"] = descript1;
+    pDetails1["pickup_latitude"] = String(coordinate1.lat)
+    pDetails1["pickup_longitude"] = String(coordinate1.lng)
+    
+
+    let pDetails2= {};
+    pDetails2["id"] = "3";
+    pDetails2["pickup_location"] = address2;
+    pDetails2["pickup_location_phone"] = phone2;
+    pDetails2["pickupEmail"] = email2;
+    pDetails2["pickupTime"] =  moment(pickup2).format("hh:mm");
+    pDetails2["pickupTimeDesc"] = alignmentPickup2;
+    pDetails2["pickup_instruction"] = descript2;
+    pDetails2["pickup_latitude"] = String(coordinate2.lat)
+    pDetails2["pickup_longitude"] = String(coordinate2.lng)
+   
+    
+    p.push(pDetails);
+    if(address1 !== null){
+    p.push(pDetails1);
+    }
+    if((address2 !== null || address2 !== "") && (email2 !== null)){
+      p.push(pDetails2);
+    }
+  
+    let d = [];
+    let dDetails= {};
+    dDetails["id"] = "1";
+    dDetails["delivery_location"] = addressDelivery;
+    dDetails["delivery_location_phone"] = del;
+    dDetails["deliveryEmail"] = delEmail;
+    dDetails["deliveryTime"] = moment(drop).format("hh:mm");
+    dDetails["deliveryTimeDesc"] = alignment;
+    dDetails["delivery_instruction"] = pickInst;
+    dDetails["delivery_latitude"] = String(coordinateDelivery.lat)
+    dDetails["delivery_longitude"] = String(coordinateDelivery.lng)
+   
+    d.push(dDetails)
+
+
     params["pickup_location"] = event.target[0].value;
     //params["pickup_location_phone"] = event.target[2].value;
    // params["pickupEmail"] = event.target[4].value;
@@ -325,7 +669,9 @@ const Modify = (props) => {
     //params["delivery_instruction"] = event.target[22].value;
     //params["pickupCoordinates"] = coordinate;
    // params["deliveryCoordinates"] = coordinateDelivery;
-   
+   params["userId"] = localStorage.getItem("userId")
+    params["pickup"]= p;
+    params["delivery"] = d;
     params["pickup_latitude"] = String(coordinate.lat);
     params["pickup_longitude"] = String(coordinate.lng);
     params["delivery_latitude"] = String(coordinateDelivery.lat);
@@ -334,6 +680,7 @@ const Modify = (props) => {
     //params["stop_longitude"] = String(coordinateStop.lng);
     //params["order_amt"] = String(price);
     params["modified_date"] = today;
+    params["is_modified"] = true;
     
     //params["emiratesId"] = inputFieldsCompany;
     //params["passport"] = inputFields;
@@ -406,7 +753,7 @@ const Modify = (props) => {
      // params["deliveryTime"] !== "" &&
      // params["delivery_instruction"] !== ""
     ) {
-     axios.put(url, params).then((res) => {
+    axios.put(url, params).then((res) => {
         console.log(res.data);
         postId = res.data;
         if (res.data.status === "success") {
@@ -475,11 +822,74 @@ const Modify = (props) => {
     //    .then(latLng => console.log('Success', latLng))
     //   .catch(error => console.error('Error', error));
     let priceParams = {};
-    priceParams["pickup_latitude"] = String(coordinate.lat);
-    priceParams["pickup_longitude"] = String(coordinate.lng);
-    priceParams["delivery_latitude"] = String(ll.lat);
-    priceParams["delivery_longitude"] = String(ll.lng);
-    if (coordinate.lat && coordinate.lng && ll.lat && ll.lng) {
+    priceParams["_id"] = idData;
+
+    let p = [];
+    let pDetails= {};
+    pDetails["id"] = "1";
+    pDetails["pickup_location"] = address;
+    pDetails["pickup_location_phone"] = pick;
+    pDetails["pickupEmail"] = email;
+    pDetails["pickupTime"] =  moment(pickup).format("hh:mm");
+    pDetails["pickupTimeDesc"] = alignmentPickup;
+    pDetails["pickup_instruction"] = descript;
+    pDetails["pickup_latitude"] = String(coordinate.lat)
+    pDetails["pickup_longitude"] = String(coordinate.lng)
+    pDetails["pickup_status"] = 'pending';
+
+    let pDetails1= {};
+    pDetails1["id"] = "2";
+    pDetails1["pickup_location"] = address1;
+    pDetails1["pickup_location_phone"] = phone1;
+    pDetails1["pickupEmail"] = email1;
+    pDetails1["pickupTime"] =  moment(pickup1).format("hh:mm");
+    pDetails1["pickupTimeDesc"] = alignmentPickup1;
+    pDetails1["pickup_instruction"] = descript1;
+    pDetails1["pickup_latitude"] = String(coordinate1.lat)
+    pDetails1["pickup_longitude"] = String(coordinate1.lng)
+    pDetails1["pickup_status"] = 'pending'
+
+    let pDetails2= {};
+    pDetails2["id"] = "3";
+    pDetails2["pickup_location"] = address2;
+    pDetails2["pickup_location_phone"] = phone2;
+    pDetails2["pickupEmail"] = email2;
+    pDetails2["pickupTime"] =  moment(pickup2).format("hh:mm");
+    pDetails2["pickupTimeDesc"] = alignmentPickup2;
+    pDetails2["pickup_instruction"] = descript2;
+    pDetails2["pickup_latitude"] = String(coordinate2.lat)
+    pDetails2["pickup_longitude"] = String(coordinate2.lng)
+    pDetails2["pickup_status"] = 'pending'
+    
+    p.push(pDetails);
+    if(address1 !== null){
+    p.push(pDetails1);
+    }
+    if((address2 !== null || address2 !== "") && (email2 !== null)){
+      p.push(pDetails2);
+    }
+  
+    let d = [];
+    let dDetails= {};
+    dDetails["id"] = "1";
+    dDetails["delivery_location"] = addressDelivery;
+    dDetails["delivery_location_phone"] = phoneD;
+    dDetails["deliveryEmail"] = emailD;
+    dDetails["deliveryTime"] = moment(drop).format("hh:mm");
+    dDetails["deliveryTimeDesc"] = alignment;
+    dDetails["delivery_instruction"] = descriptD;
+    dDetails["delivery_latitude"] = String(coordinateDelivery.lat)
+    dDetails["delivery_longitude"] = String(coordinateDelivery.lng)
+    dDetails["delivery_status"] = 'pending'
+    d.push(dDetails)
+    priceParams["delivery_latitude"] = String(ll.lat)
+    priceParams["delivery_longitude"] = String(ll.lng)
+    priceParams["delivery_type"] = "delivernow"
+    priceParams["no_of_pickup"] = p.length;
+    priceParams["pickup"] = p;
+    priceParams["userId"] = localStorage.getItem("userId")
+    console.log(priceParams)
+  
       axios.post(priceUrl, priceParams).then((res) => {
         console.log(res.data.estimatedPrice);
         setPrice(res.data.estimatedPrice);
@@ -488,7 +898,7 @@ const Modify = (props) => {
           console.error();
         }
       });
-    }
+    
   };
 
   const [inputFields, setInputFields] = React.useState([]);
@@ -586,6 +996,44 @@ const Modify = (props) => {
   const handleOther = (event, val) => {
     inputFieldsOther[val].name = event.target.value;
   };
+  const [imigo, setImigo] = React.useState(null);
+  const [errorImg, setErrorImg] = React.useState(false);
+  const updatePickup = (val) =>{
+    setData1(val.target.value)
+  }
+  const updateMobile = (val) =>{
+    setData2(val.target.value)
+  }
+  const updateEmail = (val) =>{
+    setData2(val.target.value)
+  }
+  
+  const updateTime = (val) =>{
+    setData3(val)
+    setPickup(val)
+  }
+  const updateDesc =(val) =>{
+    setData4(val.target.value)
+  }
+
+ 
+  const updateMobileD = (val) =>{
+    setDatadel1(val.target.value)
+  }
+  const updateEmailD = (val) =>{
+    setDatadel2(val.target.value)
+  }
+  const updateTimeD = (val) =>{
+    setDatadel3(val)
+    setDrop(val)
+  }
+  const updateDescD =(val) =>{
+    setDatadel4(val.target.value)
+  }
+  const ImgNumber = (val) => {
+    setImigo(val.target.value)
+  }
+
 
   {
     /*Stopss*/
@@ -712,11 +1160,11 @@ const Modify = (props) => {
 
   return (
     <>
-    {load ? <div>
+    {load  ? <div>
       <div class="loader1"></div>
     </div> : <></>}
     
-    {flaged ? <>
+    {flaged  ? <>
     <AllservicesModify></AllservicesModify>
       <Grid container className={classes.section_start}>
         <Grid container className={classes.newbgM}>
@@ -852,6 +1300,32 @@ const Modify = (props) => {
 
             <form onSubmit={handleSubmit}>
               <div className={classes.content1}>
+              <div className={classes.send_label}>
+                Immigo Case number
+                  </div>
+                   <Grid item md={4} lg={4}>
+                        <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
+                          <OutlinedInput
+                            id="outlined-adornment-weight"
+                            name='immigo'
+                            value={imigo}
+                            onChange={(event) => ImgNumber(event)}
+                            placeholder='Enter Immigo Case number”'
+                            startAdornment={<InputAdornment position="start"> <img src='../Images/imigo.svg'></img></InputAdornment>}
+                            aria-describedby="outlined-weight-helper-text"
+                            inputProps={{
+                              'aria-label': 'weight',
+                            }}
+                            labelWidth={0}
+                            className={classes.searchInput}
+                          />
+                        </FormControl>
+                        {errorImg ? <>
+                          <div className={classes.errors}>Enter Immigo Case number</div>
+                        </> : null}
+                        
+                      </Grid>
+                      <br/><br/>
                 <div className={classes.send_label}>Pick Up Address</div>
                 <div className={classes.content}>
                   <Grid container spacing={2}>
@@ -950,11 +1424,12 @@ const Modify = (props) => {
                       <FormControl
                         fullWidth
                         className={clsx(classes.margin, classes.textField)}
-                        
+                       
                         variant="outlined"
                       >
                         
                         <OutlinedInput
+                         defaultValue={pick}
                           id="outlined-adornment-weight"
                           name="mobileNo"
                           value={pick}
@@ -969,7 +1444,7 @@ const Modify = (props) => {
                             "aria-label": "weight",
                             
                           }}
-    
+                          onChange={(event) => updatePickup(event)}
                           labelWidth={0}
                           className={classes.searchInput}
                         />
@@ -999,6 +1474,7 @@ const Modify = (props) => {
                               <img src="../Images/email-send.svg"></img>
                             </InputAdornment>
                           }
+                          onChange={(event) => updateEmail(event)}
                           aria-describedby="outlined-weight-helper-text"
                           inputProps={{
                             "aria-label": "weight",
@@ -1017,7 +1493,7 @@ const Modify = (props) => {
                       <DatePicker
                         value={pickTime}
                         selected={pickup}
-                        onChange={(date) => setPickup(date)}
+                        onChange={(date) => updateTime(date)}
                         customInput={<PickupTimeInput />}
                         showTimeSelect
                         showTimeSelectOnly
@@ -1047,6 +1523,7 @@ const Modify = (props) => {
                           placeholder="Instruction to Courier"
                           name="pkinstruction"
                           value={pickInst}
+                          onChange={(event) => updateDesc(event)}
                           startAdornment={
                             <InputAdornment position="start">
                               <img src="../Images/direction.svg"></img>
@@ -1071,6 +1548,376 @@ const Modify = (props) => {
                   </Grid>
                 </div>
               </div>
+
+                 {/*ADD STOP*/}
+                 <div className={classes.content1A} onClick={()=>getArrowDown()}>
+                  <span className={classes.send_label}>Add pickup point(Optional)</span>
+                  <span > 
+                 {arrow ? ( <img className={classes.arrow} src='../Images/up-arrow.png' ></img>):(<></>)}
+                  {!arrow ? (<img className={classes.arrow} src='../Images/arrowdn.png' ></img>):(<></>)}
+                  </span>
+                </div>
+                {arrow ? (<>
+                <div className={classes.content1}>
+                  <div className={classes.send_label}>
+                    Add Pick Up Point 1
+                  </div>
+                  <div className={classes.content}>
+                    <Grid container spacing={2}>
+                    <Grid item md={12} lg={12}>
+                      <FormControl
+                        fullWidth
+                        className={clsx(classes.margin, classes.textField)}
+                        variant="outlined"
+                      >
+                        {/*} <OutlinedInput
+                  id="outlined-adornment-weight"
+                  placeholder='Address'
+                  name="address"
+                  startAdornment={<InputAdornment position="start"> <img src='./Images/loc1.svg'></img></InputAdornment>}
+                  aria-describedby="outlined-weight-helper-text"
+                  inputProps={{
+                    'aria-label': 'weight',
+                  }}
+                  labelWidth={0}
+                />*/}
+                        <PlacesAutocomplete
+                          value={address}
+                          onChange={setAddress}
+                          onSelect={handleSelect}
+                        >
+                          {({
+                            getInputProps,
+                            suggestions,
+                            getSuggestionItemProps,
+                            loading,
+                          }) => (
+                            <div>
+                              <OutlinedInput
+                                id="outlined-adornment-weight"
+                                placeholder="Address"
+                                fullWidth
+                                name="address"
+                                startAdornment={
+                                  <InputAdornment position="start">
+                                    {" "}
+                                    <img src="../Images/loc1.svg"></img>
+                                  </InputAdornment>
+                                }
+                                aria-describedby="outlined-weight-helper-text"
+                                {...getInputProps({
+                                  placeholder: "Search Places ...",
+                                  className: "location-search-input",
+                                })}
+                                labelWidth={0}
+                                className={classes.searchInput}
+                              />
+
+                              <div className={classes.locationdropdown}>
+                                {loading && <div>Loading...</div>}
+                                {suggestions.map((suggestion) => {
+                                  const className = suggestion.active
+                                    ? "suggestion-item--active"
+                                    : "suggestion-item";
+                                  // inline style for demonstration purpose
+                                  const style = suggestion.active
+                                    ? {
+                                        backgroundColor: "#fafafa",
+                                        cursor: "pointer",
+                                        padding: "10px",
+                                      }
+                                    : {
+                                        backgroundColor: "#ffffff",
+                                        cursor: "pointer",
+                                        padding: "10px",
+                                      };
+                                  return (
+                                    <div
+                                      {...getSuggestionItemProps(suggestion, {
+                                        className,
+                                        style,
+                                      })}
+                                    >
+                                      <span>{suggestion.description}</span>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          )}
+                        </PlacesAutocomplete>
+                      </FormControl>
+                      {error1 ? (
+                        <>
+                          <div className={classes.errors}>
+                            Select pickup location
+                          </div>
+                        </>
+                      ) : null}
+                    </Grid>
+                      <Grid item md={4} lg={4}>
+                        <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
+                          <OutlinedInput
+                            id="outlined-adornment-weight"
+                            name="mobileNo"
+                            value={phone1}
+                            onChange={(event) => pickupPhone1(event)}
+                            placeholder='Phone Number'
+                            startAdornment={<InputAdornment position="start"><img src='../Images/mobile.svg'></img></InputAdornment>}
+                            aria-describedby="outlined-weight-helper-text"
+                            inputProps={{
+                              'aria-label': 'weight',
+                            }}
+                            labelWidth={0}
+                            className={classes.searchInput}
+
+                          />
+                        </FormControl>
+                        {error2 ? <>
+                          <div className={classes.errors}>Select mobile number</div>
+                        </> : null}
+                      </Grid>
+                      <Grid item md={4} lg={4}>
+                        <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
+                          <OutlinedInput
+                            id="outlined-adornment-weight"
+                            name="email"
+                            defaultValue={email1}
+                            onChange={(event) => pickupEmail1(event)}
+                            placeholder='User Email Address'
+                            startAdornment={<InputAdornment position="start"> <img src='../Images/email-send.svg'></img></InputAdornment>}
+                            aria-describedby="outlined-weight-helper-text"
+                            inputProps={{
+                              'aria-label': 'weight',
+                            }}
+                            labelWidth={0}
+                            className={classes.searchInput}
+                          />
+                        </FormControl>
+                        {error3 ? <>
+                          <div className={classes.errors}>Select E-mail</div>
+                        </> : null}
+                      </Grid>
+                      <Grid item md={4} lg={4}>
+                        <DatePicker
+                          selected={pickup1}
+                          value={pickup1}
+                          onChange={(date) => setPickup1(date)}
+                          customInput={<PickupTimeInput />}
+                          showTimeSelect
+                          showTimeSelectOnly
+                          timeIntervals={15}
+                          timeCaption="Time"
+                          dateFormat="h:mm aa"
+                        />
+                        {/*} <MuiPickersUtilsProvider utils={DateFnsUtils}>
+
+                                  <TimePicker value={selectedDate} onChange={handleDateChange} />
+
+                                </MuiPickersUtilsProvider>*/}
+                        {error4 ? <>
+                          <div className={classes.errors}>Select time</div>
+                        </> : null}
+
+                      </Grid>
+                      <Grid item md={12} lg={12} >
+                        <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
+                          <OutlinedInput
+                            id="outlined-adornment-weight"
+                            placeholder='Instruction to Courier'
+                            name="pkinstruction"
+                            defaultValue={descript1}
+                            onChange={(event) => pickupDesc1(event)}
+                            startAdornment={<InputAdornment position="start"><img src='../Images/direction.svg'></img></InputAdornment>}
+                            aria-describedby="outlined-weight-helper-text"
+                            inputProps={{
+                              'aria-label': 'weight',
+                            }}
+                            labelWidth={0}
+                            className={classes.searchInput}
+                          />
+                        </FormControl>
+                        {error5 ? <>
+                          <div className={classes.errors}>Select pickup description</div>
+                        </> : null}
+
+                      </Grid>
+                    </Grid>
+
+
+
+                  </div>
+
+                </div>
+              
+                  {address2 !== null || address2 !== ""  ? (
+                <div className={classes.content1}>
+                  <div className={classes.send_label}>
+                    Add Pick Up Point 2(Optional)
+                  </div>
+                  <div className={classes.content}>
+                    <Grid container spacing={2}>
+                      <Grid item md={12} lg={12} >
+                        <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
+                          {/*} <OutlinedInput
+                  id="outlined-adornment-weight"
+                  placeholder='Address'
+                  name="address"
+                  startAdornment={<InputAdornment position="start"> <img src='./Images/loc1.svg'></img></InputAdornment>}
+                  aria-describedby="outlined-weight-helper-text"
+                  inputProps={{
+                    'aria-label': 'weight',
+                  }}
+                  labelWidth={0}
+                />*/}
+                          <PlacesAutocomplete
+                            value={address2}
+                            onChange={setAddress2}
+                            onSelect={handleSelect2}
+                          >
+                            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                              <div >
+                                <OutlinedInput
+                                  id="outlined-adornment-weight"
+                                  placeholder='Address'
+                                  fullWidth
+                                  name="address"
+                                  startAdornment={<InputAdornment position="start"> <img src='../Images/loc1.svg'></img></InputAdornment>}
+                                  aria-describedby="outlined-weight-helper-text"
+                                  {...getInputProps({
+                                    placeholder: 'Search Places ...',
+                                    className: 'location-search-input',
+                                  })}
+                                  labelWidth={0}
+                                  className={classes.searchInput}
+                                />
+
+                                <div className={classes.locationdropdown}>
+                                  {loading && <div>Loading...</div>}
+                                  {suggestions.map(suggestion => {
+                                    const className = suggestion.active
+                                      ? 'suggestion-item--active'
+                                      : 'suggestion-item';
+                                    // inline style for demonstration purpose
+                                    const style = suggestion.active
+                                      ? { backgroundColor: '#fafafa', cursor: 'pointer', padding: '10px' }
+                                      : { backgroundColor: '#ffffff', cursor: 'pointer', padding: '10px' };
+                                    return (
+                                      <div
+                                        {...getSuggestionItemProps(suggestion, {
+                                          className,
+                                          style,
+                                        })}
+                                      >
+                                        <span>{suggestion.description}</span>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                            )}
+                          </PlacesAutocomplete>
+                        </FormControl>
+                        {error1 ? <>
+                          <div className={classes.errors}>Select pickup location</div>
+                        </> : null}
+                      </Grid>
+                      <Grid item md={4} lg={4}>
+                        <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
+                          <OutlinedInput
+                            id="outlined-adornment-weight"
+                            name="mobileNo"
+                            defaultValue={phone2}
+                            onChange={(event) => pickupPhone2(event)}
+                            placeholder='Phone Number'
+                            startAdornment={<InputAdornment position="start"><img src='../Images/mobile.svg'></img></InputAdornment>}
+                            aria-describedby="outlined-weight-helper-text"
+                            inputProps={{
+                              'aria-label': 'weight',
+                            }}
+                            labelWidth={0}
+                            className={classes.searchInput}
+
+                          />
+                        </FormControl>
+                        {error2 ? <>
+                          <div className={classes.errors}>Select mobile number</div>
+                        </> : null}
+                      </Grid>
+                      <Grid item md={4} lg={4}>
+                        <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
+                          <OutlinedInput
+                            id="outlined-adornment-weight"
+                            name="email"
+                            defaultValue={email2}
+                            onChange={(event) => pickupEmail2(event)}
+                            placeholder='User Email Address'
+                            startAdornment={<InputAdornment position="start"> <img src='../Images/email-send.svg'></img></InputAdornment>}
+                            aria-describedby="outlined-weight-helper-text"
+                            inputProps={{
+                              'aria-label': 'weight',
+                            }}
+                            labelWidth={0}
+                            className={classes.searchInput}
+                          />
+                        </FormControl>
+                        {error3 ? <>
+                          <div className={classes.errors}>Select E-mail</div>
+                        </> : null}
+                      </Grid>
+                      <Grid item md={4} lg={4}>
+                        <DatePicker
+                          selected={pickup2}
+                          value={pickup2}
+                          onChange={(date) => setPickup2(date)}
+                          customInput={<PickupTimeInput />}
+                          showTimeSelect
+                          showTimeSelectOnly
+                          timeIntervals={15}
+                          timeCaption="Time"
+                          dateFormat="h:mm aa"
+                        />
+                        {/*} <MuiPickersUtilsProvider utils={DateFnsUtils}>
+
+                                  <TimePicker value={selectedDate} onChange={handleDateChange} />
+
+                                </MuiPickersUtilsProvider>*/}
+                        {error4 ? <>
+                          <div className={classes.errors}>Select time</div>
+                        </> : null}
+
+                      </Grid>
+                      <Grid item md={12} lg={12} >
+                        <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
+                          <OutlinedInput
+                            id="outlined-adornment-weight"
+                            placeholder='Instruction to Courier'
+                            name="pkinstruction"
+                            defaultValue={descript2}
+                            onChange={(event) => pickupDesc2(event)}
+                            startAdornment={<InputAdornment position="start"><img src='../Images/direction.svg'></img></InputAdornment>}
+                            aria-describedby="outlined-weight-helper-text"
+                            inputProps={{
+                              'aria-label': 'weight',
+                            }}
+                            labelWidth={0}
+                            className={classes.searchInput}
+                          />
+                        </FormControl>
+                        {error5 ? <>
+                          <div className={classes.errors}>Select pickup description</div>
+                        </> : null}
+
+                      </Grid>
+                    </Grid>
+
+
+
+                  </div>
+
+                </div>):(<></>)}
+                </>):(<></>)}
+                {/*END STOP*/}
 
               <div className={classes.content1}>
                 <div className={classes.send_label}>Delivery Address</div>
@@ -1177,6 +2024,7 @@ const Modify = (props) => {
                           id="outlined-adornment-weight"
                           name="deliveryMobileNo"
                           value={del}
+                          onChange={(event) => updateMobileD(event)}
                           placeholder="Phone Number"
                           startAdornment={
                             <InputAdornment position="start">
@@ -1210,6 +2058,7 @@ const Modify = (props) => {
                           id="outlined-adornment-weight"
                           name="deliveryEmail"
                           value={delEmail}
+                          onChange={(event) => updateEmailD(event)}
                           placeholder="Client Email Address"
                           startAdornment={
                             <InputAdornment position="start">
@@ -1237,7 +2086,7 @@ const Modify = (props) => {
                       <DatePicker
                         selected={drop}
                         value={delTime}
-                        onChange={(date) => setDrop(date)}
+                        onChange={(date) => updateTimeD(date)}
                         customInput={<DropTimeInput />}
                         showTimeSelect
                         showTimeSelectOnly
@@ -1263,6 +2112,7 @@ const Modify = (props) => {
                           id="outlined-adornment-weight"
                           name="deliveryInstruction"
                           value={delInst}
+                          onChange={(event) => updateDescD(event)}
                           placeholder="Instruction to Courier"
                           startAdornment={
                             <InputAdornment position="start">
@@ -1523,59 +2373,17 @@ const Modify = (props) => {
                     </div>
                   </div>
                   &nbsp;&nbsp;
-                  <div className={classes.content}>
-                    <div>
-                      <PopupState variant="popover" popupId="demo-popup-menu">
-                        {(popupState) => (
-                          <React.Fragment>
-                            <Button
-                              className={classes.document_btn}
-                              {...bindTrigger(popupState)}
-                            >
-                              Photo
-                              <img
-                                className={classes.ared}
-                                src="../Images/arrowed.svg"
-                              ></img>
-                            </Button>
-                            {/*} <Menu {...bindMenu(popupState)}>
-                                <MenuItem >Passport
-                                  <div>
-                                    <IconButton onClick={() => handleRemove()}>
-                                      <RemoveIcon>
-                                      </RemoveIcon>
-                                    </IconButton>{inputFields.length}
-                                    <IconButton onClick={() => handleAdd()}>
-                                      <AddIcon>
-                                      </AddIcon>
-                                    </IconButton>
-                                  </div>
-                                </MenuItem>
-                                <MenuItem >Company id
-                                  <div>
-                                    <IconButton onClick={() => handleRemoveCompany()}>
-                                      <RemoveIcon>
-                                      </RemoveIcon>
-                                    </IconButton>{inputFieldsCompany.length}
-                                    <IconButton onClick={() => handleAddCompany()}>
-                                      <AddIcon>
-                                      </AddIcon>
-                                    </IconButton>
-                                  </div></MenuItem>
-                                {/*<MenuItem onClick={popupState.close}>Logout</MenuItem>
-                              </Menu>*/}
-                          </React.Fragment>
-                        )}
-                      </PopupState>
-                    </div>
-                  </div>
+                  
                 </Grid>
 
                 <Grid container className={classes.documents} containe>
                   {inputFields.map((inputField, index) => (
                     <div key={index}>
+                       <div className="pass">Passport</div>
                       <Grid container className={classes.documents} spacing={1}>
+                     
                         <Grid item md={6} lg={6}>
+                      
                           <FormControl
                             fullWidth
                             className={clsx(classes.margin, classes.textField)}
@@ -1629,6 +2437,7 @@ const Modify = (props) => {
                 <Grid container className={classes.documents}>
                   {inputFieldsCompany.map((inputField, index) => (
                     <div key={index}>
+                      <div className="pass">Emirated Id</div>
                       <Grid container spacing={1}>
                         <Grid item md={6} lg={6}>
                           <FormControl
@@ -1677,6 +2486,7 @@ const Modify = (props) => {
                 <Grid container className={classes.documents}>
                   {inputFieldsMcerti.map((inputFieldsMcerti, index) => (
                     <div key={index}>
+                      <div className="pass"> Marriage Certificate</div>
                       <Grid container className={classes.documents}>
                         <Grid item md={12} lg={12}>
                           <FormControl
@@ -1705,6 +2515,7 @@ const Modify = (props) => {
                 <Grid container className={classes.documents}>
                   {inputFieldsBcerti.map((inputFieldsBcerti, index) => (
                     <div key={index}>
+                       <div className="pass"> Birth Certificate</div>
                       <Grid container className={classes.documents}>
                         <Grid item md={12} lg={12}>
                           <FormControl
@@ -1733,6 +2544,7 @@ const Modify = (props) => {
                 <Grid container className={classes.documents}>
                   {inputFieldsDcerti.map((inputFieldsDcerti, index) => (
                     <div key={index}>
+                      <div className="pass"> Degree Certificate</div>
                       <Grid container className={classes.documents}>
                         <Grid item md={12} lg={12}>
                           <FormControl
@@ -1761,6 +2573,7 @@ const Modify = (props) => {
                 <Grid container className={classes.documents}>
                   {inputFieldsOther.map((inputFieldsOther, index) => (
                     <div key={index}>
+                      <div className="pass"> Other</div>
                       <Grid container className={classes.documents}>
                         <Grid item md={12} lg={12}>
                           <FormControl
@@ -1920,21 +2733,21 @@ const Modify = (props) => {
                 </Grid>
               </div>
 
-              {/*<div className={classes.content}>
+              <div className={classes.content}>
                     <Grid container spacing={3}>
                       <Grid item md={3} lg={3} >
                       </Grid>
                       {price !== "" ? (
                         <Grid item md={6} lg={6} >
                           <div className={classes.total}>
-                            <b className={classes.price_cont}>Total Estimated Price</b><img className={classes.price_img} src='./Images/info.svg'></img><b className={classes.price_tag}>&nbsp;&nbsp;{price}</b>&nbsp;AED
+                            <b className={classes.price_cont}>Total Estimated Price</b><img className={classes.price_img} src='../Images/info.svg'></img><b className={classes.price_tag}>&nbsp;&nbsp;{price}</b>&nbsp;AED
                           </div>
                         </Grid>) : (<></>)}
 
                       <Grid item md={3} lg={3} >
                       </Grid>
                     </Grid>
-                  </div>*/}
+                  </div>
               <div className={classes.divider}></div>
               {/*} <div className={classes.estimationContainer}>
                   <p className={classes.totalPrice}>Total Estimated Price : <span className={classes.totalPriceCount}>65.00</span> <span className={classes.totalPriceUnit}>AED</span></p>

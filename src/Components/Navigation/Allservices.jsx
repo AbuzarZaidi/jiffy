@@ -15,13 +15,14 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 const Allservices = (props) => {
   const { classes } = props;
-
+  const user = localStorage.getItem("name")
   const navigate = useNavigate();
   const { pathname }  = useLocation()
   console.log("🚀 ~ file: Allservices.jsx ~ line 21 ~ Allservices ~ pathname", pathname)
 
   const [currentView, setCurrentView] = useState("home")
   function logout() {
+    localStorage.removeItem('userId');
     navigate('/')
   }
   function gotrack() {
@@ -40,15 +41,25 @@ const Allservices = (props) => {
   function gotoSend(){
     navigate('/sendpackage')
   }
+  function gotoCollect()
+{
+  navigate('/collectpackage')
+}
+
   function gotoDoc(){
-    navigate('/documentAttestation')
+    //navigate('/documentAttestation')
   }
   function gotoAcc(){
     navigate('/accompainment')
   }
   const listElement = useRef(null);
   const navElement = useRef(null);
-
+const changePass = () => {
+  navigate('/change/' + localStorage.getItem('userId'))
+}
+const profile = () => {
+  navigate('/profile')
+}
 
   const onKeyUp = () => {
     const hamburger = document.querySelector(".hamburger");
@@ -168,7 +179,7 @@ const Allservices = (props) => {
                         justifyContent="center"
                         alignItems="center"
                       >
-                          <Grid item sx={{bgcolor:"blue"}}>
+                          <Grid item >
 
 
                 <Button  className={classes.newbtn} onClick={()=>goHome()}>
@@ -211,7 +222,7 @@ const Allservices = (props) => {
                             <hr
                             style={{
                               color: "goldenrod",
-                              backgroundColor: "blue",
+                              backgroundColor: "goldenrod",
                               height: 5,
                               width: "30px",
                               borderRadius: "10px"
@@ -221,8 +232,9 @@ const Allservices = (props) => {
                       </Grid>
                         </Grid>
                         <Menu {...bindMenu(popupState)}>
-                          <MenuItem className={classes.drp} onClick={()=>gotoSend()}>Send/Recieve Package</MenuItem>
-                          <MenuItem className={classes.drp} onClick={()=>gotoDoc()}>Document Attestation</MenuItem>
+                          <MenuItem className={classes.drp} onClick={()=>gotoSend()}>Send Package</MenuItem>
+                          <MenuItem className={classes.drp} onClick={()=>gotoCollect()}>Collect Package</MenuItem>
+                          <MenuItem className={classes.drp} onClick={()=>gotoDoc()}>Document Attestation(Coming soon)</MenuItem>
                           <MenuItem className={classes.drp} onClick={()=>gotoAcc()}>Accompaniment</MenuItem>
 
                         </Menu>
@@ -274,7 +286,7 @@ const Allservices = (props) => {
                 &nbsp; <Button  className={classes.newbtn} >
                   Notification
                   </Button>*/}
-                  <PopupState variant="popover" popupId="demo-popup-menu">
+                 {/*<PopupState variant="popover" popupId="demo-popup-menu">
                       {(popupState) => (
                     <React.Fragment>
                       <Button  className={classes.newbtn} {...bindTrigger(popupState)}>
@@ -290,7 +302,7 @@ const Allservices = (props) => {
                       <div className='whole'>
                       <img className='el-icon' src='./Images/ellipse.svg'/>
                       <div className='half'>
-                      Courier person Hikmat Ansari
+                      Courier person Arshad
                        should arrive between <br/>12:00 PM to 1:00 PM
                        </div>
                        
@@ -303,7 +315,7 @@ const Allservices = (props) => {
                       <div className='whole'>
                       <img className='el-icon' src='./Images/ellipse.svg'/>
                       <div className='half'>
-                      Courier person Naseer Ahmed arrived
+                      Courier person sahid arrived
                       
                        </div>
                        
@@ -316,7 +328,7 @@ const Allservices = (props) => {
                       <div className='whole'>
                       <img className='el-icon' src='./Images/eligrey.svg'/>
                       <div className='half'>
-                      Courier person Sharad Vasu delivered the parcel
+                      Courier person shahid delivered the parcel
                        </div>
                        
                       </div>
@@ -330,15 +342,44 @@ const Allservices = (props) => {
                       
                     </React.Fragment>
                       )}
-                      </PopupState>
+                      </PopupState>*/}
               </li>
                
-                <li class="nav-item1">
-                  {/*<PersonOutlineIcon className={classes.personel}></PersonOutlineIcon>*/}
+              {/*}  <li class="nav-item1">
+                 
                   <img className='notification-icon2' src='./Images/user.svg'></img>
                   &nbsp;<Button className={classes.newbtn} onClick={() => logout()}>
-                    Admin/Logout
+                   
                   </Button>
+                </li>*/}
+                <li class="nav-item">
+                <img className='notification-icon2' src='./Images/user.svg'></img>
+                  <PopupState variant="popover" popupId="demo-popup-menu">
+                    {(popupState) => (
+                      <React.Fragment>
+                            <Grid
+                        container
+                        direction="column"
+                        justifyContent="center"
+                        alignItems="center"
+                      >
+                          <Grid item>
+
+                        <Button className={classes.newbtn} { ...bindTrigger(popupState)} >
+                        {user}/Logout<img className={classes.ared} src='./Images/arrowed.svg'></img>
+                        </Button>
+                          </Grid>
+                        
+                        </Grid>
+                        <Menu {...bindMenu(popupState)}>
+                          <MenuItem className={classes.drp} onClick={()=>profile()}>Profile</MenuItem>
+                          <MenuItem className={classes.drp} onClick={()=>changePass()}>Change/Reset password</MenuItem>
+                          <MenuItem className={classes.drp} onClick={()=>logout()}>Logout</MenuItem>
+
+                        </Menu>
+                      </React.Fragment>
+                    )}
+                  </PopupState>
                 </li>
               </ul>
               </div>

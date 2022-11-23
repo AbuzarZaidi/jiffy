@@ -12,7 +12,7 @@ import SwitchUnstyled, { switchUnstyledClasses } from '@mui/base/SwitchUnstyled'
 import TrackorderStyle from './TrackorderStyle';
 import SimpleMap, { MapContainer } from './Trackmap';
 import VerticalLinearStepper from './TrackStepper';
-import { getAPI } from '../../../api/apiManagement';
+import { getAPI, getBaseURL } from '../../../api/apiManagement';
 import { useDispatch, useSelector } from "react-redux";
 import DeliveryNote from './DeliverNote/DeliveryNote';
 import Map from './Track';
@@ -176,13 +176,13 @@ const Trackorder = (props) => {
   const { id } = useParams();
   const [data, setData] = React.useState();
   const firebaseConfig = {
-    apiKey: "AIzaSyD1lQJtp4gTlOYWAfvCuBZH6nZ45f0FBKk",
-    authDomain: "jiffy-e579d.firebaseapp.com",
-    projectId: "jiffy-e579d",
-    storageBucket: "jiffy-e579d.appspot.com",
-    messagingSenderId: "736043927471",
-    appId: "1:736043927471:web:463a4e99625f6f593c515a",
-    measurementId: "G-S2ZKMM1N69"
+    apiKey: "AIzaSyApfVOAcPyKnWgMlDCQlrlJvDLro2LW4Xo",
+    authDomain: "jiffy-7c780.firebaseapp.com",
+    projectId: "jiffy-7c780",
+    storageBucket: "jiffy-7c780.appspot.com",
+    messagingSenderId: "858697568951",
+    appId: "1:858697568951:web:c314027e738f1df16db332",
+    measurementId: "G-ZMK5HQEQFN"
   };
   const app = initializeApp(firebaseConfig);
   //const db = app.firestore();
@@ -196,7 +196,7 @@ const Trackorder = (props) => {
   const [alignment, setAlignment] = React.useState('web');
   const [mainData, setMainData] = React.useState();
   const [delData, setdelData] = React.useState();
-  const url = "https://apis.jiffy.ae/vendor/api/v1/parcel"
+  const url = getBaseURL() + "/vendor/api/v1/parcel"
   const [show, showTrack] = React.useState(false)
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
@@ -258,7 +258,7 @@ const Trackorder = (props) => {
   //getAPI()
   return (
     <>
-      {/* <Allservices></Allservices> */}
+      <Allservices></Allservices>
       <Grid container className={classes.section_start}>
         <Grid item xs={4} md={4} lg={4}>
           <div className={classes.heading}>

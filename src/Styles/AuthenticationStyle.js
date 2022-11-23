@@ -6,12 +6,11 @@ const AuthenticationStyle = (theme) => ({
   },
   navbar: {
     display: "flex",
-    backgroundColor: "blue",
+    backgroundColor: "white",
     boxShadow: "0px 5px #c2c5c4",
     height: "60px",
     overflow: "hidden",
     borderBottom: "2px solid grey",
-   
   },
   newbtn: {
     position: "absolute",
@@ -47,6 +46,11 @@ const AuthenticationStyle = (theme) => ({
     justifyContent: "center",
     paddingTop: "50px",
   },
+  coperate_start3: {
+    background: " url(../Images/rt.png)",
+    justifyContent: "center",
+    paddingTop: "50px",
+  },
   purpdts: {
     fontSize: "15px",
     color: "#545A77",
@@ -78,6 +82,7 @@ const AuthenticationStyle = (theme) => ({
   coperate_btn: {
     height: "40px",
     width: "150px",
+
     fontSize: "13px",
     color: "#62AF4B",
     fontFamily: "Montserrat",
@@ -138,26 +143,42 @@ const AuthenticationStyle = (theme) => ({
 
   login: {
     width: "480px",
+    // marginBottom: "10px",
+    // width: "100%",
     height: "48px",
     color: "white",
     background: "#131C4C no-repeat",
     borderRadius: "9px",
     cursor: "pointer",
+   
     "@media (max-width: 600px)": {
-      
-   width:"110%",
+      width: "110%",
+
    
     },
-    "@media (max-width: 400px)": {
-      width:"110%",
-     
-    }
+    
   },
+  
+
   services_welcome:{
+    fontSize: "44px",
+    width: "218px",
+    height: "34px",
+    /* UI Properties */
+    textAlign: "left",
+    fontFamily: "Montserrat",
+    color:"#131C4C",
     "@media (max-width: 600px)": {
       marginLeft:"20px"
       
       }
+  },
+  service_content:{
+    "@media (max-width: 600px)": {
+      marginLeft:"20px",
+      marginBottom:"20px"
+      
+      },
   },
   heading_welcome:{
     "@media (max-width: 600px)": {
@@ -166,7 +187,6 @@ const AuthenticationStyle = (theme) => ({
       
       }
   },
-
   allm:{
     "@media (max-width: 600px)": {
      marginTop:"20px"
@@ -175,8 +195,9 @@ const AuthenticationStyle = (theme) => ({
   },
   extra_login: {
     display: "flex",
-    gap: "70px",
+    gap: "67px",
     maxWidth: "480px ",
+    marginTop:"10px",
     "@media (max-width: 600px)": {
       gap: "10%",
       // maxWidth: "90% ",
@@ -196,13 +217,13 @@ const AuthenticationStyle = (theme) => ({
   share_style: {
     gap: "35px",
   },
-
   extra_login_btn: {
     width: "100%",
     backgroundColor: "black",
     color: "white",
     height: "32px",
   },
+
   flow: {
     backgroundColor: "#131C4C",
     color: "white",
@@ -228,7 +249,6 @@ const AuthenticationStyle = (theme) => ({
   },
   ht: {
     maxWidth: "1280px",
-    
     margin: "auto",
   },
   ht1: {
@@ -236,16 +256,22 @@ const AuthenticationStyle = (theme) => ({
     margin: "auto",
     boxShadow: "0px 2px 2px -6px #0000001a",
   },
-  // services_desc_pur: {
-  //   display: "flex",
-  //   padding: "50px",
-  //   fontFamily: "Montserrat;",
-  //   justifyContent: "space-between",
-  //   "@media (max-width: 600px)": {
-  //     flexDirection:"column"
-  
-  // }
-  // },
+  services_desc_pur: {
+    display: "flex",
+    padding: "50px",
+    fontFamily: "Montserrat;",
+    justifyContent: "space-between",
+  },
+  services_heading: {
+    fontWeight: "700",
+    fontSize: "18px",
+    fontFamily: "Montserrat;",
+    paddingRight: "35px",
+    paddingBottom: "5px",
+    wordBreak: "keep-all",
+    color: "#131C4C",
+    opacity: "1",
+  },
   services_heading: {
     fontWeight: "700",
     fontSize: "18px",
@@ -313,9 +339,7 @@ const AuthenticationStyle = (theme) => ({
     }
   },
   purpose: {
-   marginTop:"80px",
-   marginLeft:"80px",
-   marginRight:"50px"
+    margin: "30px",
   },
   purpose_heading: {
     fontWeight: "600",
@@ -399,7 +423,7 @@ const AuthenticationStyle = (theme) => ({
   }
   },
   flow_package: {
-    height: "80px",
+    height: "70px",
     marginBottom: "10px",
   },
   choose_img: {
@@ -424,7 +448,12 @@ width:"90%"
     paddingLeft: "50px",
     width: "600px",
     paddingBottom: "40px",
-    height: "500px"
+    height: "500px",
+    "@media (max-width: 600px)": {
+      width: "350px",
+      height: "400px",
+      paddingLeft: "0px",
+    }
   },
   btn_dash: {
     width: "100%",
@@ -486,17 +515,35 @@ width:"90%"
     fontWeight: "700",
     fontFamily: "Montserrat",
     fontSize: "36px",
+    marginLeft:"4%",
     "@media (max-width: 600px)": {
       display:"flex",
       justifyContent:"space-around"
   
   }
   },
+  forgetAlign:{
+    display:"flex",
+    justifyContent:"space-between",
+    width:"115%",
+    "@media (max-width: 1000px)": {
+      width:"107%",
+  
+  },
+    "@media (max-width: 600px)": {
+      width:"107%",
+  
+  }
+},
   footer_desc: {
     display: "block !important",
     fontSize: "13px",
     lineHeight: "24px",
     color: "#8F92A3",
+    "@media (max-width: 600px)": {
+      marginTop:"20px",
+  
+  }
   },
   footer_descbtn: {
     display: "block !important",
@@ -517,8 +564,14 @@ width:"90%"
   },
   footer_img: {
     height: "40px",
+  },
+  start:{
+    display:'flex'
+  },
+  footer_img: {
+    height: "40px",
     "@media (max-width: 600px)": {
-      marginRight: "-14px"
+     
   
   }
   
@@ -569,6 +622,10 @@ marginTop:"20px",
   smallContent: {
     padding: "5px",
     fontSize: "13px",
+    "@media (max-width: 600px)": {
+      marginBottom:"10px",
+      
+        }
   },
   errorVal: {
     color: "Red",
@@ -618,13 +675,14 @@ marginTop:"20px",
   or_align:{
     display:"flex",
     justifyContent:"center",
-   marginLeft:"70px",
+   marginLeft:"67px",
+   marginTop:"-5px",
+   marginBottom:"20px",
    "@media (max-width: 600px)": {
       marginLeft:"30px",
   
   }
   },
-
 });
 
 export default AuthenticationStyle;

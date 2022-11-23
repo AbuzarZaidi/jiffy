@@ -90,7 +90,13 @@ const SendPackageStyle = (theme) => ({
         fontSize: "24px",
         color: "#131C4C",
         fontWeight: "700",
-        paddingBottom: "10px"
+        paddingBottom: "10px",
+        display:"flex",
+        justifyContent:"space-between",
+        cursor:"pointer",
+        "@media (max-width: 600px)": {
+            flexDirection:"column"
+        }
     },
     dropnew: {
 
@@ -129,7 +135,18 @@ const SendPackageStyle = (theme) => ({
         
         color: "#131C4C",
     },
+    del_icon2: {
+        marginTop:"25px",
+        color: "#131C4C",
+    },
     reqi:{
+        paddingTop:"45px",
+        "@media (max-width: 600px)": {
+         
+            paddingBottom:"17px",
+        }
+    },
+    reqi2:{
         paddingTop:"17px",
         "@media (max-width: 600px)": {
          
@@ -152,14 +169,42 @@ const SendPackageStyle = (theme) => ({
     two_wheel: {
         margin: 'revert',
         paddingLeft: '20px',
-        paddingRight: '10px'
+        paddingRight: '10px',
+        paddingTop:"25px",
+        "@media (max-width: 600px)": {
+            paddingTop:"25px"
+        }
+       
+    },
+    two_wheel2: {
+        margin: 'revert',
+        paddingLeft: '20px',
+        paddingRight: '10px',
+        "@media (max-width: 600px)": {
+            // paddingTop:"-10px"
+        }
+       
     },
     two_wheel_inactive: {
         margin: 'revert',
         paddingLeft: '20px',
         paddingRight: '10px',
         opacity: '0.54',
-        fontWeight: '300 !important'
+        fontWeight: '300 !important',
+        paddingTop:"25px",
+        "@media (max-width: 600px)": {
+            paddingTop:"25px"
+        }
+    },
+    two_wheel_inactive2: {
+        margin: 'revert',
+        paddingLeft: '20px',
+        paddingRight: '10px',
+        opacity: '0.54',
+        fontWeight: '300 !important',
+        "@media (max-width: 600px)": {
+           
+        }
     },
     biked_inactive: {
         opacity: '0.54',
@@ -407,13 +452,39 @@ const SendPackageStyle = (theme) => ({
         fontWeight: 300,
         paddingLeft: '10px',
         opacity: '0.54',
-    
+        paddingTop:"25px",
+        "@media (max-width: 600px)": {
+            paddingTop:"25px"
+        }
+    },
+    four_wheel2: {
+        margin: 'revert',
+        fontSize: '18px',
+        fontWeight: 300,
+        paddingLeft: '10px',
+        opacity: '0.54',
+        "@media (max-width: 600px)": {
+         
+        }
     },
     four_wheel_active: {
         margin: 'revert',
         fontSize: '18px',
         fontWeight: 600,
         paddingLeft: '10px',
+        paddingTop:"25px",
+        "@media (max-width: 600px)": {
+            paddingTop:"25px"
+        }
+    },
+    four_wheel_active2: {
+        margin: 'revert',
+        fontSize: '18px',
+        fontWeight: 600,
+        paddingLeft: '10px',
+        "@media (max-width: 600px)": {
+            
+        }
     },
     searchInput: {
         borderRadius: '9px !important',
@@ -437,6 +508,7 @@ const SendPackageStyle = (theme) => ({
     },
     timeGroup: {
         marginRight: '-14px',
+        marginTop:"-20px",
         justifyContent: 'end'
     },
     toggleButton: {
@@ -512,6 +584,10 @@ const SendPackageStyle = (theme) => ({
                 margin: '0 24.5px'
             }
         }
+    },
+    arrow:{
+        height:'20px',
+        cursor:'pointer'
     },
     selectDateText: {
         fontFamily: "Montserrat !important",
@@ -592,14 +668,67 @@ const SendPackageStyle = (theme) => ({
         color: '#131C4C',
         marginTop: '12px',
     },
+    preferGroup:{
+        display:"flex",
+        justifyContent: 'center',
+        flexDirection: 'column'
+    },
+    // style={{width:"410px"}}
+    immigoField:{
+width:"420px",
+"@media (max-width: 600px)": {
+    width:"90%",
+}
+    },
+    status:{
+        marginRight:"400px",
+        "@media (max-width: 600px)": {
+            marginRight:"1%",
+        }
+    },
+    preferDesc:{
+     
+        fontFamily: "Montserrat !important",
+        fontSize: "15px !important",
+        color: "#131C4C !important",
+        fontWeight: "400 !important",
+        opacity: "1 !important"
+    },    
+    content: {
+        paddingTop: "10px"
+    },
+    content1: {
+        paddingTop: "70px"
+    },
+    content1A: {
+        paddingTop: "70px",
+        display:'flex',
+        justifyContent:'space-between',
+        paddingRight:'10px'
+    },
+    content4: {
+        paddingTop: "30px"
+    },
     prefer:{
         color:"#131C4C",
         fontWeight:"600",
         fontSize:"15px",
-        // "@media (max-width: 600px)": {
-        // marginRigth:"70%"
-        
-        // }
+        display:"inline-grid",
+        lineHeight: '24px',
+        paddingLeft: '10px'
+
+    },
+    prefer1:{
+        color:"#131C4C",
+        fontWeight:"600",
+        fontSize:"15px",
+        display:"inline-grid",
+        lineHeight: '24px',
+        paddingLeft: '30px',
+        borderLeft: "0.5px dashed #C0C3D7",
+        cursor: "pointer",
+        marginTop: "25px"
+
     },
     apply:{
         color:"#6E759A",

@@ -20,11 +20,12 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import { width } from '@mui/system';
-
+import moment from "moment";
+import { getBaseURL } from '../../../../api/apiManagement';
 const AllDeliveryNote = (props) => {
     let dispalyData;
     const { id } = useParams();
-    const url = "https://apis.jiffy.ae/vendor/api/v1/parcel"
+    const url = getBaseURL() + "/vendor/api/v1/parcel"
     const { classes } = props;
 
     const [data, setData] = React.useState();
@@ -34,14 +35,17 @@ const AllDeliveryNote = (props) => {
     const [endDate, setEndDate] = React.useState(null);
     const [download, setdownload] = React.useState(false);
     const [btn, setButton] = React.useState(false);
-    const [btnRadio, setButtonRadio] = React.useState(false);
+    const [btnRadio, setButtonRadio] = React.useState(true);
 
     const ref = React.createRef();
     React.useEffect(() => {
 
         axios.get(url, {
             params: {
-                _id: id
+                _id: id,
+                userId: localStorage.getItem("userId")
+               
+
             }
         }).then((response) => {
 
@@ -53,25 +57,12 @@ const AllDeliveryNote = (props) => {
 
 
     }, [url]);
-    React.useEffect(() => {
-
-        axios.get(url + '?order_status=invoice', {
-
-        }).then((response) => {
-
-            console.log("INVOICESS", response)
-
-
-        });
-
-
-
-    }, [url]);
+   
     React.useEffect(() => {
 
         axios.get(url, {
             params: {
-
+                userId: localStorage.getItem("userId")
             }
         }).then((response) => {
 
@@ -88,6 +79,24 @@ const AllDeliveryNote = (props) => {
         const [start, end] = dates;
         setStartDate(start);
         setEndDate(end);
+        console.log("fff",end)
+        if(end){
+        axios.get(url, {
+            params: {
+                userId:localStorage.getItem("userId").toString(),
+                from_date:moment(start).format("DD/MM/YYYY"),
+                to_date:moment(end).format("DD/MM/YYYY"),
+                
+                order_status: 'Delivered'
+            }
+        }).then((response) => {
+
+            console.log("errrrfff",response)
+            setData(response.data.parcel[0])
+            setDataParcel(response.data.parcel)
+
+        });
+    }
     };
 
     const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
@@ -114,7 +123,7 @@ const AllDeliveryNote = (props) => {
         const imgProperties = pdf.getImageProperties(img);
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
-        pdf.addImage(img, "PNG", 0, 0, pdfWidth, pdfHeight);
+        pdf.addImage(img, "SVG", 0, 0, pdfWidth, pdfHeight);
         pdf.save("deliverynote.pdf");
         setTimeout(() => {
             setButton(false)
@@ -130,27 +139,33 @@ const AllDeliveryNote = (props) => {
       const callcheck = async () => { 
         
       }
-
+      const [valueInvoice, setInvoice] = React.useState("onGoing");
+      const handleChangeInvoice = (event) => {
+        setInvoice(event.target.value);
+      };
     //console.log(data)
     return (<>
-   
-        <Grid container justifyContent="space-between" alignItems="center">
-            <Grid item xs={12} md={6} lg={6} sx={{mb:2}}>
+      <Grid container justifyContent="space-between" alignItems="center">
+            <Grid item xs={6} md={6} lg={6}>
                 <FormControl>
                     <RadioGroup
                         row
                         aria-labelledby="demo-row-radio-buttons-group-label"
                         name="row-radio-buttons-group"
+                        value={valueInvoice}
+              onChange={handleChangeInvoice}
                     >
-                        
+                   
+                       
                         <FormControlLabel onClick={collection1}  className={classes.radioLabel} value="onGoing"  control={<Radio classes={{ root: classes.radio, checked: classes.checked }} />} label="Delivery Note" />
+                     
                         <FormControlLabel onClick={collection} className={classes.radioLabel} value="completed" control={<Radio classes={{ root: classes.radio, checked: classes.checked }} />} label="Collection Note" />
                     </RadioGroup>
                 </FormControl>
             </Grid>
-            <Grid item xs={12} md={6} lg={6} className={classes.filterContainer} textAlign="right">
+            <Grid item xs={6} md={6} lg={6} className={classes.filterContainer} textAlign="right">
                 <FilterListIcon />
-                <p className={classes.filterText}>Filter by</p>
+                <p className={classes.filterText}>Filter by date</p>
                 <DatePicker
                     selected={startDate}
                     onChange={onChangeDate}
@@ -162,18 +177,22 @@ const AllDeliveryNote = (props) => {
                 />
             </Grid>
         </Grid>
+        
         {dataParcel !== undefined ? (
             dispalyData = dataParcel.map((item, index) =>
-                item.order_status === 'Delivered' ? <>
+                item.order_status === 'Delivered' && item.delivery_type !== 'accompaniment' && item.delivery_type !== 'accompainmentschedulelater' ? <>
+              
             <div id="pdf">
                 <Grid container >
                     <Box className={classes.delivery} >
                         <Grid container ref={ref}>
                             <Grid container alignItems="center" justifyContent="space-between" item xs={12} md={12} lg={12} className={classes.deliverySpace1}>
                                 <Grid item xs={6} md={2} lg={2}>
-                                    <img className={classes.imgNote} src='./../Images/icon.png' ></img>
+                                <img width={'100%'} className={classes.imgNote} src='./../Images/logo1svg.svg' ></img>
+                               
+                                   
                                 </Grid>
-                                {btnRadio ?
+                                {valueInvoice === 'completed' ?
                                     <Grid item xs={6} md={4} lg={4} className={classes.deliverySpace}>
                                         <b className={classes.note}> Document Collection Note</b>
                                     </Grid> :
@@ -200,9 +219,23 @@ const AllDeliveryNote = (props) => {
                                             </span>
                                         </Grid>
                                         <Grid item xs={12} md={6} lg={6}>
-                                            <span className={classes.notedts}>{item.pickup_location}</span>
+                                           <span className={classes.notedts}>{item.pickup[0].pickup_location}</span>&nbsp;
+                                        {item && item.pickup &&item.pickup[1] && item.pickup[1].pickup_location ? (<>
+                                            <span className={classes.notedts}><br/>{item.pickup[1].pickup_location}</span></>):(<></>)}&nbsp;
+                                            {item && item.pickup &&item.pickup[2] && item.pickup[2].pickup_location ? (<>
+                                            <span className={classes.notedts}> <br/> {item.pickup[2].pickup_location}</span></>):(<></>)}&nbsp;
                                         </Grid>
                                     </div>
+                                </Grid>
+                                <Grid item xs={12} md={12} lg={12} className={classes.containerItem}>
+                                    <div className={classes.notemain}>
+                                        <Grid item xs={12} md={2.5} lg={2.5}>
+                                            <span className={classes.notehead}> Delivery Address</span>
+                                        </Grid>
+                                        <Grid item xs={12} md={6} lg={6}>
+                                            <span className={classes.notedts}>{item.delivery[0].delivery_location}
+                                            </span>
+                                        </Grid></div>
                                 </Grid>
                                 <Grid item xs={12} md={12} lg={12} className={classes.containerItem}>
                                     <div className={classes.notemain}>
@@ -210,7 +243,7 @@ const AllDeliveryNote = (props) => {
                                             <span className={classes.notehead}> Telephone</span>
                                         </Grid>
                                         <Grid item xs={12} md={6} lg={6}>
-                                            <span className={classes.notedts}>{item.pickup_location_phone}
+                                            <span className={classes.notedts}>{item.pickup[0].pickup_location_phone}
                                             </span>
                                         </Grid></div>
                                 </Grid>
@@ -221,14 +254,38 @@ const AllDeliveryNote = (props) => {
                                 <Grid item xs={12} md={12} lg={12} className={classes.containerItem}>
                                     <div className={classes.notemain}>
                                         <Grid item xs={12} md={2.5} lg={2.5}>
-                                            <span className={classes.notehead}> Date</span>
+                                            <span className={classes.notehead}> Immigo Number</span>
                                         </Grid>
                                         <Grid item xs={12} md={6} lg={6}>
-                                            <span className={classes.notedts}> {item.ordered_date}
+                                            <span className={classes.notedts}>{(item.immigoCaseNumber)}
                                             </span>
                                         </Grid></div>
 
                                 </Grid>
+                                <Grid item xs={12} md={12} lg={12} className={classes.containerItem}>
+                                    <div className={classes.notemain}>
+                                        <Grid item xs={12} md={2.5} lg={2.5}>
+                                            <span className={classes.notehead}> Date</span>
+                                        </Grid>
+                                        <Grid item xs={12} md={6} lg={6}>
+                                            <span className={classes.notedts}>{moment(item.ordered_date).format("DD-MM-YYYY")}
+                                            </span>
+                                        </Grid></div>
+
+                                </Grid>
+                                {item.total_timetaken ? (
+                                <Grid item xs={12} md={12} lg={12} className={classes.containerItem}>
+                                    <div className={classes.notemain}>
+                                        <Grid item xs={12} md={2.5} lg={2.5}>
+                                            <span className={classes.notehead}> Time</span>
+                                        </Grid>
+                                        <Grid item xs={12} md={6} lg={6}>
+                                           
+                                            <span className={classes.notedts}>{item.total_timetaken}
+                                            </span>
+                                        </Grid></div>
+
+                                </Grid>):(<></>)}
                                {/*}  {item.rule ? 
                                 <Grid item xs={6} md={3} lg={6} className={classes.deliverySpace}>
                                     <b className={classes.note}> Document Collection Note</b>
@@ -266,7 +323,7 @@ const AllDeliveryNote = (props) => {
                             </table>
     </Grid>*/}
                             </Grid>
-
+                            {item && item.delivery_type !=='accompaniment' ? (
                             <Grid item xs={12} md={12} lg={12} className={classes.documentContainer}>
                                 <b className={classes.descDoc}>Document Description</b> : &nbsp;&nbsp;&nbsp;
                                 <Table sx={{ minWidth: 650 }} aria-label="simple table" className={classes.documentTable}>
@@ -325,30 +382,73 @@ const AllDeliveryNote = (props) => {
                                 {!btn ?
                                 <FormControlLabel className={classes.acknowledgeCheckboxContainer} control={<Checkbox checked className={classes.acknowledgeCheckbox} />} label="I hereby acknowledge the receipt of the above documents in good order" />
                                     :<></>}
-                                </Grid>
+                                </Grid>):(<></>)}
 
-
+                                    {!btnRadio ? (
                             <Grid container item xs={12} md={12} lg={12} alignItems="center" justifyContent="space-between" className={classes.evidenceContainer}>
                                 <Grid xs item className={classes.evidenceItem}>
                                     <Typography className={classes.evidenceTitle}>Name</Typography>
-                                    <Typography className={classes.customerName}>Farookh Sheikh Abdul Ramzad</Typography>
+                                    {item && item.partner_name ? (
+                                    <Typography className={classes.customerName}>{item.partner_name}</Typography>):(<Typography className={classes.customerName}>Fayiz</Typography>)}
                                 </Grid>
-                                {item.customer_signature ?
+      
+                                {item.delivery[0] && item.delivery[0].delivery_signature ?(
                                 <Grid xs item className={classes.evidenceItem}>
 
-
-                                    <Typography className={classes.evidenceTitle}>Customer Signature</Typography>
-                                    <img src={"data:image/png;base64," + item.customer_signature}></img>
+                                    
+                                    <Typography className={classes.evidenceTitle}>Customer Signature1</Typography>
+                                   
+                                    <img src={"data:image/png;base64," + item.pickup[0].pickup_signature}></img>
                                    {/*} <img src={item.customer_signature && item.customer_signature !== "" ? item.customer_signature : './../Images/nim.png'} width={140} height={90}></img>*/}
-                                </Grid>:<></>}
-                                {item.delivery_image[0] ? 
+                                </Grid>):(<></>)}
+                                {item.delivery[0].image && item.delivery[0].image ? 
                                 <Grid xs item className={classes.evidenceItem} justifyContent="flex-end">
                                     <Typography className={classes.evidenceTitle}>Parcel Delivered Evidence</Typography>
-                                    <img className={classes.base} src={"data:image/png;base64," + item.delivery_image[0]}></img>
+                                    
+                                    <img className={classes.base} src={"data:image/png;base64," + item.delivery[0].image}></img>
+                                    {/*<img src={item.delivery_image && item.delivery_image !== "" ? item.delivery_image[0] : './../Images/nim.png'} width={160} height={90}></img>*/}
+                                </Grid>:<></>}
+
+                            </Grid>):(
+                                <>
+                                 <Grid container item xs={12} md={12} lg={12} alignItems="center" justifyContent="space-between" className={classes.evidenceContainer}>
+                                <Grid xs item className={classes.evidenceItem}>
+                                    <Typography className={classes.evidenceTitle}>Name</Typography>
+                                    {item && item.partner_name ? (
+                                    <Typography className={classes.customerName}>{item.partner_name}</Typography>):(<Typography className={classes.customerName}>Fayiz</Typography>)}
+                                </Grid>
+      
+                                {item.pickup[0] && item.pickup[0].pickup_signature ?(
+                                <Grid xs item className={classes.evidenceItem}>
+
+                                    
+                                    <Typography className={classes.evidenceTitle}>Customer Signature</Typography>
+                                   
+                                   <img src={"data:image/png;base64," + item.pickup[0].pickup_signature}></img>
+                                   {/*} <img src={item.customer_signature && item.customer_signature !== "" ? item.customer_signature : './../Images/nim.png'} width={140} height={90}></img>*/}
+                                </Grid>):(<></>)}
+                                {item.pickup[0].image && item.pickup[0].image ? 
+                                <Grid xs item className={classes.evidenceItem} justifyContent="flex-end">
+                                    <Typography className={classes.evidenceTitle}>Parcel Delivered Evidence</Typography>
+                                    {valueInvoice === 'completed' ? (     
+                           <img className={classes.base} src={"data:image/png;base64," + item.pickup[0].image}></img>):( <img className={classes.base} src={"data:image/png;base64," + item.delivery[0].image}></img>)}
                                     {/*<img src={item.delivery_image && item.delivery_image !== "" ? item.delivery_image[0] : './../Images/nim.png'} width={160} height={90}></img>*/}
                                 </Grid>:<></>}
 
                             </Grid>
+                            <Grid container item xs={4} md={4} lg={4} className={classes.evidenceContainer} >
+                              
+                            </Grid>
+                          
+                            <Grid container item xs={6} md={6} lg={6} className={classes.evidenceContainer} >
+                            <img width={'80%'} src='./../Images/logosvg.svg'></img>
+                               {/*} <img width={'40%'} src='./../Images/newland.png'></img>*/}
+                                </Grid>
+                            <Grid container item xs={2} md={2} lg={2} className={classes.evidenceContainer} >
+                              
+                            </Grid>
+                                </>
+                            )}
                         </Grid>
                     </Box>
                 </Grid>
@@ -394,6 +494,16 @@ const AllDeliveryNote = (props) => {
                                 <Grid item xs={12} md={12} lg={12} className={classes.containerItem}>
                                     <div className={classes.notemain}>
                                         <Grid item xs={12} md={2.5} lg={2.5}>
+                                            <span className={classes.notehead}> Delivery Address</span>
+                                        </Grid>
+                                        <Grid item xs={12} md={6} lg={6}>
+                                            <span className={classes.notedts}>{item.delivery[0].delivery_location}
+                                            </span>
+                                        </Grid></div>
+                                </Grid>
+                                <Grid item xs={12} md={12} lg={12} className={classes.containerItem}>
+                                    <div className={classes.notemain}>
+                                        <Grid item xs={12} md={2.5} lg={2.5}>
                                             <span className={classes.notehead}> Telephone</span>
                                         </Grid>
                                         <Grid item xs={12} md={6} lg={6}>
@@ -412,6 +522,17 @@ const AllDeliveryNote = (props) => {
                                         </Grid>
                                         <Grid item xs={12} md={6} lg={6}>
                                             <span className={classes.notedts}> {item.ordered_date}
+                                            </span>
+                                        </Grid></div>
+
+                                </Grid>
+                                <Grid item xs={12} md={12} lg={12} className={classes.containerItem}>
+                                    <div className={classes.notemain}>
+                                        <Grid item xs={12} md={2.5} lg={2.5}>
+                                            <span className={classes.notehead}> Price</span>
+                                        </Grid>
+                                        <Grid item xs={12} md={6} lg={6}>
+                                            <span className={classes.notedts}>{item.estimatedPrice} AED
                                             </span>
                                         </Grid></div>
 
@@ -522,12 +643,13 @@ const AllDeliveryNote = (props) => {
 
 
                                     <Typography className={classes.evidenceTitle}>Customer Signature</Typography>
-                                    <img src={"data:image/png;base64," + item.customer_signature}></img>
+                                    <img src={item.pickup[0].pickup_signature}></img>
+                                    <img src={"data:image/png;base64," + item.delivery[0].delivery_signature}></img>
                                    {/*} <img src={item.customer_signature && item.customer_signature !== "" ? item.customer_signature : './../Images/nim.png'} width={140} height={90}></img>*/}
                                 </Grid>
                                 <Grid xs item className={classes.evidenceItem} justifyContent="flex-end">
                                     <Typography className={classes.evidenceTitle}>Parcel Delivered Evidence</Typography>
-                                    <img className={classes.base} src={"data:image/png;base64," + item.delivery_image[0]}></img>
+                                    <img className={classes.base} src={"data:image/png;base64," + item.delivery[0].image}></img>
                                     {/*<img src={item.delivery_image && item.delivery_image !== "" ? item.delivery_image[0] : './../Images/nim.png'} width={160} height={90}></img>*/}
                                 </Grid>
 

@@ -38,16 +38,6 @@ const Footer = (props) =>{
           <div className={classes.footer_head}>
             {" "}
             <img src="./Images/jfoot.png"></img>
-            <div>
-            <p className={classes.iconed}>
-              {" "}
-              <img className={classes.footer_img} src="./Images/f1.svg"></img>
-              &nbsp;&nbsp;&nbsp;
-              <img className={classes.footer_img} src="./Images/f2.svg"></img>
-              &nbsp;&nbsp;&nbsp;
-              <img className={classes.footer_img} src="./Images/f3.svg"></img>
-            </p>
-            </div>
           </div>
         </Grid>
         <Grid itemxs={12} md={12} lg={12} className={classes.services_desc}>
@@ -66,7 +56,14 @@ const Footer = (props) =>{
             <Button className={classes.footer_descbtn} onClick={handleOpen}>
              <u>Privacy Policy</u>
             </Button>
-
+            <p className={classes.iconed}>
+              {" "}
+              <img className={classes.footer_img} src="./Images/f1.svg"></img>
+              &nbsp;&nbsp;&nbsp;
+              <img className={classes.footer_img} src="./Images/f2.svg"></img>
+              &nbsp;&nbsp;&nbsp;
+              <img className={classes.footer_img} src="./Images/f3.svg"></img>
+            </p>
           </Grid>
           <Grid
             item
@@ -76,46 +73,38 @@ const Footer = (props) =>{
             className={classes.footer_desc1}
           ></Grid>
           <Grid item xs={12} md={2} lg={2} className={classes.footer_desc}>
-          <div className={classes.field_margin}>
-            <b className={classes.field_margin}>Our Network:</b> <br /> </div>
-           
-            <div className={classes.country}>
-            <b className={classes.single_country}>Abu Dhabi</b><br />
-            
-            <b className={classes.single_country}>Dubai</b> <br />
-            <b className={classes.single_country}>Sharjah</b><br />
-            
-            <b className={classes.single_country}>Fujairah</b><br />
-            
-           
-            <b className={classes.single_country}>Ajman</b>
+            <b>Our Network</b>
             <br />
-            <b className={classes.single_country}>Ras Al-Khaimah</b> <br />
-            <b className={classes.single_country}>Umm Al Quwain</b>
-            </div>
+            <b>Abu Dhabi</b>
+            <br />
+            <b>Dubai</b> <br />
+            <b>Sharjah</b>
+            <br />
+            <b>Fujairah</b>
+            <br />
+            <b>Ajman</b>
+            <br />
+            <b>Ras Al-Khaimah</b> <br />
+            <b>Umm Al Quwain</b>
           </Grid>
 
           <Grid item md={2} lg={2} className={classes.footer_desc}>
-          <div className={classes.field_margin}>
-            <b >Our Services:</b> </div>
-            <div className={classes.our_service}>
-            <b className={classes.single_service}>Send Package</b> <br />
-            <b className={classes.single_service}>Collect Package</b> <br />
-            <b className={classes.single_service}>Accompaniment</b> <br />
-            <b className={classes.single_service}>Document Attestation</b>
-            </div>
+            <b>Our Services</b> <br />
+            <b>Send Package</b> <br />
+            <b>Collect Package</b> <br />
+            <b>Accompaniment</b> <br />
+            <b>Document Attestation</b>
           </Grid>
 
           <Grid item md={4} lg={4} className={classes.footer_desc}>
-          <div className={classes.field_margin}>
-          <b>Reach Us At</b></div>
-            
-            
+            <b>Reach Us At</b>
+            <br />
             <div className={classes.small}>
+            <a href="mailto:support@jiffy.ae">
               <img
                 src="./Images/emailf.svg"
                 className={classes.footer_img_small}
-              ></img>
+              ></img></a>
               <div className={classes.smallContent}>
                 info@jiffy.ae and support@jiffy.ae
               </div>

@@ -6,15 +6,12 @@ const TrackorderStyle = (theme) => ({
         fontWeight: "700",
         fontSize: "20px",
         fontFamily: "Montserrat !important",
-        "@media (max-width: 600px)": {
-            fontSize: "18px",
-        
-        }
     },
     icon: {
         marginRight: "10px",
         height: "34px"
     },
+
     req: {
         marginTop: "10px",
         display: "flex",
@@ -84,20 +81,36 @@ const TrackorderStyle = (theme) => ({
         maxWidth: "1280px",
         margin: "auto",
         paddingLeft: "50px",
-        paddingTop: '27px',
+        paddingTop: '27px'
+    },
+    alignContent:{
+       
+        marginLeft: "5%",
+        "@media (max-width: 1400px)": {
+            marginLeft: "30px",
+        
+        },
+    },
+    httabs: {
+        maxWidth: "1280px",
+        margin: "auto",
+        marginBottom:"20px",
+        borderRadius:"30px",
+        marginLeft: "5%",
+         marginTop: '27px',
+         "@media (max-width: 1400px)": {
+            marginLeft: "30px",
+        
+        },
         "@media (max-width: 600px)": {
             paddingLeft: "10px",
         
         }
     },
-    httabs: {
-        maxWidth: "1280px",
-        margin: "auto",
-        paddingLeft: "50px",
-        paddingTop: '27px',
+    httab:{
+        padding:"25px",
         "@media (max-width: 600px)": {
-            paddingLeft: "10px",
-        
+            marginRight:"10px"
         }
     },
     headerFinal: {
@@ -124,6 +137,15 @@ const TrackorderStyle = (theme) => ({
         borderRadius: "10px",
         marginBottom: "20px"
     },
+    deliveryInUn: {
+        width: "100%",
+        border: "1px solid #9A9EB2",
+        height: "100%",
+        borderRadius: "10px",
+        marginBottom: "20px",
+        display : "none !important"
+    },
+
     Invoiced: {
         margin: "0px",
         
@@ -135,22 +157,154 @@ const TrackorderStyle = (theme) => ({
         
     },
     stepperIn: {
-        backgroundColor: "#F9F9F9",
-        height: "75px",
-        padding: "26px 34px",
+        backgroundColor: "#FFFFFF 0% 0% no-repeat padding-box",
+
+        padding: "26px 36px",
         borderRadius: "10px",
-    
+        display:"flex",
+        // justifyContent:"space-bet"
+
     },
-    detailsalign:{
-        "@media (max-width: 600px)": {
-         marginTop:"10px"
-        
+    blueSec:{
+        background: "#131C4C 0% 0% no-repeat padding-box",
+        opacity: "1",
+        height:"44px",
+        padding: "10px",
+     
+    },
+    blueSecDesc:{
+        background: "#131C4C 0% 0% no-repeat padding-box",
+        opacity: "1",
+        height:"44px",
+        padding: "10px",
+        display: "flex"
+    },
+    blueSecDesc1:{
+        background: "#131C4C 0% 0% no-repeat padding-box",
+        opacity: "1",
+        height:"60px",
+        padding: "10px",
+        display: "flex"
+    },
+    whiteSecDesc:{
+        opacity: "1",
+        height:"auto",
+        padding: "10px",
+        display: "flex"
+    },
+    radio: {
+        '&$checked': {
+            color: '#131C4C !important'
         }
     },
-    httab:{
-        padding:"10px",
-        "@media (max-width: 600px)": {
-            marginRight:"10px"
+    checked: {},
+    radioLabel: {
+        marginRight: '40px !important',
+        '& .MuiFormControlLabel-label': {
+            fontSize: '18px',
+            color: '#131C4C',
+            fontWeight: 600,
+            fontFamily: 'Montserrat !important',
+        }
+    },
+  
+    whiteSec:{
+        color:"#FFFF",
+        fontSize:"18px",
+       
+    },
+    colon:{
+        marginTop: "5px"
+    },
+    sec1:{
+        marginTop:"30px",
+        display:"flex"
+    },
+    stamped:{
+        color:"#131C4C",
+        fontSize: '19px',
+        fontWeight: 600,
+    },
+    thanked:{
+        color:"#131C4C",
+        fontSize: '14px',
+        fontWeight: 600,
+    },
+    datePicker: {
+        '& .MuiOutlinedInput-input': {
+            marginRight: '53px'
+        },
+        '& .MuiInputAdornment-positionEnd': {
+            height: '100%',
+            maxHeight: '100%',
+            background: '#131C4C',
+            position: 'absolute',
+            right: 0,
+            borderTopRightRadius: '31px',
+            width: '59px',
+            borderBottomRightRadius: '31px',
+            marginLeft: '53px',
+            color: '#fff',
+            '& img': {
+                display: 'block',
+                margin: '0 18.5px'
+            }
+        }
+    },
+    filterText: {
+        fontSize: '16px',
+        color: '#131C4C',
+        fontWeight: 300,
+        padding: '0px 17px 0px 5px'
+    },
+    calender: {
+        padding: '20px',
+        borderRadius: '16px',
+        '& .react-datepicker__navigation--previous': {
+            left: '20px',
+            top: '20px',
+        },
+        '& .react-datepicker__navigation--next': {
+            right: '20px',
+            top: '20px',
+        },
+        '& .react-datepicker__month-container': {
+            '& .react-datepicker__header': {
+                background: '#fff',
+                '& .react-datepicker__current-month': {
+                    paddingBottom: '10px',
+                }
+            },
+            '& .react-datepicker__day--keyboard-selected': {
+                backgroundColor: '#EBE3CA',
+                color: '#000'
+            },
+            '& .react-datepicker__day--in-selecting-range': {
+                backgroundColor: '#EBE3CA',
+            },
+            '& .react-datepicker__day--in-range': {
+                backgroundColor: '#EBE3CA',
+                color: '#000'
+            }
+        }
+
+    },
+    filterContainer: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        '& .react-datepicker-wrapper': {
+            width: 'fit-content'
+        },
+        '& .MuiInputBase-root': {
+            padding: '0px 20px',
+            background: 'transparent',
+            borderRadius: '31px',
+            border: '1px solid #A9ABB7',
+            fontFamily: 'Montserrat !important',
+            fontSize: '13px',
+            fontWeight: 300,
+            color: '#131C4C !important',
         }
     },
     btnInvoice: {
@@ -172,8 +326,7 @@ const TrackorderStyle = (theme) => ({
     },
     stepped: {
         maxWidth: "35px !important",
-        paddingTop: '12px',
-   
+        paddingTop: '12px'
     },
     newbg: {
         background: "url(./Images/banner.png)",
@@ -198,16 +351,18 @@ const TrackorderStyle = (theme) => ({
         marginTop: "10px"
     },
     stepper: {
-        display: "flex",
-        "@media (max-width: 600px)": {
-            marginTop:"100px"
-            
-            }
+        display: "flex"
     },
     stepper3: {
         display: "flex",
         padding: "30px 0px",
         borderBottom: "solid 1px #131C4C"
+    },
+    stepperFoot: {
+        display: "flex",
+        padding: "30px 0px",
+        borderBottom: "solid 1px #131C4C",
+        justifyContent:"center"
     },
     dpick: {
         paddingLeft: "10px",
@@ -224,10 +379,17 @@ const TrackorderStyle = (theme) => ({
         fontFamily: 'Montserrat',
         color: '#131C4C',
         display: "flex",
+//   flexWrap: "wrap",
+        wordBreak: 'break-all',
+        whiteSpace: 'nowrap',
         "@media (max-width: 600px)": {
-          marginBottom:"40px"
-        
-        }
+            fontSize: '14px',
+            fontWeight: 300,
+            display: "flex",
+            flexWrap: "wrap",
+            wordBreak: 'break-all',
+        whiteSpace: 'nowrap',
+                }
     },
     modify: {
         height: "62px !important",
@@ -256,34 +418,55 @@ const TrackorderStyle = (theme) => ({
         fontWeight: 300,
         fontFamily: 'Montserrat',
         color: '#131C4C',
-        display: "flex"
+        display: "flex",
+        flexWrap: "wrap",
+        wordBreak: 'break-all',
+        whiteSpace: 'nowrap',
+        "@media (max-width: 600px)": {
+            fontSize: '14px',
+            fontWeight: 300,
+            display: "flex",
+            flexWrap: "wrap",
+            textOverflow: "ellipsis",
+                }
     },
     ddpick: {
-        height: "185px ",
-        marginBottom:"100px",
-        "@media (max-width: 600px)": {
-            marginBottom:"100px"
         
-        }
+        marginLeft: "15%",
+        "@media (max-width: 1400px)": {
+            marginLeft: "30px",
+        
+        },
     },
     stepper1: {
         display: "flex",
         borderBottom: "solid 1px #9A9EB2",
-        padding: '30px 0',
+        padding: '50px 0',
+       
     },
     courierContactContainer: {
         display: 'flex',
         alignItems: 'center'
     },
+    courierContactContainer1: {
+        display: 'flex',
+        alignItems: 'center',
+        paddingBottom:'10px'
+    },
     courierContact: {
-        marginLeft: '10px'
+        marginLeft: '10px',
+      
     },
     courierName: {
         fontSize: '16px',
         fontWeight: 600,
         fontFamily: 'Montserrat',
         color: '#131C4C',
-        lineHeight: '25px'
+        lineHeight: '25px',
+        "@media (max-width: 600px)": {
+            fontSize: '12px',
+            fontWeight: 600,
+                }
     },
     courierNumber: {
         fontSize: '16px',
@@ -308,16 +491,24 @@ const TrackorderStyle = (theme) => ({
     },
     courierDetails: {
         display: "flex",
-        paddingBottom: "30px ",
+        paddingBottom: "30px !important",
         borderBottom: "solid 1px #9A9EB2",
         "@media (max-width: 600px)": {
-     
-        
-        }
+            display: "inline",
+           
+                }
+    },
+    docdesc:{
+        marginTop:"1px",
+        "@media (max-width: 600px)": {
+            marginTop:"20px"
+           
+                }
     },
     detailsContainer: {
         padding: '30px 0',
-        borderBottom: "solid 1px #9A9EB2"
+        borderBottom: "solid 1px #9A9EB2",
+        
     },
     detailsItem: {
         fontSize: '16px',
@@ -328,6 +519,7 @@ const TrackorderStyle = (theme) => ({
             color: '#131C4C'
         }
     },
+
     courierInfo: {
         fontSize: '24px',
         fontWeight: 600,

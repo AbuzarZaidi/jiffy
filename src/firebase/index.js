@@ -2,14 +2,14 @@ import { initializeApp } from 'firebase/app';
 import firebase from '../firebase'
 import "firebase/firestore"
 const firebaseConfig = {
-    apiKey: "AIzaSyD1lQJtp4gTlOYWAfvCuBZH6nZ45f0FBKk",
-    authDomain: "jiffy-e579d.firebaseapp.com",
-    projectId: "jiffy-e579d",
-    storageBucket: "jiffy-e579d.appspot.com",
-    messagingSenderId: "736043927471",
-    appId: "1:736043927471:web:463a4e99625f6f593c515a",
-    measurementId: "G-S2ZKMM1N69"
-  };
+  apiKey: "AIzaSyApfVOAcPyKnWgMlDCQlrlJvDLro2LW4Xo",
+  authDomain: "jiffy-7c780.firebaseapp.com",
+  projectId: "jiffy-7c780",
+  storageBucket: "jiffy-7c780.appspot.com",
+  messagingSenderId: "858697568951",
+  appId: "1:858697568951:web:c314027e738f1df16db332",
+  measurementId: "G-ZMK5HQEQFN"
+};
   const app = initializeApp(firebaseConfig);
 //const db = getFirestore(app);
 //const col = collection(db, 'location');

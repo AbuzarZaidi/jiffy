@@ -1,58 +1,61 @@
-import React, { useEffect, forwardRef } from "react";
-import { withStyles } from "@material-ui/core/styles";
-import { Container, Grid } from "@mui/material";
-import BasicNavbar from '../../Homepage/BasicNavbar'
-import { styled } from "@mui/system";
+import React, { useEffect, forwardRef } from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import { Container, Grid } from '@mui/material';
+import Allservices from '../Allservices';
+import BottomNav from '../../BottomNav'
+import { styled } from '@mui/system';
+import DashboardStyle from './DashboardStyle';
 
-import DashboardStyle from "./DashboardStyle";
-import Box from "@mui/material/Box";
-import { useParams } from "react-router-dom";
-import { initializeApp } from "firebase/app";
-import { getFirestore, onSnapshot, collection } from "@firebase/firestore";
-import { useNavigate } from "react-router-dom";
-import Footer from "../../Homepage/Footer";
-import { Typography } from "@material-ui/core";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardContent from "@mui/material/CardContent";
-import Avatar from "@mui/material/Avatar";
-import DatePicker from "react-datepicker";
-import { InputAdornment, OutlinedInput } from "@mui/material";
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
+import { useParams } from 'react-router-dom';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, onSnapshot, collection } from '@firebase/firestore';
+import { useNavigate } from 'react-router-dom';
+import Footer from '../../Homepage/Footer';
+import { Typography } from '@material-ui/core';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
+import Avatar from '@mui/material/Avatar';
+import DatePicker from 'react-datepicker';
+import { InputAdornment, OutlinedInput } from '@mui/material';
 
 // Icons.
-import IconButton from "@mui/material/IconButton";
-import ShowChartIcon from "@mui/icons-material/ShowChart";
-import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
-import PieChartIcon from "@mui/icons-material/PieChart";
-import TaskAltIcon from "@mui/icons-material/TaskAlt";
-import CancelIcon from "@mui/icons-material/Cancel";
-import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import StarOutlineIcon from "@mui/icons-material/StarOutline";
-import FilterListIcon from "@mui/icons-material/FilterList";
+import IconButton from '@mui/material/IconButton';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+import PieChartIcon from '@mui/icons-material/PieChart';
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import CancelIcon from '@mui/icons-material/Cancel';
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import FilterListIcon from '@mui/icons-material/FilterList';
 
 // Api.
-import { getDashboardDetails } from "../../../api/apiManagement";
+import { getDashboardDetails } from '../../../api/apiManagement';
+import Completedorders from '../Allorders/Completedorders';
+import BasicNavbar from '../../BasicNavbar';
 
 const blue = {
-  50: "#131C4C",
-  100: "#C2E0FF",
-  200: "#FFFFFF",
-  300: "#66B2FF",
-  400: "#EBE3CA",
-  500: "#EBE3CA",
-  600: "#FFFFFF",
-  700: "#0059B2",
-  800: "#004C99",
-  900: "#003A75",
+  50: '#131C4C',
+  100: '#C2E0FF',
+  200: '#FFFFFF',
+  300: '#66B2FF',
+  400: '#EBE3CA',
+  500: '#EBE3CA',
+  600: '#FFFFFF',
+  700: '#0059B2',
+  800: '#004C99',
+  900: '#003A75',
 };
 const CardBox = styled(Card)(({ theme }) => ({
-   borderRadius: 4, boxShadow: "none",color:"#000000",
-  [theme.breakpoints.down("lg")]: {
-    borderRadius: 4, boxShadow: "none",color:"#131C4C"
-  },
+  borderRadius: 4, boxShadow: "none",color:"#000000",
+ [theme.breakpoints.down("lg")]: {
+   borderRadius: 4, boxShadow: "none",color:"#131C4C"
+ },
 }));
-
 const StaticTitles = {
   todaysOrder: (
     <>
@@ -68,42 +71,42 @@ const StaticTitles = {
   ),
   TotalOrderCompleted: (
     <>
-      {" "}
+      {' '}
       Total Orders
       <br /> Completed
     </>
   ),
   TotalOrderCancelled: (
     <>
-      {" "}
+      {' '}
       Total Orders
       <br /> Cancelled
     </>
   ),
   TotalItemsDelivered: (
     <>
-      {" "}
+      {' '}
       Total Items
       <br /> Delivered So far
     </>
   ),
   avgTimeSpend: (
     <>
-      {" "}
+      {' '}
       Average Time
       <br /> Covered
     </>
   ),
   avgDistCovered: (
     <>
-      {" "}
+      {' '}
       Average Distance
       <br /> Covered
     </>
   ),
   avgServiceRating: (
     <>
-      {" "}
+      {' '}
       Average Service
       <br /> Rating
     </>
@@ -111,41 +114,32 @@ const StaticTitles = {
 };
 
 const StatisticsCard = ({ icon, title, count, date }) => (
-  <CardBox >
+  <Card sx={{ borderRadius: 4, boxShadow: 'none' }} children={<Completedorders></Completedorders>}>
     <CardHeader
       sx={{ paddingBottom: 0 }}
       avatar={
-        <Avatar sx={{ bgcolor: "#f4c430" }} variant="rounded">
-          {icon ?? "R"}
+        <Avatar sx={{ bgcolor: '#f4c430' }} variant='rounded'>
+          {icon ?? 'R'}
         </Avatar>
       }
       action={
-        <IconButton aria-label="settings">
-          <ShowChartIcon sx={{ color: blue[900] }} fontSize="large" />
+        <IconButton aria-label='settings'>
+          <ShowChartIcon sx={{ color: blue[900] }} fontSize='large' />
         </IconButton>
       }
     />
     <CardContent sx={{ paddingTop: 1 }}>
-      <Typography
-        style={{ fontWeight: 100, fontSize: "1.2rem", color: "#686868" }}
-      >
-        {title ?? ""}
-      </Typography>
-      <Typography style={{ fontWeight: 800, fontSize: "2.2rem" }}>
-        {count ?? 0}
-      </Typography>
+      <Typography style={{ fontWeight: 100, fontSize: '1.2rem', color: '#686868' }}>{title ?? ''}</Typography>
+      <Typography style={{ fontWeight: 800, fontSize: '2.2rem' }}>{count ?? 0}</Typography>
       <Hr></Hr>
-      <Typography
-        style={{ fontWeight: 100, fontSize: ".792rem", color: "#686868" }}
-        mt={4}
-      >
-        {date ?? "Starting at 1st Jan 2022"}
+      <Typography style={{ fontWeight: 100, fontSize: '.792rem', color: '#686868' }} mt={4}>
+        {date ?? 'Starting at 1st Jan 2022'}
       </Typography>
     </CardContent>
-  </CardBox>
+  </Card>
 );
 
-const Hr = styled("hr")`
+const Hr = styled('hr')`
   border: 0;
   min-height: 0.5px;
   background-color: #686868;
@@ -154,50 +148,38 @@ const Hr = styled("hr")`
 `;
 
 const green = {
-  500: "#000000",
+  500: '#000000',
 };
 
 const grey = {
-  300: "#f2f2f2",
-  400: "#BFC7CF",
-  500: "#AAB4BE",
-  600: "#6F7E8C",
+  300: '#f2f2f2',
+  400: '#BFC7CF',
+  500: '#AAB4BE',
+  600: '#6F7E8C',
 };
 
 const DateRangeCustomInput = forwardRef(({ value, onClick, classes }, ref) => (
   <OutlinedInput
-    id="outlined-adornment-password"
+    id='outlined-adornment-password'
     onClick={onClick}
     ref={ref}
     value={value}
     className={classes.datePicker}
     startAdornment={
-      <InputAdornment position="start">
-        <img
-          src="./Images/calendar-alt.png"
-          width={17}
-          height={19}
-          alt="calender"
-        />
+      <InputAdornment position='start'>
+        <img src='./Images/calendar-alt.png' width={17} height={19} alt='calender' />
       </InputAdornment>
     }
     endAdornment={
-    
-      <InputAdornment position="end">
-        <img
-          src="./Images/download.png"
-          width={18}
-          height={18}
-          alt="download"
-        />
+      <InputAdornment position='end'>
+        <img src='./Images/download.png' width={18} height={18} alt='download' />
       </InputAdornment>
     }
-
-    placeholder="Date From - Date To"
+    placeholder='Date From - Date To'
   />
-  
 ));
-const Trackorder = (props) => {
+const Trackorder = props => {
+  const [value, setValue] = React.useState(0);
   const navigate = useNavigate();
   const { id } = useParams();
   const [data, setData] = React.useState(null);
@@ -205,13 +187,13 @@ const Trackorder = (props) => {
   const [endDate, setEndDate] = React.useState(null);
 
   const firebaseConfig = {
-    apiKey: "AIzaSyD1lQJtp4gTlOYWAfvCuBZH6nZ45f0FBKk",
-    authDomain: "jiffy-e579d.firebaseapp.com",
-    projectId: "jiffy-e579d",
-    storageBucket: "jiffy-e579d.appspot.com",
-    messagingSenderId: "736043927471",
-    appId: "1:736043927471:web:463a4e99625f6f593c515a",
-    measurementId: "G-S2ZKMM1N69",
+    apiKey: "AIzaSyApfVOAcPyKnWgMlDCQlrlJvDLro2LW4Xo",
+    authDomain: "jiffy-7c780.firebaseapp.com",
+    projectId: "jiffy-7c780",
+    storageBucket: "jiffy-7c780.appspot.com",
+    messagingSenderId: "858697568951",
+    appId: "1:858697568951:web:c314027e738f1df16db332",
+    measurementId: "G-ZMK5HQEQFN"
   };
   const app = initializeApp(firebaseConfig);
   //const db = app.firestore();
@@ -222,7 +204,7 @@ const Trackorder = (props) => {
 
   const { classes } = props;
 
-  const onChangeDate = (dates) => {
+  const onChangeDate = dates => {
     try {
       const [start, end] = dates;
       setStartDate(start);
@@ -235,9 +217,10 @@ const Trackorder = (props) => {
   // Get dashboard data.
   const getDashboardData = async () => {
     try {
-      const USER_ID = "62e10e1173af1824dc156ffe";
+
+      const USER_ID = localStorage.getItem("userId").toString();
       let response = await getDashboardDetails(USER_ID);
-      if (response && response.data.status === "success") {
+      if (response && response.data.status === 'success') {
         setData(response.data.data);
       } else {
         setData(null);
@@ -247,6 +230,12 @@ const Trackorder = (props) => {
     }
   };
 
+const gotoTrack = () => {
+
+  return()=>{
+    <Completedorders></Completedorders>
+  }
+}
   const ColoredLine = ({ color }) => (
     <hr
       style={{
@@ -265,8 +254,7 @@ const Trackorder = (props) => {
 
   return (
     <>
-    <BasicNavbar/>
-      {/* <Allservices></Allservices> */}
+      <BasicNavbar/>
       <Grid container className={classes.section_start}  >
         <Grid container className={classes.newbg}>
           <Grid container className={classes.dashedWidth}>
@@ -365,6 +353,7 @@ const Trackorder = (props) => {
           </div>
         </Grid>
       </Grid>
+      <BottomNav/>
     </>
   );
 };

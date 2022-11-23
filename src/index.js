@@ -7,7 +7,7 @@ import configureStore from "./StoreConfig";
 import reportWebVitals from './reportWebVitals';
 import Root from "./Components/Root.jsx";
 import "react-datepicker/dist/react-datepicker.css";
-
+import registerServiceWorker from 'react-service-worker';
 const store = configureStore();
 
 ReactDOM.render(

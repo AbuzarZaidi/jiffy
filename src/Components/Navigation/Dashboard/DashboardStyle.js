@@ -2,6 +2,7 @@ const TrackorderStyle = theme => ({
   section_start: {
     // minWidth:"600px",
     // width:"100%"
+    
   },
   heading: {
     fontWeight: '700',
@@ -28,7 +29,7 @@ color:"#131C4C"
     color: 'rgb(133, 133, 133)',
   },
   dashedWidth:{
-    paddingLeft:"6em",
+      paddingLeft:"6em",
         "@media (max-width: 600px)": {
           paddingLeft:"1px"
     }
@@ -83,14 +84,14 @@ color:"#131C4C"
   },
   send_header: {
     marginTop: '18px',
-    marginLeft:"20px",
+    // marginLeft:"10px",
  
   },
 
   ht: {
     maxWidth: '1280px',
 
-    // margin: 'auto',
+    margin: 'auto',
     // paddingLeft: "20px",
     paddingTop: '27px',
     marginBottom: '10px',

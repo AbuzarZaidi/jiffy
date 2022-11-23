@@ -11,10 +11,11 @@ import { withStyles } from "@material-ui/core/styles";
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
+import { getBaseURL } from '../../../../api/apiManagement';
 import Pdf from "react-to-pdf";
 const DeliveryNote = (props) => {
     const {id} = useParams();
-    const url = "https://apis.jiffy.ae/vendor/api/v1/parcel"
+    const url = getBaseURL() + "/vendor/api/v1/parcel"
     const { classes } = props;
     const [data, setData] = React.useState();
     const [datanew, setDataNew] = React.useState();
