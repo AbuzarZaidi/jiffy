@@ -18,6 +18,7 @@ import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import { Link, useNavigate } from 'react-router-dom';
 import SendIcon from '@mui/icons-material/Send';
 import Allservices from './Allservices';
+import AllservicesModify from '../Navigation/ModifyPage.jsx/AllservicesModify';
 import Services from '../Homepage/Services';
 import Flow from '../Homepage/Flow';
 import Purpose from '../Homepage/Purpose';
@@ -72,6 +73,7 @@ const ServiceOptions =(props) => {
   return (<>
   {/* <BasicNavbar/> */}
   <Allservices/>
+  {/* <AllservicesModify/> */}
   {/* <Grid container> 
 
 

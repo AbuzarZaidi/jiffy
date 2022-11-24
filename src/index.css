@@ -830,14 +830,26 @@ width: 105px;
     font-weight: 500;
     color: #482ff7;
 }
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: 1300px) {
+    .nav-item-last{
+        margin-left: 0px;
+        display: none;
+    }
+    .nav-item {
+        margin-left: 1.7rem;
+        display: flex;
+    }
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 900px) {
+    .nav-item-last{
+        margin-left: 0px;
+        display: none;
+    }
     .nav-menu {
         
         position: fixed;
-        left: -100%;
+        left: -150%;
         top: 5rem;
         flex-direction: column;
         background-color: #fff;

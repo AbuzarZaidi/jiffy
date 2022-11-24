@@ -6,6 +6,7 @@ import AuthenticationStyle from "../../Styles/AuthenticationStyle";
 import { withStyles } from "@material-ui/core/styles";
 import { Grid } from '@mui/material';
 import AllServices from '../Navigation/Allservices'
+import AllservicesModify from '../Navigation/ModifyPage.jsx/AllservicesModify';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
@@ -119,7 +120,9 @@ const Authentication = (props) => {
   return (
     <>
     {/* <BasicNavbar/> */}
+    {/* <AllservicesModify/> */}
     <AllServices/>
+    
     <Grid item xs={12} lg={12} md={12}>
       <div className={classes.root}>
         <div>

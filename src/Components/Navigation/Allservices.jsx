@@ -3,7 +3,12 @@ import { Navbar, Container, Offcanvas, Nav, Dropdown, NavDropdown } from "react-
 import AuthenticationStyle from "../../Styles/AuthenticationStyle";
 import { withStyles } from "@material-ui/core/styles";
 import Box from "@mui/material/Box";
+import Grow from '@mui/material/Grow';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
 import Typography from "@mui/material/Typography";
+import MenuList from '@mui/material/MenuList';
 import Tooltip from "@mui/material/Tooltip";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import IconButton from "@mui/material/IconButton";
@@ -23,7 +28,10 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const Allservices = (props) => {
   const { classes } = props;
   const user = localStorage.getItem("name")
+  const anchorRef = React.useRef(null);
   const navigate = useNavigate();
+  const [anchorEl3, setAnchorEl3] = React.useState(null);
+  const open3 = Boolean(anchorEl3);
   const { pathname }  = useLocation()
   console.log("🚀 ~ file: Allservices.jsx ~ line 21 ~ Allservices ~ pathname", pathname)
   const [open, setOpen] = React.useState(false);
@@ -73,6 +81,12 @@ const Allservices = (props) => {
   function gotoAcc(){
     navigate('/accompainment')
   }
+  const handleClick = (event) => {
+    setAnchorEl3(event.currentTarget);
+  };
+  const handleClose3 = () => {
+    setAnchorEl3(null);
+  };
   const listElement = useRef(null);
   const navElement = useRef(null);
 const changePass = () => {
@@ -81,7 +95,9 @@ const changePass = () => {
 const profile = () => {
   navigate('/profile')
 }
-
+const handleToggle = () => {
+  setOpen((prevOpen) => !prevOpen);
+};
   const onKeyUp = () => {
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".nav-menu");
@@ -123,6 +139,25 @@ const profile = () => {
       // dispatch(setLogout())
       navigate('/')
     }
+    const handleCloseMenu=()=>{
+      setOpen(false)
+      anchorRef(null)
+    }
+      const handleClose = (event) => {
+        if (anchorRef.current && anchorRef.current.contains(event.target)) {
+          return;
+        }
+    
+        setOpen(false);
+      };
+      function handleListKeyDown(event) {
+        if (event.key === 'Tab') {
+          event.preventDefault();
+          setOpen(false);
+        } else if (event.key === 'Escape') {
+          setOpen(false);
+        }
+      }
   return (
     <>
       <div className={classes.root}>
@@ -206,9 +241,111 @@ const profile = () => {
               <a href="" class="nav-logo">
                 <img src='./Images/icon.png' className='logo'></img>
               </a>
+             
               <div className={classes.ht}>
+              {pathname==="/"&& <Box   sx={{
+              flexGrow: 1,
+              display: {
+                xs: "none",
+                md: "flex",
+                // justifyContent: "center",
+                // marginRight:"165px",
+                height:"70px"
+              },
+            }}>
+{pathname==="/"&&<>  <Button
+              // onClick={handleCloseNavMenu}
+              onClick={handleToggle}
+              ref={anchorRef}
+              id="composition-button"
+              aria-controls={open ? 'composition-menu' : undefined}
+              aria-expanded={open ? 'true' : undefined}
+              aria-haspopup="true"
+              sx={{
+                my: "12px",
+                
+                display: "flex",
+                
+                textTransform:"none",
+                marginRight:"78px",
+             
+              }}
+            ><Typography sx={{color: "#000000",fontWeight:500, fontFamily:"Montserrat",fontSize:"13px",letterSpacing:"0.4px",marginTop:"2px"}}>Our Services</Typography> 
+             <img src="/images/dropdown.svg" alt="" style={{width:"8px",height:"15px",marginLeft:"3px",margingTop:"5px"}}/>
+            
+             {/* <KeyboardArrowDownIcon /> */}
+            
+            </Button>
+             <Popper
+             open={open}
+             anchorEl={anchorRef.current}
+             role={undefined}
+             placement="bottom-start"
+             transition
+             disablePortal
+           >
+             {({ TransitionProps, placement }) => (
+               <Grow
+                 {...TransitionProps}
+                 style={{
+                   transformOrigin:
+                     placement === 'bottom-start' ? 'left top' : 'left bottom',
+                 }}
+               >
+                 <Paper>
+                   <ClickAwayListener onClickAway={handleClose}>
+                     <MenuList
+                       autoFocusItem={open}
+                       id="composition-menu"
+                       aria-labelledby="composition-button"
+                       onKeyDown={handleListKeyDown}
+                     >
+                      <a href="#comps" onClick={handleCloseMenu}> <MenuItem sx={{color:"#AEB2C6",fontFamily:"Montserrat",}} >Send Package</MenuItem> </a>
+                      <a href="#comps" onClick={handleCloseMenu}>  <MenuItem sx={{color:"#AEB2C6",fontFamily:"Montserrat",}} >Collect Package</MenuItem> </a>
+                      <a href="#comps" onClick={handleCloseMenu}> <MenuItem sx={{color:"#AEB2C6",fontFamily:"Montserrat",}} >Document Attestation</MenuItem></a>
+                      <a href="#comps" onClick={handleCloseMenu}>  <MenuItem sx={{color:"#B2B6C8",fontFamily:"Montserrat",}} >Accompaniment</MenuItem></a>
+                     </MenuList>
+                   </ClickAwayListener>
+                 </Paper>
+               </Grow>
+             )}
+           </Popper></>}
+           {pathname==="/"&& <Button
+              onClick={()=>{handleCloseNavMenu()}}
+              sx={{
+                my: "12px",
+                color: "#000000",
+                display: "block",
+                // fontWeight: "small",
+                textTransform:"none",
+                marginRight:"180px",
+                fontFamily:"Montserrat",
+              }}
+            >
+           
+           <a href="#co"><Typography sx={{ color: "#000000", fontWeight:500, fontFamily:"Montserrat",fontSize:"13px",letterSpacing:"0.4px",marginTop:"3px"}}>Support</Typography>  </a> 
+              
+            </Button>}
+{pathname==="/"&& <Button
+              onClick={()=>{handleCloseNavMenu();}}
+              sx={{
+                my: "10px",
+                color: "#000000",
+                display: "flex",
+                // fontWeight: "small",
+                textTransform:"none",
+               
+              }}
+              href="/"
+            >
+               <PermIdentityIcon />
+               <Typography sx={{ marginLeft:"17px",fontWeight:500, fontFamily:"Montserrat",fontSize:"13px",letterSpacing:"0.4px",marginTop:"2px"}}>Login</Typography>
+              
+            </Button>}
+</Box>}
               <ul class="nav-menu">
-              <li class="nav-item">
+              
+              {pathname!=="/"&&  <li class="nav-item">
                  <Grid
                         container
                         direction="column"
@@ -236,8 +373,9 @@ const profile = () => {
                           )}
                       </Grid>
                       </Grid>
-                      </li>
-                <li class="nav-item">
+                      </li>}
+                    
+                      {pathname !== "/" && <li class="nav-item">
                   <PopupState variant="popover" popupId="demo-popup-menu">
                     {(popupState) => (
                       <React.Fragment>
@@ -277,9 +415,9 @@ const profile = () => {
                       </React.Fragment>
                     )}
                   </PopupState>
-                </li>
-                 <li class="nav-item">
-                {pathname !== "/" &&<Grid
+                </li>}
+                {pathname !== "/" &&<li class="nav-item">
+                <Grid
                         container
                         direction="column"
                         justifyContent="center"
@@ -305,8 +443,9 @@ const profile = () => {
                               />
                           )}
                       </Grid>
-                      </Grid>}
-                      </li>
+                      </Grid>
+                      </li>}
+                     
                {/*} <li class="nav-item">
                 <Button  className={classes.newbtn} >
                   Pricing
@@ -389,12 +528,12 @@ const profile = () => {
                   </Button>
                 </li>*/}
                 <li class="nav-item">
-                <img className='notification-icon2' src='./Images/user.svg'></img>
+                {pathname !== "/" && <img className='notification-icon2' src='./Images/user.svg'></img>}
                   <PopupState variant="popover" popupId="demo-popup-menu"
                   >
                     {(popupState) => (
                       <React.Fragment>
-                            <Grid
+                          {pathname !== "/" &&  <Grid
                             
                             
                         container
@@ -402,14 +541,31 @@ const profile = () => {
                         justifyContent="center"
                         alignItems="center"
                       >
-                          <Grid item>
+                         <Grid item>
 
-                        <Button className={classes.newbtn} { ...bindTrigger(popupState)} >
+                        <Button className={classes.newbtn} { ...bindTrigger(popupState)} id="basic-button"
+        aria-controls={open3 ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open3 ? 'true' : undefined}
+        onClick={handleClick}>
                         {user}/Logout<img className={classes.ared} src='./Images/arrowed.svg'></img>
                         </Button>
+                        <Menu
+        id="basic-menu"
+        anchorEl={anchorEl3}
+        open={open3}
+        onClose={handleClose3}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <MenuItem sx={{color:"#AEB2C6",fontFamily:"Montserrat",fontSize:"14px"}} onClick={()=>{navigate("/profile")}}>Profile</MenuItem>
+        <MenuItem sx={{color:"#AEB2C6",fontFamily:"Montserrat",fontSize:"14px"}} onClick={()=>{navigate("/change/null")}}>Change/Reset password</MenuItem>
+        <MenuItem sx={{color:"#AEB2C6",fontFamily:"Montserrat",fontSize:"14px"}} onClick={()=>{navigate("/")}}>Logout</MenuItem>
+      </Menu>
                           </Grid>
                         
-                        </Grid>
+                        </Grid>}
                         {/* <Menu {...bindMenu(popupState)}   
                               
                             
@@ -656,9 +812,9 @@ const profile = () => {
               ))}
             </Menu>
           </Box> */}
-          <Box sx={{display: { xs: "flex", md: "none", lg: "none" }}}>
-            <PermIdentityIcon sx={{display: { xs: "flex", md: "none", lg: "none" }}}/>
-            <NotificationsNoneIcon  />
+          <Box  class={classes.navicon}>
+            <PermIdentityIcon />
+            <NotificationsNoneIcon />
             
              
             </Box>

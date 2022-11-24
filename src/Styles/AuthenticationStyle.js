@@ -58,6 +58,18 @@ const AuthenticationStyle = (theme) => ({
     fontWeight: "300 !important",
     lineHeight: "24px",
   },
+  navicon:{
+    display:"none",
+    marginLeft: "0px",
+    "@media (max-width: 900px)": {
+      
+      display:"flex",
+  },
+    "@media (max-width: 330px)": {
+      marginLeft: "-50px"
+  
+  }
+  },
   purpdata: {
     color: "#131C4C",
     opacity: "0.9",
