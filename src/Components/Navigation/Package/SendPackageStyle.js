@@ -553,6 +553,10 @@ const SendPackageStyle = (theme) => ({
         color: '#131C4C !important',
         height: '62px',
         fontWeight: 400,
+        "@media (max-width: 600px)": {
+            marginTop:"20px"  ,
+            marginBottom:"20px"  
+          },
         '& .MuiOutlinedInput-notchedOutline': {
             border: '1px solid #BCC0D5 !important',
         },

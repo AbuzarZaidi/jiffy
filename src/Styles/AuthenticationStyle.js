@@ -450,8 +450,13 @@ width:"90%"
     paddingBottom: "40px",
     height: "500px",
     "@media (max-width: 600px)": {
-      width: "350px",
+      width: "300px",
       height: "400px",
+      paddingLeft: "0px",
+    },
+    "@media (max-width: 350px)": {
+      width: "250px",
+      height: "350px",
       paddingLeft: "0px",
     }
   },
@@ -483,7 +488,8 @@ width:"90%"
     cursor: "pointer",
     "@media (max-width: 600px)": {
       width:"90%",
-      marginLeft:"5%"
+      marginLeft:"5%",
+      
   }
   },
   service_image: {

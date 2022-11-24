@@ -48,13 +48,12 @@ const LogoSection = styled(Box)(({ theme }) => ({
       marginTop:"-7px"
   },
 
-
   [theme.breakpoints.down("md")]: {
    
-     marginLeft: "0px",
-     marginRight: "100px"
-     // xs:{  marginRight: "100px",marginLeft:"0px"}
-  },
+    marginLeft: "0px",
+    marginRight: "100px"
+    // xs:{  marginRight: "100px",marginLeft:"0px"}
+ },
 }));
 const HomeNav= styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("xl")]: {

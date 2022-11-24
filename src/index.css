@@ -830,7 +830,10 @@ width: 105px;
     font-weight: 500;
     color: #482ff7;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1250px) {
+}
+
+@media only screen and (max-width: 850px) {
     .nav-menu {
         
         position: fixed;
@@ -857,6 +860,7 @@ width: 105px;
     .hamburger {
         display: block;
         cursor: pointer;
+        margin-left:-10px;
     }
     .hamburger.active .bar:nth-child(2) {
         opacity: 0;

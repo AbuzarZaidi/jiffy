@@ -70,7 +70,8 @@ const ServiceOptions =(props) => {
     navigate('/trackorder')
   }
   return (<>
-  <BasicNavbar/>
+  {/* <BasicNavbar/> */}
+  <Allservices/>
   {/* <Grid container> 
 
 
@@ -98,6 +99,7 @@ const ServiceOptions =(props) => {
             <img className={classes.service_bg} src='./Images/nav.png'></img>
         </Grid> */}
          <ImgGrid item xs={12} md={6} lg={6} >
+         {/* <img className='background-1' src='./Images/nav.png'></img> */}
          <img className={classes.service_bg} src='./Images/nav.png'></img>
        {/* <Image src='./Images/nav.png' alt="bg" className='background-2' style={{marginLeft: "45px"}}>
        </Image> */}

@@ -118,8 +118,8 @@ const Authentication = (props) => {
   }
   return (
     <>
-    <BasicNavbar/>
-    {/* <AllServices/> */}
+    {/* <BasicNavbar/> */}
+    <AllServices/>
     <Grid item xs={12} lg={12} md={12}>
       <div className={classes.root}>
         <div>

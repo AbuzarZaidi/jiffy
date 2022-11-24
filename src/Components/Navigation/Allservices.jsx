@@ -2,6 +2,12 @@ import React, { useRef , useState} from 'react'
 import { Navbar, Container, Offcanvas, Nav, Dropdown, NavDropdown } from "react-bootstrap";
 import AuthenticationStyle from "../../Styles/AuthenticationStyle";
 import { withStyles } from "@material-ui/core/styles";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Tooltip from "@mui/material/Tooltip";
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
+import IconButton from "@mui/material/IconButton";
+import { styled } from "@mui/material/styles";
 import { Grid } from '@mui/material';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
@@ -13,14 +19,29 @@ import ServiceOptions from './ServiceOptions';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const Allservices = (props) => {
   const { classes } = props;
   const user = localStorage.getItem("name")
   const navigate = useNavigate();
   const { pathname }  = useLocation()
   console.log("🚀 ~ file: Allservices.jsx ~ line 21 ~ Allservices ~ pathname", pathname)
-
+  const [open, setOpen] = React.useState(false);
   const [currentView, setCurrentView] = useState("home")
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+  const handleCloseUserMenu = () => {
+    setAnchorElNav(null);
+  };
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
   function logout() {
     localStorage.removeItem('userId');
     navigate('/')
@@ -74,7 +95,14 @@ const profile = () => {
     }, 500)
 
   }
-
+  const HomeNav= styled(Box)(({ theme }) => ({
+    [theme.breakpoints.down("xl")]: {
+     display:"none"
+    },
+    [theme.breakpoints.down("md")]: {
+    display:"flex"
+    },
+  }));
   React.useEffect(() => {
       if(pathname === "/allorders"){
         setCurrentView("trackOrder")
@@ -91,7 +119,10 @@ const profile = () => {
 
       return () => (window.onscroll = null);
     });
-
+    const handleLogout=()=>{
+      // dispatch(setLogout())
+      navigate('/')
+    }
   return (
     <>
       <div className={classes.root}>
@@ -167,6 +198,11 @@ const profile = () => {
           </Navbar>*/}
           <div className={classes.ht}>
             <nav className="navbar" ref={navElement}>
+            <div id="ham" className="hamburger" onClick={handleOpenNavMenu} ref={listElement}>
+                <span className="bar" ></span>
+                <span className="bar" ></span>
+                <span className="bar"></span>
+              </div>
               <a href="" class="nav-logo">
                 <img src='./Images/icon.png' className='logo'></img>
               </a>
@@ -243,7 +279,7 @@ const profile = () => {
                   </PopupState>
                 </li>
                  <li class="nav-item">
-                 <Grid
+                {pathname !== "/" &&<Grid
                         container
                         direction="column"
                         justifyContent="center"
@@ -269,7 +305,7 @@ const profile = () => {
                               />
                           )}
                       </Grid>
-                      </Grid>
+                      </Grid>}
                       </li>
                {/*} <li class="nav-item">
                 <Button  className={classes.newbtn} >
@@ -354,10 +390,13 @@ const profile = () => {
                 </li>*/}
                 <li class="nav-item">
                 <img className='notification-icon2' src='./Images/user.svg'></img>
-                  <PopupState variant="popover" popupId="demo-popup-menu">
+                  <PopupState variant="popover" popupId="demo-popup-menu"
+                  >
                     {(popupState) => (
                       <React.Fragment>
                             <Grid
+                            
+                            
                         container
                         direction="column"
                         justifyContent="center"
@@ -371,23 +410,259 @@ const profile = () => {
                           </Grid>
                         
                         </Grid>
-                        <Menu {...bindMenu(popupState)}>
+                        {/* <Menu {...bindMenu(popupState)}   
+                              
+                            
+                >
                           <MenuItem className={classes.drp} onClick={()=>profile()}>Profile</MenuItem>
                           <MenuItem className={classes.drp} onClick={()=>changePass()}>Change/Reset password</MenuItem>
                           <MenuItem className={classes.drp} onClick={()=>logout()}>Logout</MenuItem>
 
-                        </Menu>
+                        </Menu> */}
+                          <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              PaperProps={{
+                sx: {
+                  backgroundColor: "#151F4F",
+                  color: "#ffffff",
+                  boxShadow: "none",
+                  borderRadius: "none",
+                },
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                backgroundColor: "#151F4F",
+                display: { xs: "block", md: "none" },
+                width: "100%",
+                marginTop: "12%",
+              }}
+            >
+              <Link to="/">
+                <Typography
+                  variant="h5"
+                  gutterBottom
+                  sx={{ color: "white", cursor: "pointer",fontWeight:600  }}
+                >
+                 Home
+                </Typography>
+              </Link>
+              <Box
+                sx={{
+                  color: "white",
+                  borderBottom: 1,
+                  borderColor: "white",
+                  width: "350px",
+                  mt: 3,
+                  mb: 3,
+                }}
+              ></Box>
+              <Link to="/">
+                <Typography
+                  variant="h5"
+                  gutterBottom
+                  sx={{ color: "white", cursor: "pointer",fontWeight:600 }}
+                >
+                  Our Services
+                </Typography>
+              </Link>
+            
+             <>
+              <Link to="/">
+                <Typography
+                  variant="h5"
+                  gutterBottom
+                  sx={{ color: "#b3b3b3", cursor: "pointer",fontWeight:400 }}
+                >
+                  Corporate Service
+                </Typography>
+              </Link>
+              <Link to="/sendpackage">
+                <Typography
+                  variant="h5"
+                  gutterBottom
+                  sx={{ color:"#b3b3b3", cursor: "pointer",fontWeight:400 }}
+                >
+                  Send/Receive Package
+                </Typography>
+              </Link>
+              <Link to="/accompainment">
+                <Typography
+                  variant="h5"
+                  gutterBottom
+                  sx={{ color: "#b3b3b3", cursor: "pointer",fontWeight:400}}
+                >
+                 Accompaniment
+                </Typography>
+              </Link>
+              <Link to="/documentAttestation">
+                <Typography
+                  variant="h5"
+                  gutterBottom
+                  sx={{ color: "#b3b3b3", cursor: "pointer",fontWeight:400}}
+                >
+                 Document Attestation
+                </Typography>
+              </Link>
+</>
+              <Box
+                sx={{
+                  color: "white",
+                  borderBottom: 1,
+                  borderColor: "white",
+                  width: "350px",
+                  mt: 3,
+                  mb: 3,
+                }}
+              ></Box>
+                
+                <Link to="/allorders">
+                <Typography
+                  variant="h5"
+                  gutterBottom
+                  sx={{ color: "white", cursor: "pointer" ,fontWeight:600 }}
+                >
+                 Track Order
+                </Typography>
+              </Link>
+
+
+                <Link to="/">
+                <Typography
+                  variant="h5"
+                  gutterBottom
+                  sx={{ color: "white", cursor: "pointer" ,fontWeight:600 }}
+                >
+                 Support
+                </Typography>
+              </Link>
+
+              <Box
+                sx={{
+                  color: "white",
+                  borderBottom: 1,
+                  borderColor: "white",
+                  width: "350px",
+                  mt: 3,
+                  mb: 3,
+                }}
+              ></Box>
+   <><Link to="/allorders">
+                <Typography
+                  variant="h5"
+                  gutterBottom
+                  sx={{ color: "white", cursor: "pointer" ,fontWeight:600 }}
+                >
+                Notification (12)
+                </Typography>
+              </Link>
+              <Box
+                sx={{
+                  color: "white",
+                  borderBottom: 1,
+                  borderColor: "white",
+                  width: "350px",
+                  mt: 3,
+                  mb: 3,
+                }}
+              ></Box> </>
+             
+             {pathname!=="/"&&   <Link to="/">
+                <Typography
+                  variant="h5"
+                  gutterBottom
+                  sx={{ color: "white", cursor: "pointer" ,fontWeight:600 }}
+                  onClick={handleLogout}
+                >
+                Logout 
+                </Typography>
+              </Link>}
+              
+              {pathname==="/"&&  <Link to="/">
+                <Typography
+                  variant="h5"
+                  gutterBottom
+                  sx={{ color: "white", cursor: "pointer" ,fontWeight:600 }}
+                  onClick={handleLogout}
+                >
+                Login
+                </Typography>
+              </Link>}
+              <Box
+                sx={{
+                  color: "white",
+                  borderBottom: 1,
+                  borderColor: "white",
+                  width: "350px",
+                  mt: 3,
+                  mb: 3,
+                }}
+              ></Box>
+              {/* <MenuItem  onClick={handleCloseNavMenu} sx={{bgcolor:"#151F4F",color:"#ffffff"}}>
+                  <Typography textAlign="center">Our Services</Typography>
+                </MenuItem>
+                <MenuItem  onClick={handleCloseNavMenu} sx={{bgcolor:"#151F4F",color:"#ffffff"}}>
+                  <Typography textAlign="center">Support</Typography>
+                </MenuItem>
+                <MenuItem  onClick={handleCloseNavMenu} sx={{bgcolor:"#151F4F",color:"#ffffff"}}>
+                  <Typography textAlign="center">Login</Typography>
+                </MenuItem> */}
+            </Menu>
                       </React.Fragment>
                     )}
                   </PopupState>
                 </li>
               </ul>
               </div>
-              <div id="ham" className="hamburger" onClick={onKeyUp} ref={listElement}>
-                <span className="bar" ></span>
-                <span className="bar" ></span>
-                <span className="bar"></span>
-              </div>
+              {/* <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton
+                // onClick={handleOpenUserMenu}
+                sx={{ p: 0, display: { xs: "flex", md: "none", lg: "none" } }}
+              >
+                <PermIdentityIcon />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              // open={Boolean(anchorElUser)}
+              // onClose={handleCloseUserMenu}
+            >
+              {settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box> */}
+          <Box sx={{display: { xs: "flex", md: "none", lg: "none" }}}>
+            <PermIdentityIcon sx={{display: { xs: "flex", md: "none", lg: "none" }}}/>
+            <NotificationsNoneIcon  />
+            
+             
+            </Box>
+          
             </nav>
           </div>
           {/*} <Grid container>
