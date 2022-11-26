@@ -145,7 +145,7 @@ const AllDeliveryNote = (props) => {
       };
     //console.log(data)
     return (<>
-      <Grid container justifyContent="space-between" alignItems="center">
+      <Grid container justifyContent="space-between" alignItems="center" sx={{marginTop:"20px"}}>
             <Grid item xs={12} md={6} lg={6}>
                 <FormControl>
                     <RadioGroup

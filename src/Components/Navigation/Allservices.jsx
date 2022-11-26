@@ -268,12 +268,14 @@ const handleToggle = () => {
                 display: "flex",
                 
                 textTransform:"none",
-                marginRight:"78px",
+                marginRight:"80px",
              
               }}
-            ><Typography sx={{color: "#000000",fontWeight:500, fontFamily:"Montserrat",fontSize:"13px",letterSpacing:"0.4px",marginTop:"2px"}}>Our Services</Typography> 
-             <img src="/images/dropdown.svg" alt="" style={{width:"8px",height:"15px",marginLeft:"3px",margingTop:"5px"}}/>
-            
+            >
+              <Typography sx={{color: "#000000",fontWeight:500, fontFamily:"Montserrat",fontSize:"13px",letterSpacing:"0.4px",marginTop:"2px"}}>Our Services</Typography> 
+             {/* <img src="/images/dropdown.svg" alt="" style={{width:"8px",height:"15px",marginLeft:"3px",margingTop:"5px"}}/> */}
+            <img className={classes.ared} src='./Images/arrowed.svg'></img>
+                       
              {/* <KeyboardArrowDownIcon /> */}
             
             </Button>

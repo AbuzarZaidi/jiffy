@@ -12,6 +12,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import { Link, useNavigate,useParams } from 'react-router-dom';
 import SendIcon from '@mui/icons-material/Send';
+// import Allservices from './Allservices';
 import Allservices from './Allservices';
 import BasicNavbar from '../BasicNavbar'
 import Services from '../Homepage/Services';
@@ -66,7 +67,8 @@ console.log("yyy",id)
   }
   return (<>
     {/* <BasicNavbar/> */}
-    <Allservices></Allservices>
+    {/* <Allservices></Allservices> */}
+    <Allservices/>
     <Grid container className={classes.coperate_start3}>
     <Grid container className={classes.ht}  >
         <Grid item xs={6} md={6} lg={6} className={classes.allm}>

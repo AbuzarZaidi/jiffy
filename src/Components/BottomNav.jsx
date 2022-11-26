@@ -14,10 +14,9 @@ const BottomNav = () => {
         setValue(newValue);
       }}
     >
-  <BottomNavigationAction label="Services" icon={<Link to="/services"><img src="/images/documents.svg"/></Link>} />
-     <BottomNavigationAction label="Track Order" icon={<Link to="/allorders"><img src="/images/file-search-alt.svg"/></Link>} />
- {/* <BottomNavigationAction label="Pricing" icon={<img src="/images/money.svg"/>} />
-      <BottomNavigationAction label="Support" icon={<img src="/images/robot.svg"/>} />  */}
+  <BottomNavigationAction label="Services" icon={<Link to="/services"><img src="./images/documents.svg"/></Link>} />
+     <BottomNavigationAction label="Track Order" icon={<Link to="/allorders"><img src="./images/file-search-alt.svg"/></Link>} />
+ 
     </BottomNavigation>
   </Paper>
   )
