@@ -146,7 +146,7 @@ const AllDeliveryNote = (props) => {
     //console.log(data)
     return (<>
       <Grid container justifyContent="space-between" alignItems="center">
-            <Grid item xs={6} md={6} lg={6}>
+            <Grid item xs={12} md={6} lg={6}>
                 <FormControl>
                     <RadioGroup
                         row
@@ -163,7 +163,7 @@ const AllDeliveryNote = (props) => {
                     </RadioGroup>
                 </FormControl>
             </Grid>
-            <Grid item xs={6} md={6} lg={6} className={classes.filterContainer} textAlign="right">
+            <Grid item xs={12} md={6} lg={6} className={classes.filterContainer} textAlign="right">
                 <FilterListIcon />
                 <p className={classes.filterText}>Filter by date</p>
                 <DatePicker

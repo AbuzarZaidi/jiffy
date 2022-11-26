@@ -254,7 +254,8 @@ const gotoTrack = () => {
 
   return (
     <>
-      <BasicNavbar/>
+    <Allservices/>
+      {/* <BasicNavbar/> */}
       <Grid container className={classes.section_start}  >
         <Grid container className={classes.newbg}>
           <Grid container className={classes.dashedWidth}>

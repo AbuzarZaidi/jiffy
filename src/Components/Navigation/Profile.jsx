@@ -71,8 +71,8 @@ const Profile =(props) => {
     />
   );
   return (<>
-    {/* <Allservices></Allservices> */}
-    <BasicNavbar/>
+    <Allservices></Allservices>
+    {/* <BasicNavbar/> */}
     <Grid container className={classes.coperate_start2}>
     <Grid container className={classes.ht}  >
        

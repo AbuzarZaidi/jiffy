@@ -81,7 +81,11 @@ const TrackorderStyle = (theme) => ({
         maxWidth: "1280px",
         margin: "auto",
         paddingLeft: "50px",
-        paddingTop: '27px'
+        paddingTop: '27px',
+        "@media (max-width: 600px)": {
+           marginLeft:"-50px"
+        
+        },
     },
     alignContent:{
        
@@ -94,12 +98,36 @@ const TrackorderStyle = (theme) => ({
     httabs: {
         maxWidth: "1280px",
         margin: "auto",
-        marginBottom:"20px",
+        // marginLeft: "70px",
+        
+        // marginBottom:"130px",
         borderRadius:"30px",
-        marginLeft: "5%",
+        // paddingLeft: "50px",
+        // paddingTop: '27px',
          marginTop: '27px',
-         "@media (max-width: 1400px)": {
-            marginLeft: "30px",
+         "@media (max-width: 1450px)": {
+            maxWidth: "1240px",
+            // marginLeft: "30px",
+            marginBottom:"100px",
+        },
+        "@media (max-width: 1200px)": {
+            maxWidth: "1100px",
+            // marginLeft: "30px",
+        
+        },
+        "@media (max-width: 600px)": {
+            maxWidth: "680px",
+            paddingLeft: "10px",
+            marginLeft: "-10px",
+        }
+    },
+    innerhtt:{
+        borderRadius:"60px",
+    },
+    alignTrack:{
+        marginLeft: "150px",
+        "@media (max-width: 1400px)": {
+            marginLeft: "50px",
         
         },
         "@media (max-width: 600px)": {
@@ -108,7 +136,7 @@ const TrackorderStyle = (theme) => ({
         }
     },
     httab:{
-        padding:"25px",
+        padding:"25px 15px",
         "@media (max-width: 600px)": {
             marginRight:"10px"
         }
@@ -170,7 +198,10 @@ const TrackorderStyle = (theme) => ({
         opacity: "1",
         height:"44px",
         padding: "10px",
-     
+        "@media (max-width: 600px)": {
+            padding: "30px",
+        
+        }
     },
     blueSecDesc:{
         background: "#131C4C 0% 0% no-repeat padding-box",
@@ -190,7 +221,11 @@ const TrackorderStyle = (theme) => ({
         opacity: "1",
         height:"auto",
         padding: "10px",
-        display: "flex"
+        display: "flex",
+        "@media (max-width: 600px)": {
+           flexDirection:"coloumn"
+        
+        }
     },
     radio: {
         '&$checked': {
@@ -218,7 +253,11 @@ const TrackorderStyle = (theme) => ({
     },
     sec1:{
         marginTop:"30px",
-        display:"flex"
+        display:"flex",
+        "@media (max-width: 600px)": {
+            flexDirection:"column"
+        
+        }
     },
     stamped:{
         color:"#131C4C",

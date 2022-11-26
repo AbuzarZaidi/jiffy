@@ -250,7 +250,8 @@ const handleToggle = () => {
                 md: "flex",
                 // justifyContent: "center",
                 // marginRight:"165px",
-                height:"70px"
+                height:"70px",
+                marginLeft:"-165px"
               },
             }}>
 {pathname==="/"&&<>  <Button

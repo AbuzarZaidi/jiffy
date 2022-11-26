@@ -273,7 +273,7 @@ const createInvoiceCancelled = (id) =>{
   ));
   return (
     <>
-      <Grid container>
+      <Grid container sx={{marginTop:"20px"}}>
         <Grid item xs={12} md={6} lg={6}>
           <FormControl>
             <RadioGroup
@@ -926,7 +926,7 @@ const createInvoiceCancelled = (id) =>{
                     container
                     display="flex"
                     justify="flex-end"
-                    xs={10}
+                    xs={12}
                     md={10}
                     lg={10}
                     className="boldIn"
@@ -938,12 +938,13 @@ const createInvoiceCancelled = (id) =>{
                     <div className="head"> Jiffy Delivery Services Est. </div>
                   </Grid>
                   <Grid container xs={12} md={12} lg={12}>
-                    <Grid item xs={6} md={6} lg={6}>
+                    <Grid  xs={12} md={6} lg={6}>
                       <div className={classes.sec1}>
-                        <Grid xs={12} md={4} lg={4}>
+                        <Grid item xs={12} md={4} lg={4}>
                           <span className="subtitle">Street Address</span>
                         </Grid>
                         <Grid
+                        item
                           xs={12}
                           md={0.5}
                           lg={0.5}
@@ -951,7 +952,7 @@ const createInvoiceCancelled = (id) =>{
                         >
                           <span>:</span>
                         </Grid>
-                        <Grid xs={12} md={8} lg={8}>
+                        <Grid item xs={12} md={8} lg={8}>
                           {invoiceData && invoiceData.street_address ? (
                             <span className="subValue">
                               {invoiceData.street_address}
@@ -1087,7 +1088,7 @@ const createInvoiceCancelled = (id) =>{
                         </Grid>
 
                        
-                        <Grid item xs={1} md={1} lg={1}>
+                        <Grid item xs={12} md={1} lg={1}>
                           <span className={classes.whiteSec}>
                             <b>Amount</b>
                           </span>
@@ -1109,37 +1110,37 @@ const createInvoiceCancelled = (id) =>{
                                 {item && item.price ? (
                                   item.price.map((priced) => (
                                     <>
-                                    <Grid item xs={1} md={1} lg={1}>
+                                    <Grid item xs={12} md={1} lg={1}>
                                     <b className="headValue">
                                           {moment(item.date).format("DD/MM/YY")}
                                         </b>
                         </Grid>
-                        <Grid item xs={2} md={2} lg={2} sx={{textAlign:"center !important"}}>
+                        <Grid item xs={12} md={2} lg={2} sx={{textAlign:"center !important"}}>
                         <b className="headValue">
                                           {item.applicant_name}
                                         </b>
                         </Grid>
-                        <Grid item xs={2} md={2} lg={2} sx={{textAlign:"center !important"}}>
+                        <Grid item xs={12} md={2} lg={2} sx={{textAlign:"center !important"}}>
                         <b className="headValue">
                                           {item.immigo_id}
                                         </b>
                         </Grid>
-                        <Grid item xs={1.5} md={1.5} lg={1.5}>
+                        <Grid item xs={12} md={1.5} lg={1.5}>
                         <b className="headValue">
                                           {item.consultant_name}
                                         </b>
                         </Grid>
-                        <Grid item xs={2} md={2} lg={2}>
+                        <Grid item xs={12} md={2} lg={2}>
                         <b className="headValue">
                                           {item.invoice_no}
                                         </b>
                         </Grid>
-                        <Grid item xs={4} md={4} lg={4}>
+                        <Grid item xs={12} md={4} lg={4}>
                         <b className="headValue">
                                           {item.description}
                                         </b>
                         </Grid>
-                        <Grid item xs={1} md={1} lg={1} sx={{textAlign:"end !important"}}>
+                        <Grid item xs={12} md={1} lg={1} sx={{textAlign:"end !important"}}>
                         <b className="headValue">
                                           {priced.price}
                                         </b>
@@ -1174,18 +1175,18 @@ const createInvoiceCancelled = (id) =>{
                     </Grid>
                     <Grid item xs={12} md={12} lg={12}>
                       <div className={classes.whiteSecDesc}>
-                        <Grid item xs={3} md={3} lg={3}>
+                        <Grid item xs={12} md={3} lg={3}>
                           <span className="headIn">
                             <b>Total</b>
                           </span>
                         </Grid>
-                        <Grid item xs={7} md={7} lg={7}>
+                        <Grid item xs={12} md={7} lg={7}>
                           <b className="headIn">
                             ({invoiceData.total_price_words}){" "}
                           </b>
                         </Grid>
 
-                        <Grid item xs={2} md={2} lg={2}>
+                        <Grid item xs={12} md={2} lg={2}>
                           <span className="headIn">
                             <b>{invoiceData.total_price}&nbsp;</b>AED
                           </span>
@@ -1253,7 +1254,7 @@ const createInvoiceCancelled = (id) =>{
                   lg={12}
                   className={classes.stepperIn}
                 >
-                  <Grid container xs={6} md={6} lg={6}>
+                  <Grid container xs={12} md={6} lg={6}>
                     <img src="./Images/jif123.png" className="logoIn"></img>
                   </Grid>
                   <Grid
@@ -1269,32 +1270,33 @@ const createInvoiceCancelled = (id) =>{
                     container
                     display="flex"
                     justify="flex-end"
-                    xs={4}
+                    xs={12}
                     md={4}
                     lg={4}
                     className="boldIn"
                   >
                     INVOICE
                   </Grid>
-
+                  
                   <Grid container xs={12} md={12} lg={12}>
                     <div className="head"> Jiffy Delivery Services Est. </div>
                   </Grid>
-                  <Grid container xs={12} md={12} lg={12}>
-                    <Grid item xs={6} md={6} lg={6}>
+                  <Grid container xs={12} md={12} lg={12} className={classes.sec1}>
+                    {/* <Grid item xs={12} md={6} lg={6}> */}
                       <div className={classes.sec1}>
-                        <Grid xs={12} md={4} lg={4}>
-                          <span className="subtitle">Street Address</span>
+                        <Grid item xs={6} md={2} lg={2} >
+                          <span className="subtitle">Street Address:</span>
                         </Grid>
-                        <Grid
-                          xs={12}
+                        {/* <Grid
+                        item
+                          xs={6}
                           md={0.5}
                           lg={0.5}
                           className={classes.colon}
                         >
-                          <span>:</span>
-                        </Grid>
-                        <Grid xs={12} md={8} lg={8}>
+                          <span></span>
+                        </Grid> */}
+                        <Grid item xs={12} md={8} lg={8}>
                           {invoiceDataSingle && invoiceDataSingle.street_address ? (
                             <span className="subValue">
                               {invoiceDataSingle.street_address}
@@ -1304,23 +1306,23 @@ const createInvoiceCancelled = (id) =>{
                           )}
                         </Grid>
                       </div>
-                    </Grid>
+                    {/* </Grid> */}
                   </Grid>
 
                   <Grid container xs={12} md={12} lg={12}>
                     <Grid item xs={6} md={6} lg={6}>
                       <div className={classes.sec1}>
                         <Grid xs={12} md={4} lg={4}>
-                          <span className="subtitle">City, P.O. Box</span>
+                          <span className="subtitle">City, P.O. Box:</span>
                         </Grid>
-                        <Grid
+                        {/* <Grid
                           xs={12}
                           md={0.5}
                           lg={0.5}
                           className={classes.colon}
                         >
                           <span>:</span>
-                        </Grid>
+                        </Grid> */}
                         <Grid xs={12} md={8} lg={8}>
                           {invoiceDataSingle && invoiceDataSingle.city ? (
                             <span className="subValue">
@@ -1338,16 +1340,16 @@ const createInvoiceCancelled = (id) =>{
                     <Grid item xs={6} md={6} lg={6}>
                       <div className={classes.sec1}>
                         <Grid xs={12} md={4} lg={4}>
-                          <span className="subtitle">Phone</span>
+                          <span className="subtitle">Phone:</span>
                         </Grid>
-                        <Grid
+                        {/* <Grid
                           xs={12}
                           md={0.5}
                           lg={0.5}
                           className={classes.colon}
                         >
                           <span>:</span>
-                        </Grid>
+                        </Grid> */}
                         <Grid xs={12} md={8} lg={8}>
                           <span className="subValue">
                             {invoiceDataSingle.phone}
@@ -1358,7 +1360,7 @@ const createInvoiceCancelled = (id) =>{
                   </Grid>
 
                   <Grid container xs={12} md={12} lg={12}>
-                    <Grid item xs={7} md={7} lg={7}>
+                    <Grid item xs={12} md={7} lg={7}>
                       <br />
                       <br />
                       <div className={classes.blueSec}>
@@ -1371,17 +1373,10 @@ const createInvoiceCancelled = (id) =>{
                           <Grid container xs={12} md={12} lg={12}>
                             <Grid item xs={12} md={12} lg={12}>
                               <div className={classes.sec1}>
-                                <Grid xs={4} md={4} lg={4}>
-                                  <span className="subtitle">Name</span>
+                                <Grid xs={12} md={4} lg={4}>
+                                  <span className="subtitle">Name:</span>
                                 </Grid>
-                                <Grid
-                                  xs={12}
-                                  md={0.5}
-                                  lg={0.5}
-                                  className={classes.colon}
-                                >
-                                  <span>:</span>
-                                </Grid>
+                               
                                 <Grid xs={12} md={6} lg={6}>
                                   {invoiceDataSingle.bill_info &&
                                   invoiceDataSingle.bill_info.name ? (
@@ -1399,19 +1394,12 @@ const createInvoiceCancelled = (id) =>{
                           <Grid container xs={12} md={12} lg={12}>
                             <Grid item xs={12} md={12} lg={12}>
                               <div className={classes.sec1}>
-                                <Grid xs={4} md={4} lg={4}>
+                                <Grid xs={12} md={4} lg={4}>
                                   <span className="subtitle">
-                                    Company Name
+                                    Company Name:
                                   </span>
                                 </Grid>
-                                <Grid
-                                  xs={12}
-                                  md={0.5}
-                                  lg={0.5}
-                                  className={classes.colon}
-                                >
-                                  <span>:</span>
-                                </Grid>
+                                
                                 <Grid xs={12} md={6} lg={6}>
                                 <span className="subValue">
                                   {invoiceDataSingle.bill_info.company_name}
@@ -1423,20 +1411,13 @@ const createInvoiceCancelled = (id) =>{
                           <Grid container xs={12} md={12} lg={12}>
                           <Grid item xs={12} md={12} lg={12}>
                               <div className={classes.sec1}>
-                                <Grid xs={4} md={4} lg={4}>
+                                <Grid xs={12} md={4} lg={4}>
                                   <span className="subtitle">
-                                    Street Address
+                                    Street Address:
                                   </span>
                                 </Grid>
-                                <Grid
-                                  xs={12}
-                                  md={0.5}
-                                  lg={0.5}
-                                  className={classes.colon}
-                                >
-                                  <span>:</span>
-                                </Grid>
-                                <Grid xs={6} md={6} lg={6}>
+                               
+                                <Grid xs={12} md={6} lg={6}>
                                   <span className="subValue">
                                     {invoiceDataSingle.bill_info.street_address}
                                   </span>
@@ -1447,20 +1428,13 @@ const createInvoiceCancelled = (id) =>{
                           <Grid container xs={12} md={12} lg={12}>
                             <Grid item xs={12} md={12} lg={12}>
                               <div className={classes.sec1}>
-                                <Grid xs={4} md={4} lg={4}>
+                                <Grid xs={12} md={4} lg={4}>
                                   <span className="subtitle">
-                                    City, P.O. Box
+                                    City, P.O. Box:
                                   </span>
                                 </Grid>
-                                <Grid
-                                  xs={12}
-                                  md={0.5}
-                                  lg={0.5}
-                                  className={classes.colon}
-                                >
-                                  <span>:</span>
-                                </Grid>
-                                <Grid xs={6} md={6} lg={6}>
+                               
+                                <Grid xs={12} md={6} lg={6}>
                                   <span className="subValue">
                                     {invoiceDataSingle.bill_info.city}
                                   </span>
@@ -1471,18 +1445,11 @@ const createInvoiceCancelled = (id) =>{
                           <Grid container xs={12} md={12} lg={12}>
                             <Grid item xs={12} md={12} lg={12}>
                               <div className={classes.sec1}>
-                                <Grid xs={4} md={4} lg={4}>
-                                  <span className="subtitle">Phone</span>
+                                <Grid xs={12} md={4} lg={4}>
+                                  <span className="subtitle">Phone:</span>
                                 </Grid>
-                                <Grid
-                                  xs={12}
-                                  md={0.5}
-                                  lg={0.5}
-                                  className={classes.colon}
-                                >
-                                  <span>:</span>
-                                </Grid>
-                                <Grid xs={6} md={6} lg={6}>
+                                
+                                <Grid xs={12} md={6} lg={6}>
                                   <span className="subValue">
                                     {invoiceDataSingle.bill_info.phone}
                                   </span>
@@ -1493,20 +1460,13 @@ const createInvoiceCancelled = (id) =>{
                           <Grid container xs={12} md={12} lg={12}>
                             <Grid item xs={12} md={12} lg={12}>
                               <div className={classes.sec1}>
-                                <Grid xs={4} md={4} lg={4}>
+                                <Grid xs={12} md={4} lg={4}>
                                   <span className="subtitle">
-                                    Email Address
+                                    Email Address:
                                   </span>
                                 </Grid>
-                                <Grid
-                                  xs={12}
-                                  md={0.5}
-                                  lg={0.5}
-                                  className={classes.colon}
-                                >
-                                  <span>:</span>
-                                </Grid>
-                                <Grid xs={6} md={6} lg={6}>
+                               
+                                <Grid xs={12} md={6} lg={6}>
                                   <span className="subValue">
                                     {invoiceDataSingle.bill_info.email}
                                   </span>
@@ -1523,7 +1483,7 @@ const createInvoiceCancelled = (id) =>{
                       <br />
                       <br />
                     </Grid>
-                    <Grid item xs={4} md={4} lg={4}>
+                    <Grid item xs={12} md={4} lg={4}>
                       <br />
                       <br />
                       <div className={classes.blueSec}>
@@ -1570,7 +1530,7 @@ const createInvoiceCancelled = (id) =>{
                               <b>Customer ID</b>
                             </span>
                       </Grid>*/}
-                          <Grid item xs={6} md={6} lg={6}>
+                          <Grid item xs={12} md={6} lg={6}>
                             <span className={classes.whiteSec}>
                               <b>Immigo Case No</b>
                             </span>
@@ -1583,15 +1543,19 @@ const createInvoiceCancelled = (id) =>{
                          {/*} <Grid item xs={6} md={6} lg={6}>
                             <span className="subValue"></span>
                           </Grid>*/}
-                          <Grid item xs={6} md={6} lg={6}>
+                          <Grid item xs={12} md={6} lg={6}>
                             <span className="subValue">
                             {invoiceDataSingle.order_info && invoiceDataSingle.order_info[0] && invoiceDataSingle.order_info[0].immigo_id ?  invoiceDataSingle.order_info[0].immigo_id :"NIL"}
                             </span>
                           </Grid>
+                          
                         </Grid>
                       </div>
                     </Grid>
                     <Grid item xs={12} md={12} lg={12}>
+                      <br />
+                      <br />
+                      <br />
                       <br />
                       <br />
                       <div className={classes.blueSecDesc}>
@@ -1623,7 +1587,7 @@ const createInvoiceCancelled = (id) =>{
                           invoiceDataSingle.order_info !== undefined ? (
                             invoiceDataSingle.order_info.map((item, index) => (
                               <div className={classes.whiteSecDesc}>
-                                <Grid item xs={7} md={7} lg={7}>
+                                <Grid item xs={10} md={7} lg={7}>
                                   <b className="headIn">
                                     {item.description}
                                   </b>
@@ -1658,18 +1622,18 @@ const createInvoiceCancelled = (id) =>{
                     </Grid>
                     <Grid item xs={12} md={12} lg={12}>
                       <div className={classes.whiteSecDesc}>
-                        <Grid item xs={3} md={3} lg={3}>
+                        <Grid item xs={12} md={3} lg={3}>
                           <span className="headIn">
                             <b>Total</b>
                           </span>
                         </Grid>
-                        <Grid item xs={6} md={6} lg={6}>
+                        <Grid item xs={12} md={6} lg={6}>
                           <b className="headIn">
                             ({invoiceDataSingle.total_price_words}){" "}
                           </b>
                         </Grid>
 
-                        <Grid item xs={3} md={3} lg={3}>
+                        <Grid item xs={12} md={3} lg={3}>
                           <span className="headIn">
                             <b>{invoiceDataSingle.total_price}&nbsp;</b>AED
                           </span>

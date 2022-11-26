@@ -1316,7 +1316,8 @@ const SendPackage = (props) => {
 
   return (
     <>
-     <BasicNavbar/>
+     {/* <BasicNavbar/> */}
+     <Allservices/>
    
       <Grid container className={classes.section_start}>
         <Grid container className={classes.newbg}>

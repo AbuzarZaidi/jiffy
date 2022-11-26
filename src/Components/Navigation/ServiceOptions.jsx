@@ -118,7 +118,7 @@ const ServiceOptions =(props) => {
               <Button variant="contained" className={classes.service_btn} onClick={()=>gotoSendPackage()}><b>Send package</b><img className={classes.service_image} src='./Images/arrow-right-small.png'></img></Button>
               <Button variant="contained" className={classes.service_btn} onClick={()=>gotoCollectPackage()}><b>Collect package</b><img className={classes.service_image} src='./Images/arrow-right-small.png'></img></Button>
              <Button variant="secondary" className={classes.service_btn} onClick={()=>gotoAccompainment()}><b>Accompaniment</b><img className={classes.service_image} src='./Images/arrow-right-small.png'></img></Button>
-              <Button variant="secondary" className={classes.service_btn} ><b>Document Attestation - MOFA(Coming Soon)</b><img className={classes.service_image} src='./Images/arrow-right-small.png'></img></Button>
+              <Button variant="secondary" className={classes.service_btn} ><b>Document Attestation - MOFA</b><img className={classes.service_image} src='./Images/arrow-right-small.png'></img></Button>
               <Button variant="secondary" className={classes.service_btn} onClick={()=>gotoPersonel()}><b>Personalized Services</b><img className={classes.service_image} src='./Images/arrow-right-small.png'></img></Button>
             {/* --> <Button variant="secondary" className={classes.service_btn} onClick={()=>goto()}><b>Others</b><img className={classes.service_image} src='./Images/arrow-right-small.png'></img></Button> */}
               <Grid container>

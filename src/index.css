@@ -98,6 +98,7 @@ font: normal normal 600 27px/27px Montserrat;
 letter-spacing: 0px;
 color: #131C4C;
 opacity: 1;
+width:"100%"
 }
 .nameus{
     color: #EBE3CA;
@@ -914,5 +915,9 @@ width: 105px;
      
     } 
  
+ .stamp{
+    display: flex;
+    justify-content: center;
+}
 
 }

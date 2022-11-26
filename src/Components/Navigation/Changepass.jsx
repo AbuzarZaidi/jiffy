@@ -65,7 +65,8 @@ console.log("yyy",id)
       });
   }
   return (<>
-    <BasicNavbar/>
+    {/* <BasicNavbar/> */}
+    <Allservices></Allservices>
     <Grid container className={classes.coperate_start3}>
     <Grid container className={classes.ht}  >
         <Grid item xs={6} md={6} lg={6} className={classes.allm}>

@@ -10,14 +10,14 @@
       lg={12}
       className={classes.stepperIn}
     >
-      <Grid container xs={6} md={6} lg={6}>
+      <Grid container xs={12} md={6} lg={6}>
         <img src="./Images/icon.png" className="logoIn"></img>
       </Grid>
       <Grid
         container
         display="flex"
         justify="flex-end"
-        xs={2}
+        xs={12}
         md={2}
         lg={2}
         className="boldIn"
@@ -26,7 +26,7 @@
         container
         display="flex"
         justify="flex-end"
-        xs={4}
+        xs={12}
         md={4}
         lg={4}
         className="boldIn"
@@ -39,7 +39,7 @@
         <div className="head"> Jiffy Delivery Services Est. </div>
       </Grid>
       <Grid container xs={12} md={12} lg={12}>
-        <Grid item xs={6} md={6} lg={6}>
+        <Grid item xs={12} md={6} lg={6}>
           <div className={classes.sec1}>
             <Grid xs={12} md={4} lg={4}>
               <span className="subtitle">Street Address</span>

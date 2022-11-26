@@ -6,7 +6,7 @@ import BottomNav from '../../BottomNav'
 import Countdown from "react-countdown";
 import { Container, Grid } from '@mui/material';
 import Tabs from '@mui/material/Tabs';
-
+import Allservices from "../Allservices"
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/system';
 import TabsUnstyled from '@mui/base/TabsUnstyled';
@@ -400,21 +400,21 @@ console.log("ghhhhhhhhhhhhhhhh",items._id)
   //getAPI()
   return (
     <>
-    <BasicNavbar/>
+    <Allservices/>
     <Grid container className={classes.section_start}>
         <Grid container className={classes.newbg}>
           <Container maxWidth="xl">
             <Grid container className={classes.ht}>
-              <Grid item xs={7} md={3} lg={3}>
+              <Grid item xs={9} md={7} lg={3} xl={3}>
                 <div className={classes.heading}>
                   <h2 className={classes.tracked}>
-                    {/*}  <ArrowBackIcon onClick={goMenu}></ArrowBackIcon>*/}
-                    {/* <img src='./Images/aleft.png' onClick={goMenu} ></img> &nbsp; */}
+                    {/* }  <ArrowBackIcon onClick={goMenu}></ArrowBackIcon> */}
+                    <img src='./Images/aleft.png' onClick={goMenu} ></img> &nbsp;
                     Track Orders
                   </h2>
                 </div>
               </Grid>
-              <Grid item xs={5} md={9} lg={9}>
+              <Grid item xs={3} md={5} lg={9} xl={9}>
                 <div className={classes.send_header}>
                   <ColoredLine color="#131C4C" />
                 </div>
@@ -425,30 +425,28 @@ console.log("ghhhhhhhhhhhhhhhh",items._id)
               journey.
             </Description>
             <Grid item xs={12} md={12} lg={12} >
-            <TabsUnstyled defaultValue={0} className={classes.httabs}>
-                {/* <TabsList
-                 variant="scrollable"
-                 scrollButtons="auto"
-                 aria-label="scrollable auto tabs example"
-                 className={classes.httabs}
-                 sx={{backgroundColor:"#EBE3CA"}}
-               >
+             <TabsUnstyled defaultValue={0} className={classes.ht} >
+            
+                {/* <TabsList>
                   <Tab >Active Order(s)</Tab>
                   <Tab >Completed Order(s)</Tab>
                   <Tab >Cancelled Order(s)</Tab>
-                 
+                  
                   <Tab >Delivery Note</Tab>
                   <Tab >Invoice(s)</Tab>
                 </TabsList> */}
-   <Box sx={{ maxWidth: {lg:"100%", xs: "100%", sm: 480 }, }}>
+               
+   {/* <Box sx={{ maxWidth: {lg:"100%", xs: "100%", sm:  "100%" }, }}> */}
+   {/* <TabsUnstyled defaultValue={0} className={classes.httabs} sx={{display: { xs:"flex",md: "none", lg: "none" }, }}> */}
       <Tabs
         // value={value}
         // onChange={handlesChange}
         variant="scrollable"
         scrollButtons="auto"
         aria-label="scrollable auto tabs example"
-        className={classes.httabs}
-        sx={{backgroundColor:"#EBE3CA"}}
+        className={classes.innerhtt}
+        sx={{backgroundColor:"#EBE3CA", }}
+       
       >
                   <Tab className={classes.httab}>Active Order(s)</Tab>
                   <Tab className={classes.httab}>Completed Order(s)</Tab>
@@ -457,7 +455,7 @@ console.log("ghhhhhhhhhhhhhhhh",items._id)
                   <Tab className={classes.httab}>Delivery Note</Tab>
                   <Tab className={classes.httab}>Invoice(s)</Tab>
       </Tabs>
-    </Box>
+    {/* </Box> */}
                 <TabPanel value={0}>
 
 
